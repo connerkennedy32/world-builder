@@ -1,0 +1,19 @@
+.rowElement {
+    padding: 0.5em;
+    margin: 0;
+}
+
+.rowElement:hover {
+    background-color: rgba(200, 200, 200, 0.573);
+    border: 0px solid black;
+    border-radius: 10px;
+}
+
+.columns {
+    display: flex;
+}
+
+.navigation {
+    background-color: rgba(108, 177, 255, 0.565);
+    padding: 1em;
+}
