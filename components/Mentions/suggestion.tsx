@@ -2,9 +2,10 @@ import { ReactRenderer } from '@tiptap/react'
 import tippy from 'tippy.js'
 
 import MentionList from './MentionList'
+import { RefAttributes } from 'react'
 
 const suggestion = {
-    items: ({ query }) => {
+    items: ({ query }: any) => {
         return [
             'Lea Thompson',
             'Cyndi Lauper',
@@ -38,11 +39,11 @@ const suggestion = {
     },
 
     render: () => {
-        let component
-        let popup
+        let component: any
+        let popup: { destroy: () => void, setProps: any, hide: any }[]
 
         return {
-            onStart: props => {
+            onStart: (props: { editor: any, clientRect: any }) => {
                 component = new ReactRenderer(MentionList, {
                     props,
                     editor: props.editor,
@@ -63,7 +64,7 @@ const suggestion = {
                 })
             },
 
-            onUpdate(props) {
+            onUpdate(props: Record<string, any>) {
                 component.updateProps(props)
 
                 if (!props.clientRect) {
@@ -75,7 +76,7 @@ const suggestion = {
                 })
             },
 
-            onKeyDown(props) {
+            onKeyDown(props: { event: { key: string } }) {
                 if (props.event.key === 'Escape') {
                     popup[0].hide()
 

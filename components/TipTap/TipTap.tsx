@@ -100,6 +100,7 @@ const TipTap = () => {
                 HTMLAttributes: {
                     class: 'mention'
                 },
+                // @ts-ignore
                 suggestion,
                 renderHTML({ options, node }) {
                     return [

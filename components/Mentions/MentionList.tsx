@@ -5,10 +5,10 @@ import React, {
 
 import Styles from './styles.module.css'
 
-const MentionList = forwardRef(function MentionList(props, ref) {
+const MentionList = forwardRef(function MentionList(props: any, ref) {
     const [selectedIndex, setSelectedIndex] = useState(0)
 
-    const selectItem = index => {
+    const selectItem = (index: number) => {
         const item = props.items[index]
 
         if (item) {
@@ -31,7 +31,7 @@ const MentionList = forwardRef(function MentionList(props, ref) {
     useEffect(() => setSelectedIndex(0), [props.items])
 
     useImperativeHandle(ref, () => ({
-        onKeyDown: ({ event }) => {
+        onKeyDown: ({ event }: any) => {
             if (event.key === 'ArrowUp') {
                 upHandler()
                 return true
@@ -54,7 +54,7 @@ const MentionList = forwardRef(function MentionList(props, ref) {
     return (
         <div className={Styles.items}>
             {props.items.length
-                ? props.items.map((item, index) => (
+                ? props.items.map((item: any, index: any) => (
                     <button
                         className={index === selectedIndex ? Styles.is_selected : Styles.item}
                         key={index}
