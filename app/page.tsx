@@ -1,10 +1,8 @@
-import Tiptap from "@/components/TipTap/TipTap";
-import SideBar from "@/components/SideBar"
-
 export default function Home() {
   return (
     <>
-      <Tiptap />
+      <h1>World Builder!</h1>
+      <h2>Build your world here!</h2>
     </>
   );
 }
