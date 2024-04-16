@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.12.1",
     "@tiptap/extension-highlight": "^2.3.0",
     "@tiptap/extension-mention": "^2.3.0",
     "@tiptap/extension-typography": "^2.3.0",
@@ -28,6 +29,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8",
+    "prisma": "^5.12.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

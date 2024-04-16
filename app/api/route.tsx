@@ -1,0 +1,66 @@
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+export async function GET(req: any) {
+    const page = req.nextUrl.searchParams.get('page') ? parseInt(req.nextUrl.searchParams.get('page'), 10) : 1;
+    const perPage = req.nextUrl.searchParams.get('perPage') ? parseInt(req.nextUrl.searchParams.get('perPage'), 10) : 10;
+    const searchQuery = req.nextUrl.searchParams.get('searchQuery') || '';
+    const isSold = req.nextUrl.searchParams.get('isSold') || null;
+
+    let pages = await prisma.page.findMany({
+        where: {
+            content: {
+                not: 'empty'
+            }
+        },
+        orderBy: {
+            id: 'asc'
+        }
+    });
+
+    return Response.json(pages);
+}
+
+export async function POST(req: any) {
+    const res = await req.json()
+    const { content, title } = res;
+
+    const newPage = await prisma.page.create({
+        data: {
+            content,
+            title
+        },
+    });
+
+    return Response.json({ newPage })
+}
+
+export async function PUT(req: any) {
+    const pageId = parseInt(req.nextUrl.searchParams.get('id'), 10); // Assuming the product ID is part of the URL
+
+    const existingProduct = await prisma.page.findUnique({
+        where: {
+            id: pageId,
+        },
+    });
+
+    if (!existingProduct) {
+        return Response.json({ error: 'Page not found' });
+    }
+
+    const updatedPageData = await req.json();
+    const { title, content } = updatedPageData;
+
+    const updatedPage = await prisma.page.update({
+        where: {
+            id: pageId,
+        },
+        data: {
+            title,
+            content
+        },
+    });
+
+    return Response.json({ updatedPage });
+}

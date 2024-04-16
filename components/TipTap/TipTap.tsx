@@ -7,7 +7,7 @@ import Mention from '@tiptap/extension-mention'
 import { EditorContent, useEditor, BubbleMenu, mergeAttributes } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { Mark } from '@tiptap/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import suggestion from '../Mentions/suggestion'
 import { Extension } from '@tiptap/core'
@@ -91,7 +91,11 @@ import { Plugin, PluginKey } from 'prosemirror-state'
 //     },
 // })
 
-const TipTap = () => {
+export default function TipTap({ page_content, page_id }: { page_content: string | null, page_id: string }) {
+    const [isPageLoading, setIsPageLoading] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [successfulSubmit, setSuccessfulSubmit] = useState(false);
+
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -111,52 +115,75 @@ const TipTap = () => {
                 },
             })
         ],
-        content: `
-        <h1>Test Header</h1><p>To test that, start a new line and type <code>#</code> followed by a space to get a heading. Try <code>#</code>, <code>##</code>, <code>###</code>, <code>####</code>, <code>#####</code>, <code>######</code> for different levels.</p><p>Those conventions are called input rules in tiptap. Some of the<strong>m are enabled by </strong>default. Try <code>&gt;</code> for blockquotes, <code>*</code>, <code>-</code> or <code>+</code> for bullet lists, or <code>foobar</code> to highlight code, <code>~~tildes~~</code> to strike text, or <code>==equal signs==</code> to highlight text.</p><blockquote><p>What ist thisalfksajc FKLDSJF LISDUF JLSKDJFL<strong>KSDJFLSKDJFKLSDJFf</strong></p><p>flskdafjasdlkfjasdlkfkjasf</p></blockquote><ul><li><p></p></li><li><p>asdfasdf</p></li><li><p>sadf</p></li><li><p></p></li><li><p>asdf</p></li><li><p>sadfsadfas</p></li><li><p>df</p></li><li><p>asdfsadfsa</p></li><li><p>fsadf</p></li><li><p>walkdsfaslkdf</p></li><li><p>asdfklasdjflasdf</p></li></ul><h2>THwlkajsdflkasdjfasdf</h2><p>You can overwrite existing input rules or add your <strong>own to</strong> nodes, marks and extensions.</p><p>For example, we added the <code>Typography</code> extension here. Try typing <code>(c)</code> to see how it’s converted to a proper © character. You can also try <code>-&gt;</code>, <code>&gt;&gt;</code>, <code>1/2</code>, <code>!=</code>, or <code>--</code>.</p> `,
+        content: page_content,
     })
+
+    useEffect(() => {
+        // this is just an example. do whatever you want to do here
+        // to retrieve your editors content from somewhere
+        editor?.commands.setContent(page_content)
+    }, [editor, page_content])
+
+    const savePage = async (e: { preventDefault: () => void; }) => {
+        console.log("Saving page")
+        e.preventDefault();
+        try {
+            setIsSubmitting(true);
+
+            const response = await fetch(`/api?id=${page_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content: editor?.getHTML(),
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit form');
+            }
+
+            // Handle success, e.g., redirect to another page or update state
+            setIsSubmitting(false);
+            setSuccessfulSubmit(true);
+            console.log('Form submitted successfully');
+        } catch (error) {
+            setIsSubmitting(false);
+            console.error('Error submitting form:', error);
+            // Handle error, e.g., show an error message to the user
+        }
+    };
 
     return (
         <>
-            <div className={Styles.columns}>
-                <div className={Styles.navigation}>
-                    <h1 className={Styles.header}>Navigation</h1>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} href={'/isaac'}>
-                        <p className={Styles.rowElement}>Isaac</p>
-                    </Link>
-                    <p className={Styles.rowElement}>Nicole</p>
-                    <p className={Styles.rowElement}>Freedom Fields</p>
-                    <p className={Styles.rowElement}>Tyrannus</p>
-                    <p className={Styles.rowElement}>Samuel</p>
-                    <p className={Styles.rowElement}>Rose</p>
-                </div>
-                <div>
-                    {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
-                        <button
-                            onClick={() => {
-                                editor.chain().focus().toggleMark('highlight').run()
-                            }}
-                            className={editor.isActive('test') ? 'is-active' : ''}
-                        >
-                            Create New
-                        </button>
-                        <button
-                            onClick={() => editor.chain().focus().toggleItalic().run()}
-                            className={editor.isActive('italic') ? 'is-active' : ''}
-                        >
-                            Italic
-                        </button>
-                        <button
-                            onClick={() => editor.chain().focus().toggleStrike().run()}
-                            className={editor.isActive('strike') ? 'is-active' : ''}
-                        >
-                            Strike
-                        </button>
-                    </BubbleMenu>}
-                    <EditorContent editor={editor} />
-                </div>
+
+            <div>
+                {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
+                    <button
+                        onClick={() => {
+                            editor.chain().focus().toggleMark('highlight').run()
+                        }}
+                        className={editor.isActive('test') ? 'is-active' : ''}
+                    >
+                        Create New
+                    </button>
+                    <button
+                        onClick={() => editor.chain().focus().toggleItalic().run()}
+                        className={editor.isActive('italic') ? 'is-active' : ''}
+                    >
+                        Italic
+                    </button>
+                    <button
+                        onClick={() => editor.chain().focus().toggleStrike().run()}
+                        className={editor.isActive('strike') ? 'is-active' : ''}
+                    >
+                        Strike
+                    </button>
+                </BubbleMenu>}
+                <EditorContent editor={editor} />
+                <button onClick={savePage}>Save</button>
             </div>
         </>
     )
 }
-
-export default TipTap;
