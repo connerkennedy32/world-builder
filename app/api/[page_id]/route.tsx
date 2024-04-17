@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '../../../backend/db'
 
 // Handle GET request to retrieve product information for a specific ID
 export async function GET(req: any) {

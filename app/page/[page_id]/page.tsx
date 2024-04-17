@@ -39,7 +39,6 @@ export default function Page({ params }: { params: { page_id: string } }) {
 
     return (
         <>
-            <h1>{page.title}</h1>
             <TipTap page_content={page.content} page_id={params.page_id} />
         </>
     )

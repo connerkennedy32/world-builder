@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Styles from './styles.module.css'
 import Link from 'next/link';
+import CreatePage from '../CreatePageInput/CreatePageInput';
 
 
 export default function SideNav() {
@@ -36,6 +37,7 @@ export default function SideNav() {
                     <p className={Styles.rowElement}>{page.title}</p>
                 </Link>
             ))}
+            <CreatePage />
         </div>
     )
 }

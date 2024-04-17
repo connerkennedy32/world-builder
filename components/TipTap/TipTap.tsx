@@ -4,14 +4,14 @@ import Styles from './styles.module.css'
 import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
 import Mention from '@tiptap/extension-mention'
-import { EditorContent, useEditor, BubbleMenu, mergeAttributes } from '@tiptap/react'
+import { EditorContent, useEditor, BubbleMenu, mergeAttributes, FloatingMenu } from '@tiptap/react'
+import { EditorState } from 'prosemirror-state';
 import StarterKit from '@tiptap/starter-kit'
-import { Mark } from '@tiptap/core'
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 import suggestion from '../Mentions/suggestion'
-import { Extension } from '@tiptap/core'
-import { Plugin, PluginKey } from 'prosemirror-state'
+import { useDebounce } from 'use-debounce';
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
 
 // const CustomHighlight = Highlight.extend({
 //     name: 'test',
@@ -96,37 +96,64 @@ export default function TipTap({ page_content, page_id }: { page_content: string
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successfulSubmit, setSuccessfulSubmit] = useState(false);
 
+
     const editor = useEditor({
         extensions: [
             StarterKit,
             Typography,
+            Highlight,
+            TaskList,
+            TaskItem.configure({
+                nested: true,
+            }),
             Mention.configure({
                 HTMLAttributes: {
                     class: 'mention'
                 },
                 // @ts-ignore
                 suggestion,
-                renderHTML({ options, node }) {
-                    return [
-                        "a",
-                        mergeAttributes({ href: `/profile/${node.attrs.id}` }, options.HTMLAttributes),
-                        `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
-                    ];
-                },
+                // renderHTML({ options, node }) {
+                //     return [
+                //         "a",
+                //         mergeAttributes({ href: `/profile/${node.attrs.id}` }, options.HTMLAttributes),
+                //         `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
+                //     ];
+                // },
             })
         ],
         content: page_content,
     })
 
+    const [debouncedEditor] = useDebounce(editor?.state.doc.content, 3000);
+
     useEffect(() => {
-        // this is just an example. do whatever you want to do here
-        // to retrieve your editors content from somewhere
-        editor?.commands.setContent(page_content)
+        if (debouncedEditor) {
+            savePage();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [debouncedEditor]);
+
+    useEffect(() => {
+        if (editor) {
+            resetEditorContent(page_content)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editor, page_content])
 
-    const savePage = async (e: { preventDefault: () => void; }) => {
+    function resetEditorContent(newContent: string | null) {
+        editor?.commands.setContent(newContent);
+
+        // The following code clears the history. Hopefully without side effects.
+        const newEditorState = EditorState.create({
+            doc: editor?.state.doc,
+            plugins: editor?.state.plugins,
+            schema: editor?.state.schema
+        });
+        editor?.view.updateState(newEditorState);
+    }
+
+    const savePage = async () => {
         console.log("Saving page")
-        e.preventDefault();
         try {
             setIsSubmitting(true);
 
@@ -164,9 +191,9 @@ export default function TipTap({ page_content, page_id }: { page_content: string
                         onClick={() => {
                             editor.chain().focus().toggleMark('highlight').run()
                         }}
-                        className={editor.isActive('test') ? 'is-active' : ''}
+                        className={editor.isActive('highlight') ? 'is-active' : ''}
                     >
-                        Create New
+                        Highlight
                     </button>
                     <button
                         onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -180,9 +207,34 @@ export default function TipTap({ page_content, page_id }: { page_content: string
                     >
                         Strike
                     </button>
+                    <button
+                        onClick={() => editor.chain().focus().toggleTaskList().run()}
+                        className={editor.isActive('taskList') ? 'is-active' : ''}
+                    >
+                        Tasks
+                    </button>
                 </BubbleMenu>}
+                {editor && <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
+                    <button
+                        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+                        className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+                    >
+                        h1
+                    </button>
+                    <button
+                        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+                        className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
+                    >
+                        h2
+                    </button>
+                    <button
+                        onClick={() => editor.chain().focus().toggleTaskList().run()}
+                        className={editor.isActive('taskList') ? 'is-active' : ''}
+                    >
+                        Tasks
+                    </button>
+                </FloatingMenu>}
                 <EditorContent editor={editor} />
-                <button onClick={savePage}>Save</button>
             </div>
         </>
     )

@@ -5,37 +5,14 @@ import MentionList from './MentionList'
 import { RefAttributes } from 'react'
 
 const suggestion = {
-    items: ({ query }: any) => {
-        return [
-            'Lea Thompson',
-            'Cyndi Lauper',
-            'Tom Cruise',
-            'Madonna',
-            'Jerry Hall',
-            'Joan Collins',
-            'Winona Ryder',
-            'Christina Applegate',
-            'Alyssa Milano',
-            'Molly Ringwald',
-            'Ally Sheedy',
-            'Debbie Harry',
-            'Olivia Newton-John',
-            'Elton John',
-            'Michael J. Fox',
-            'Axl Rose',
-            'Emilio Estevez',
-            'Ralph Macchio',
-            'Rob Lowe',
-            'Jennifer Grey',
-            'Mickey Rourke',
-            'John Cusack',
-            'Matthew Broderick',
-            'Justine Bateman',
-            'Lisa Bonet',
-            'Issac Character'
-        ]
-            .filter(item => item.toLowerCase().startsWith(query.toLowerCase()))
+    items: async ({ query }: any) => {
+        const response = await fetch('/api');
+        const data = await response.json();
+
+        return data
+            .filter((item: any) => item.title.toLowerCase().startsWith(query.toLowerCase()))
             .slice(0, 5)
+            .map((item: any) => item.title);
     },
 
     render: () => {

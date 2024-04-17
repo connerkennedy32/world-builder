@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '../../backend/db'
 
 export async function GET(req: any) {
     const page = req.nextUrl.searchParams.get('page') ? parseInt(req.nextUrl.searchParams.get('page'), 10) : 1;
@@ -24,7 +22,13 @@ export async function GET(req: any) {
 
 export async function POST(req: any) {
     const res = await req.json()
-    const { content, title } = res;
+    let { content, title } = res;
+
+    if (!content && title) {
+        content = `<h1>${title}</h1>`;
+    } else if (!content) {
+        content = '';
+    }
 
     const newPage = await prisma.page.create({
         data: {

@@ -13,6 +13,8 @@
     "@prisma/client": "^5.12.1",
     "@tiptap/extension-highlight": "^2.3.0",
     "@tiptap/extension-mention": "^2.3.0",
+    "@tiptap/extension-task-item": "^2.3.0",
+    "@tiptap/extension-task-list": "^2.3.0",
     "@tiptap/extension-typography": "^2.3.0",
     "@tiptap/pm": "^2.2.6",
     "@tiptap/react": "^2.2.6",
@@ -20,7 +22,8 @@
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
