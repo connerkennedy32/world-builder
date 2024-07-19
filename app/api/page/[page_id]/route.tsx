@@ -1,4 +1,4 @@
-import { prisma } from '../../../backend/db'
+import { prisma } from '../../../../backend/db'
 
 // Handle GET request to retrieve product information for a specific ID
 export async function GET(req: any) {

@@ -14,8 +14,38 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+model User {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  pages    Page[]
+  folders  Folder[]
+
+  @@unique([id])
+}
+
 model Page {
-  id      Int    @id @default(autoincrement())
-  content String
-  title   String @default("new page")
+  id       Int     @id @default(autoincrement())
+  content  String
+  title    String  @default("new page")
+  folderId Int?
+  userId   Int
+  folder   Folder? @relation(fields: [folderId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
+  order    Int
+
+  @@unique([folderId, title])
+  @@unique([folderId, order])
+}
+
+model Folder {
+  id     Int    @id @default(autoincrement())
+  name   String
+  pages  Page[]
+  order  Int
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@unique([order])
 }

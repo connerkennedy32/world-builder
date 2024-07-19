@@ -30,10 +30,17 @@ export async function POST(req: any) {
         content = '';
     }
 
+    const mostRecentPage = await prisma.page.findFirst({
+        select: { order: true },
+        orderBy: { order: 'desc' },
+    });
+
     const newPage = await prisma.page.create({
         data: {
             content,
-            title
+            title,
+            userId: 1, // Update when I create more than one user
+            order: mostRecentPage ? mostRecentPage.order + 1000 : 1000
         },
     });
 

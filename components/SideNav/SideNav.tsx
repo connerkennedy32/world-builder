@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import Styles from './styles.module.css'
 import Link from 'next/link';
 import CreatePage from '../CreatePageInput/CreatePageInput';
+import trash from '../../public/trash.svg'
+import Image from 'next/image';
+import ConfirmDeleteScreen from '../ConfirmDeleteScreen/ConfirmDeleteScreen';
 
 
 export default function SideNav() {
@@ -29,15 +32,25 @@ export default function SideNav() {
         fetchData();
     }, [])
 
+    const handleTrashClick = (e: { preventDefault: () => void; }) => {
+        e.preventDefault(); // Stop the event from bubbling up
+        alert("HELLO")
+        console.log("CLICKED TRASH");
+    };
+
     return (
         <div className={Styles.navigation}>
             <h1 className={Styles.header}>Navigation</h1>
             {list.map((page: any) => (
-                <Link style={{ textDecoration: 'none', color: 'black' }} key={page.id} href={`/page/${page.id}`}>
-                    <p className={Styles.rowElement}>{page.title}</p>
+                <Link className={Styles.rowElement} key={page.id} href={`/page/${page.id}`}>
+                    <p className={Styles.pageTitle}>{page.title}</p>
+                    <div onClick={handleTrashClick}>
+                        <Image id='test' src={trash} alt='trash' width={20} height={20} />
+                    </div>
                 </Link>
             ))}
             <CreatePage />
+            {/* <ConfirmDeleteScreen onConfirm={() => console.log('confirm')} onCancel={() => { console.log('cancel') }} /> */}
         </div>
     )
 }
