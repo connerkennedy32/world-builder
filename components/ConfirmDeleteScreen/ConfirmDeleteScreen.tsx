@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css'; // Import CSS module for styling
 
-const ConfirmDeleteScreen = ({ onConfirm, onCancel }) => {
+const ConfirmDeleteScreen = ({ onConfirm, onCancel }: any) => {
     return (
         <div className={styles.overlay}>
             <div className={styles.modal}>
