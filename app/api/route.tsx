@@ -13,7 +13,7 @@ export async function GET(req: any) {
             }
         },
         orderBy: {
-            id: 'asc'
+            order: 'asc'
         }
     });
 
