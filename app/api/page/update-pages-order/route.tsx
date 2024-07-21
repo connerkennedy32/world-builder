@@ -10,7 +10,7 @@ interface Page {
     order: number;
 }
 
-export async function PUT(req: NextResponse) {
+export async function PUT(req: any) {
     const pages: Page[] = await req.json();
 
     try {
