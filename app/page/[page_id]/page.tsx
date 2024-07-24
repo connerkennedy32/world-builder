@@ -21,7 +21,7 @@ export default function Page({ params }: { params: { page_id: string } }) {
         const fetchData = async () => {
             try {
                 setIsPageLoading(true);
-                const response = await fetch(`/api/page/${params.page_id}`);
+                const response = await fetch(`/api/pages/${params.page_id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch page');
                 }

@@ -22,9 +22,9 @@ export async function PUT(req: any) {
         );
 
         await Promise.all(updatePromises);
-        return new Response('Page orders updated successfully', { status: 200 });
+        return Response.json('Page orders updated successfully', { status: 200 });
     } catch (error) {
         console.error('Error updating page orders:', error);
-        return new Response('Error updating page orders', { status: 500 });
+        return Response.json('Error updating page orders', { status: 500 });
     }
 }
