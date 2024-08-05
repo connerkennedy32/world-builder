@@ -52,7 +52,7 @@ export default function Row({ page, handleNavigation, setNewPageValue }: { page:
                         onKeyPress={handleKeyPress}
                         placeholder="Press Enter to submit"
                     />}
-                <EditIcon onClick={handleEdit} className={Styles.editIcon} sx={{ height: '15px', marginLeft: 'auto' }} />
+                {!isFolderType && <EditIcon onClick={handleEdit} className={Styles.editIcon} sx={{ height: '15px', marginLeft: 'auto' }} />}
             </div>
             {isFolderType && areChildrenShown &&
                 page.children?.map((page: any) => (
