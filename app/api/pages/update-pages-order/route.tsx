@@ -1,5 +1,5 @@
 import { prisma } from '../../../../backend/db'
-import { Page } from '@/app/types/page';
+import { Page } from '@/types/pageTypes';
 
 export async function PUT(req: any) {
     const pages: Page[] = await req.json();

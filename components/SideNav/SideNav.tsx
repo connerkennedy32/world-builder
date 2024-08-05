@@ -5,7 +5,7 @@ import CreatePage from '../CreatePageInput/CreatePageInput';
 import { Reorder } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
-import { Page } from '@/app/types/page';
+import { Page } from '@/types/pageTypes';
 import Row from './Row';
 
 export default function SideNav() {

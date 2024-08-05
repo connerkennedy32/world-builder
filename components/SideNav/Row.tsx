@@ -4,7 +4,7 @@ import Styles from './styles.module.css'
 import FolderIcon from '@mui/icons-material/Folder';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import EditIcon from '@mui/icons-material/Edit';
-import { Page } from '@/app/types/page';
+import { Page } from '@/types/pageTypes';
 
 export default function Row({ page, handleNavigation, setNewPageValue }: { page: Page, handleNavigation: any, setNewPageValue: any }) {
     const [areChildrenShown, setAreChildrenShown] = useState(false);
