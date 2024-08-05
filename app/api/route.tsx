@@ -4,12 +4,11 @@ export async function GET(req: any) {
     const page = req.nextUrl.searchParams.get('page') ? parseInt(req.nextUrl.searchParams.get('page'), 10) : 1;
     const perPage = req.nextUrl.searchParams.get('perPage') ? parseInt(req.nextUrl.searchParams.get('perPage'), 10) : 10;
     const searchQuery = req.nextUrl.searchParams.get('searchQuery') || '';
-    const isSold = req.nextUrl.searchParams.get('isSold') || null;
 
     let pages = await prisma.page.findMany({
         where: {
-            content: {
-                not: 'empty'
+            folderId: {
+                equals: null
             }
         },
         orderBy: {
@@ -17,7 +16,33 @@ export async function GET(req: any) {
         }
     });
 
-    return Response.json(pages);
+    let folders = await prisma.folder.findMany({
+        where: {
+            nestedOrder: {
+                equals: null,
+            }
+        },
+        include: {
+            children: {
+                include: {
+                    children: true,
+                    pages: true,
+                }
+            },
+            pages: {
+                orderBy: {
+                    order: 'asc'
+                }
+            }
+        },
+        orderBy: {
+            order: 'asc'
+        }
+    })
+
+    const combinedItems = [...pages, ...folders].sort((a, b) => a.order - b.order);
+
+    return Response.json(combinedItems);
 }
 
 export async function POST(req: any) {

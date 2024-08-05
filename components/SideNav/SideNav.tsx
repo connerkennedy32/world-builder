@@ -5,9 +5,7 @@ import CreatePage from '../CreatePageInput/CreatePageInput';
 import { Reorder } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
-// import trash from '../../public/trash.svg'
-// import Image from 'next/image';
-
+import Row from './Row';
 
 interface Page {
     content: string,
@@ -83,7 +81,7 @@ export default function SideNav() {
         // Save array index to the order
         console.log(list)
         try {
-            const response = await fetch('/api/page/update-pages-order', {
+            const response = await fetch('/api/pages/update-pages-order', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -101,20 +99,13 @@ export default function SideNav() {
         }
     }
 
-    // const handleTrashClick = (e: { preventDefault: () => void; }) => {
-    //     e.preventDefault(); // Stop the event from bubbling up
-    //     alert("HELLO")
-    //     console.log("CLICKED TRASH");
-    // };
     return (
         <div className={Styles.navigation}>
             <h1 className={Styles.header}>Navigation</h1>
             <Reorder.Group style={{ listStyle: 'none' }} axis='y' values={list} onReorder={onReorder}>
                 {list.map((page: any) => (
-                    <Reorder.Item key={page.id} value={page}>
-                        <div className={Styles.rowElement} onClick={() => handleNavigation(page.id)}>
-                            <span>{page.title}</span>
-                        </div>
+                    <Reorder.Item key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} value={page}>
+                        <Row page={page} handleNavigation={handleNavigation} />
                     </Reorder.Item>
                 ))}
             </Reorder.Group>

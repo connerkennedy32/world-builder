@@ -1,9 +1,8 @@
 .rowElement {
     text-decoration: none;
     color: black;
-    display: flex;
-    justify-content: space-between;
     padding-right: 1em;
+    margin-left: 1em;
 }
 
 
@@ -13,13 +12,13 @@
     border-radius: 10px;
 }
 
-.rowElement div {
+/* .rowElement div {
     display: none;
-}
+} */
 
-.rowElement:hover div {
+/* .rowElement:hover div {
     display: flex;
-}
+} */
 
 .columns {
     display: flex;

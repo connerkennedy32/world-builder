@@ -8,17 +8,26 @@ interface Page {
     folderId: number | null;
     userId: number;
     order: number;
+    pages?: Page[]
 }
 
 export async function PUT(req: any) {
     const pages: Page[] = await req.json();
 
     try {
-        const updatePromises = pages.map((page, index) =>
-            prisma.page.update({
-                where: { id: page.id },
-                data: { order: index }
-            })
+        const updatePromises = pages.map(async (page, index) => {
+            if (page.pages) {
+                await prisma.folder.update({
+                    where: { id: page.id },
+                    data: { order: index }
+                })
+            } else {
+                await prisma.page.update({
+                    where: { id: page.id },
+                    data: { order: index }
+                })
+            }
+        }
         );
 
         await Promise.all(updatePromises);

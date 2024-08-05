@@ -26,26 +26,31 @@ model User {
 }
 
 model Page {
-  id       Int     @id @default(autoincrement())
-  content  String
-  title    String  @default("new page")
-  folderId Int?
-  userId   Int
-  folder   Folder? @relation(fields: [folderId], references: [id])
-  user     User    @relation(fields: [userId], references: [id])
-  order    Int
+  id          Int     @id @default(autoincrement())
+  content     String
+  title       String  @default("new page")
+  folderId    Int?
+  userId      Int
+  folder      Folder? @relation(fields: [folderId], references: [id])
+  user        User    @relation(fields: [userId], references: [id])
+  order       Int
+  nestedOrder Int?
 
   @@unique([folderId, title])
   @@unique([folderId, order])
 }
 
 model Folder {
-  id     Int    @id @default(autoincrement())
-  name   String
-  pages  Page[]
-  order  Int
-  userId Int
-  user   User   @relation(fields: [userId], references: [id])
+  id          Int      @id @default(autoincrement())
+  title       String
+  parentId    Int?
+  pages       Page[]
+  order       Int
+  nestedOrder Int?
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  parent      Folder?  @relation("FolderHierarchy", fields: [parentId], references: [id])
+  children    Folder[] @relation("FolderHierarchy")
 
   @@unique([order])
 }
