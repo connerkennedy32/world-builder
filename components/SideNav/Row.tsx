@@ -5,7 +5,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 
 export default function Row({ page, handleNavigation }: any) {
-    const [areChildrenShown, setAreChildrenShown] = useState(true);
+    const [areChildrenShown, setAreChildrenShown] = useState(false);
 
     const isFolderType = !!page.pages;
 
