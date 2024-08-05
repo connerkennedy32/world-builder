@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const CreatePage = () => {
+const CreatePage = ({ setNewPageValue }: any) => {
     const [query, setQuery] = useState('');
 
     const handleKeyPress = async (event: { key: string; }) => {
@@ -13,6 +13,9 @@ const CreatePage = () => {
                     },
                     body: JSON.stringify({ title: query })
                 });
+                if (response) {
+                    setNewPageValue(query);
+                }
             } catch (error) {
                 // Handle error
                 console.error(error);

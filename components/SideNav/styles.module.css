@@ -28,3 +28,12 @@
     background-color: rgba(108, 177, 255, 0.565);
     padding: 1em;
 }
+
+.editIcon {
+    visibility: hidden;
+    transition: visibility 0.2s;
+}
+
+.titleSpan:hover .editIcon {
+    visibility: visible;
+}

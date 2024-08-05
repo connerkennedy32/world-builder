@@ -1,15 +1,5 @@
 import { prisma } from '../../../../backend/db'
-import { NextResponse } from 'next/server';
-
-interface Page {
-    id: number;
-    content: string;
-    title: string;
-    folderId: number | null;
-    userId: number;
-    order: number;
-    pages?: Page[]
-}
+import { Page } from '@/app/types/page';
 
 export async function PUT(req: any) {
     const pages: Page[] = await req.json();

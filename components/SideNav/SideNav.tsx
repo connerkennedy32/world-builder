@@ -5,19 +5,12 @@ import CreatePage from '../CreatePageInput/CreatePageInput';
 import { Reorder } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
+import { Page } from '@/app/types/page';
 import Row from './Row';
-
-interface Page {
-    content: string,
-    folderId: number | null,
-    id: number,
-    order: number,
-    title: string,
-    userId: number
-}
 
 export default function SideNav() {
     const [isLoading, setIsLoading] = useState(false);
+    const [newPageValue, setNewPageValue] = useState<String>('');
     const [list, setList] = useState<Page[]>([]);
     const [synonyms, setSynonyms] = useState([]);
     const router = useRouter();
@@ -49,7 +42,7 @@ export default function SideNav() {
         };
 
         fetchData();
-    }, [])
+    }, [newPageValue])
 
     const returnSynonyms = async () => {
         try {
@@ -103,13 +96,13 @@ export default function SideNav() {
         <div className={Styles.navigation}>
             <h1 className={Styles.header}>Navigation</h1>
             <Reorder.Group style={{ listStyle: 'none' }} axis='y' values={list} onReorder={onReorder}>
-                {list.map((page: any) => (
+                {list.map((page: Page) => (
                     <Reorder.Item key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} value={page}>
-                        <Row page={page} handleNavigation={handleNavigation} />
+                        <Row page={page} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
                     </Reorder.Item>
                 ))}
             </Reorder.Group>
-            <CreatePage />
+            <CreatePage setNewPageValue={setNewPageValue} />
             <button onClick={returnSynonyms}>Look Up Thesaurus</button>
             <div style={{ display: "flex" }}>
                 {synonyms.map((word) => (
