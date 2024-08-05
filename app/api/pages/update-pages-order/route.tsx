@@ -16,7 +16,8 @@ export async function PUT(req: any) {
 
     try {
         const updatePromises = pages.map(async (page, index) => {
-            if (page.pages) {
+            const isFolderType = !!page.pages;
+            if (isFolderType) {
                 await prisma.folder.update({
                     where: { id: page.id },
                     data: { order: index }
