@@ -21,16 +21,30 @@ export default function Row({ page, handleNavigation, setNewPageValue }: { page:
     const handleKeyPress = async (event: { key: string; }) => {
         if (event.key === 'Enter' && newTitle !== '') {
             try {
-                const response = await fetch(`/api/pages/${page.id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ title: newTitle })
-                });
-                if (response) {
-                    setNewPageValue(newTitle);
-                    setIsEditing(false);
+                if (isFolderType) {
+                    const response = await fetch(`/api/folders/${page.id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ title: newTitle })
+                    });
+                    if (response) {
+                        setNewPageValue(newTitle);
+                        setIsEditing(false);
+                    }
+                } else {
+                    const response = await fetch(`/api/pages/${page.id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ title: newTitle })
+                    });
+                    if (response) {
+                        setNewPageValue(newTitle);
+                        setIsEditing(false);
+                    }
                 }
             } catch (error) {
                 console.error(error);
@@ -52,7 +66,7 @@ export default function Row({ page, handleNavigation, setNewPageValue }: { page:
                         onKeyPress={handleKeyPress}
                         placeholder="Press Enter to submit"
                     />}
-                {!isFolderType && <EditIcon onClick={handleEdit} className={Styles.editIcon} sx={{ height: '15px', marginLeft: 'auto' }} />}
+                <EditIcon onClick={handleEdit} className={Styles.editIcon} sx={{ height: '15px', marginLeft: 'auto' }} />
             </div>
             {isFolderType && areChildrenShown &&
                 page.children?.map((page: any) => (

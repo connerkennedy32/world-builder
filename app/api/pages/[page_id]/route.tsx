@@ -38,8 +38,8 @@ export async function PUT(req: any) {
         })
         return Response.json({ updatedPage });
     } catch (error) {
-        console.error('Error updating page orders:', error);
-        return Response.json('Error updating page orders', { status: 500 });
+        console.error('Error updating page:', error);
+        return Response.json('Error updating page', { status: 500 });
     }
 
 }
