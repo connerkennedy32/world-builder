@@ -31,7 +31,6 @@
 
 .editIcon {
     visibility: hidden;
-    transition: visibility 0.2s;
 }
 
 .titleSpan:hover .editIcon {
