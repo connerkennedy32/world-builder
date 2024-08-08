@@ -12,7 +12,6 @@ export default function SideNav() {
     const [isLoading, setIsLoading] = useState(false);
     const [newPageValue, setNewPageValue] = useState<String>('');
     const [list, setList] = useState<Page[]>([]);
-    const [synonyms, setSynonyms] = useState([]);
     const router = useRouter();
 
     const [debouncedEditor] = useDebounce(list, 3000);
@@ -44,23 +43,6 @@ export default function SideNav() {
 
         fetchData();
     }, [newPageValue])
-
-    const returnSynonyms = async () => {
-        try {
-            const response = await fetch(`https://api.api-ninjas.com/v1/thesaurus?word=test`, {
-                method: 'GET',
-                headers: {
-                    'x-api-key': "38h9yEFWG07puaM0exfyPw==UiJLW3B39rzEM2XW",
-                    'Content-Type': 'application/json'
-                }
-            });
-            const res = await response.json();
-            setSynonyms(res.synonyms);
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
 
     const handleNavigation = (id: string) => {
         router.push(`/page/${id}`)
@@ -109,13 +91,6 @@ export default function SideNav() {
                 ))}
             </Reorder.Group>
             <CreatePage setNewPageValue={setNewPageValue} />
-            <button onClick={returnSynonyms}>Look Up Thesaurus</button>
-            <div style={{ display: "flex" }}>
-                {synonyms.map((word) => (
-                    <p style={{ marginLeft: '1em' }} key={word}>{word}</p>
-                ))
-                }
-            </div>
         </div>
     )
 }
