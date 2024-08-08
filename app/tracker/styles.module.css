@@ -1,0 +1,7 @@
+.editButton {
+    height: 20px;
+}
+
+.editButton:hover {
+    color: grey
+}

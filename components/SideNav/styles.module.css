@@ -12,14 +12,6 @@
     border-radius: 10px;
 }
 
-/* .rowElement div {
-    display: none;
-} */
-
-/* .rowElement:hover div {
-    display: flex;
-} */
-
 .columns {
     display: flex;
 }
@@ -35,4 +27,14 @@
 
 .titleSpan:hover .editIcon {
     visibility: visible;
+}
+
+.isIconVisible {
+    visibility: visible;
+}
+
+.isBackgroundVisible {
+    background-color: rgba(200, 200, 200, 0.573);
+    border: 0px solid black;
+    border-radius: 10px;
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Styles from './styles.module.css'
 import CreatePage from '../CreatePageInput/CreatePageInput';
 import { Reorder } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
 import { Page } from '@/types/pageTypes';
 import Row from './Row';
@@ -16,6 +16,7 @@ export default function SideNav() {
     const router = useRouter();
 
     const [debouncedEditor] = useDebounce(list, 3000);
+    const pathName = usePathname();
 
     useEffect(() => {
         if (debouncedEditor) {
@@ -90,6 +91,11 @@ export default function SideNav() {
         } catch (error) {
             console.error('Error:', error);
         }
+    }
+
+    // Don't display sidenav on tracker page
+    if (pathName.includes('/tracker')) {
+        return null;
     }
 
     return (
