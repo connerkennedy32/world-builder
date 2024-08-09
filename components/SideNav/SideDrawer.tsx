@@ -66,7 +66,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft({ children }: any) {
+export default function SideDrawer({ children }: any) {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [isPageLoading, setIsPageLoading] = useState(true);

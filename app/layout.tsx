@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Styles from './styles.module.css'
-import PersistentDrawerLeft from "./test/page";
+import SideDrawer from "@/components/SideNav/SideDrawer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className={Styles.columns}>
-          <PersistentDrawerLeft>
+          <SideDrawer>
             {children}
-          </PersistentDrawerLeft>
+          </SideDrawer>
         </div>
       </body>
     </html>
