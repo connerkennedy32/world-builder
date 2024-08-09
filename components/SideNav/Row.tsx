@@ -8,12 +8,21 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Popover from '@mui/material/Popover';
 import { Page } from '@/types/pageTypes';
+import { azeret_mono } from '@/app/fonts';
+import ContextMenu from './ContextMenu';
 
-export default function Row({ page, handleNavigation, setNewPageValue }: { page: Page, handleNavigation: any, setNewPageValue: any }) {
+export default function Row({ page, handleNavigation, setNewPageValue, currentId }: { page: Page, handleNavigation: any, setNewPageValue: any, currentId: any }) {
     const [areChildrenShown, setAreChildrenShown] = useState(false);
     const [newTitle, setNewTitle] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+    function truncateString(str: string, length = 11) {
+        if (str.length > length) {
+            return str.slice(0, length) + '...';
+        }
+        return str;
+    }
 
     const handleClick = (event: React.MouseEvent<any>) => {
         setAnchorEl(event.currentTarget);
@@ -72,16 +81,25 @@ export default function Row({ page, handleNavigation, setNewPageValue }: { page:
             }
         }
     }
+
+    const handleContextMenu = (event: any) => {
+        event.preventDefault();
+        setAnchorEl(event.currentTarget);
+        setIsEditing(false);
+    }
+
+
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+    const isCurrentlySelected = Boolean(Number(currentId) === page.id && !isFolderType)
 
     return (
-        <div className={`${Styles.rowElement} ${open ? Styles.isBackgroundVisible : ''}`} onClick={isFolderType ? () => { } : () => handleNavigation(page.id)}>
+        <div onContextMenu={handleContextMenu} className={`${Styles.rowElement} ${open || isCurrentlySelected ? Styles.isBackgroundVisible : ''}`} onClick={isFolderType ? () => { } : () => handleNavigation(page.id)}>
             <div className={Styles.titleSpan} style={{ display: 'flex', alignItems: 'center' }}>
                 {isFolderType ? <FolderIcon /> : <DescriptionOutlinedIcon sx={{ height: '20px' }} />}
                 {!isEditing ?
-                    <span onClick={isFolderType ? () => { setAreChildrenShown(!areChildrenShown) } : () => { }}>
-                        {page.title}
+                    <span className={azeret_mono.className} style={{ whiteSpace: 'nowrap' }} onClick={isFolderType ? () => { setAreChildrenShown(!areChildrenShown) } : () => { }}>
+                        {truncateString(page.title)}
                     </span> :
                     <input
                         type="text"
@@ -102,14 +120,14 @@ export default function Row({ page, handleNavigation, setNewPageValue }: { page:
                         horizontal: 'left',
                     }}
                 >
-                    <Typography sx={{ p: 2 }}>Delete &quot;{page.title}&quot;?</Typography>
+                    <ContextMenu />
                     <Button onClick={handleClose}>Cancel</Button>
                     <Button onClick={handleDelete}>Delete</Button>
                 </Popover>
             </div>
             {isFolderType && areChildrenShown &&
                 [...(page.children || []), ...(page.pages || [])].map((page: any) => (
-                    <Row key={`${isFolderType ? 'folder-' : 'page-'}-${page.id}`} page={page} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
+                    <Row currentId={currentId} key={`${isFolderType ? 'folder-' : 'page-'}-${page.id}`} page={page} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
                 ))
             }
         </div>

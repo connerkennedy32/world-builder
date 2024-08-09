@@ -1,12 +1,12 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Styles from './styles.module.css'
 import CreatePage from '../CreatePageInput/CreatePageInput';
 import { Reorder } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
 import { Page } from '@/types/pageTypes';
 import Row from './Row';
+import ContextMenu from './ContextMenu';
 
 export default function SideNav() {
     const [isLoading, setIsLoading] = useState(false);
@@ -14,8 +14,9 @@ export default function SideNav() {
     const [list, setList] = useState<Page[]>([]);
     const router = useRouter();
 
-    const [debouncedEditor] = useDebounce(list, 3000);
+    const [debouncedEditor] = useDebounce(list, 1000);
     const pathName = usePathname();
+    const currentId = pathName.split('/').pop();
 
     useEffect(() => {
         if (debouncedEditor) {
@@ -81,16 +82,16 @@ export default function SideNav() {
     }
 
     return (
-        <div className={Styles.navigation}>
-            <h1 className={Styles.header}>Navigation</h1>
+        <>
             <Reorder.Group style={{ listStyle: 'none' }} axis='y' values={list} onReorder={onReorder}>
                 {list.map((page: Page) => (
                     <Reorder.Item key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} value={page}>
-                        <Row page={page} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
+                        <Row page={page} currentId={currentId} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
                     </Reorder.Item>
                 ))}
             </Reorder.Group>
+            <ContextMenu />
             <CreatePage setNewPageValue={setNewPageValue} />
-        </div>
+        </>
     )
 }
