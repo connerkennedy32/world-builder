@@ -1,21 +1,13 @@
 
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
+import { Box, Drawer, CssBaseline, Toolbar, Typography, Divider, IconButton } from '@mui/material'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Menu as MenuIcon, ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@mui/icons-material'
 import SideNav from "@/components/SideNav/SideNav";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     open?: boolean;
@@ -69,32 +61,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function SideDrawer({ children }: any) {
     const theme = useTheme();
     const [open, setOpen] = useState(false);
-    const [isPageLoading, setIsPageLoading] = useState(true);
-    const [page, setPage] = useState<any>({
-        "id": 0, "content": "", "title": "Loading..."
-    });
-
-    const params = { page_id: '13' }
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setIsPageLoading(true);
-                const response = await fetch(`/api/pages/${params.page_id}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch page');
-                }
-
-                const data = await response.json();
-                setPage(data.page);
-                setIsPageLoading(false);
-            } catch (error: any) {
-                console.error('Error fetching page:', error.message);
-            }
-        };
-
-        fetchData();
-    }, [params.page_id]);
 
     const handleDrawerOpen = () => {
         setOpen(true);

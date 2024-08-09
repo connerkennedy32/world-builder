@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Styles from './styles.module.css'
 import SideDrawer from "@/components/SideNav/SideDrawer";
+import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className={Styles.columns}>
-          <SideDrawer>
-            {children}
-          </SideDrawer>
-        </div>
+        <QueryProvider>
+          <div className={Styles.columns}>
+            <SideDrawer>
+              {children}
+            </SideDrawer>
+          </div>
+        </QueryProvider>
       </body>
     </html>
   );

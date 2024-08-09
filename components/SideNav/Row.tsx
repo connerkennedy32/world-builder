@@ -17,7 +17,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const [isEditing, setIsEditing] = useState(false);
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    function truncateString(str: string, length = 11) {
+    function truncateString(str: string, length = 16) {
         if (str.length > length) {
             return str.slice(0, length) + '...';
         }
