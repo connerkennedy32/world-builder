@@ -15,7 +15,7 @@ export default function Page({ params }: { params: { page_id: string } }) {
             queryFn: fetchPage,
         });
 
-    if (!data?.data?.page?.content) return null
+    if (!data?.data?.page?.content) return null;
 
     return (
         <>

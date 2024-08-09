@@ -55,8 +55,6 @@ export default function SideNav() {
 
     const saveOrder = async () => {
         console.log("SAVING ORDER")
-        // Save array index to the order
-        console.log(list)
         try {
             const response = await fetch('/api/pages/update-pages-order', {
                 method: 'PUT',
@@ -74,11 +72,6 @@ export default function SideNav() {
         } catch (error) {
             console.error('Error:', error);
         }
-    }
-
-    // Don't display sidenav on tracker page
-    if (pathName.includes('/tracker')) {
-        return null;
     }
 
     return (
