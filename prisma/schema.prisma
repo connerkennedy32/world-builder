@@ -54,3 +54,19 @@ model Folder {
 
   @@unique([order])
 }
+
+model Book {
+  id          Int         @id @default(autoincrement())
+  title       String
+  userId      Int
+  description String?
+  wordEntries WordEntry[]
+}
+
+model WordEntry {
+  id        Int      @id @default(autoincrement())
+  wordCound Int
+  date      DateTime
+  bookId    Int
+  Book      Book     @relation(fields: [bookId], references: [id])
+}
