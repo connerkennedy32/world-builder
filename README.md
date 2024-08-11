@@ -41,4 +41,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 npx prisma migrate dev --name your_migration_name
 ```
 
-This generates a new migration in the migrations folder and syncs your db with the schema
+This generates a new migration in the migrations folder and syncs your local db with the schema.
+When schema changes / migrations are deployed, a script is automatically run in Vercel that pushes any un-migrated migrations to production DB
