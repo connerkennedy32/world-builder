@@ -153,9 +153,6 @@ ul[data-type="taskList"] li>div {
 }
 
 ul[data-type="taskList"] li ul li,
-ul[data-type="taskList"] li ol li {
-  display: list-item;
-}
 
 ul[data-type="taskList"]>li {
   display: flex;

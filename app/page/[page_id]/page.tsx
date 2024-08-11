@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 export default function Page({ params }: { params: { page_id: string } }) {
     const fetchPage = async () => {
         const response = await axios.get(`/api/pages/${params.page_id}`);
-        return response;
+        return response.data;
     }
 
     const { data } = useQuery(
@@ -15,11 +15,11 @@ export default function Page({ params }: { params: { page_id: string } }) {
             queryFn: fetchPage,
         });
 
-    if (!data?.data?.page?.content) return null;
+    if (!data?.page?.content) return null;
 
     return (
         <>
-            <TipTap page_content={data?.data.page.content} page_id={params.page_id} />
+            <TipTap page_content={data.page.content} page_id={params.page_id} />
         </>
     )
 }

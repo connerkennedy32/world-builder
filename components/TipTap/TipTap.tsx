@@ -92,6 +92,7 @@ import TaskList from '@tiptap/extension-task-list'
 // })
 
 export default function TipTap({ page_content, page_id }: { page_content: string | null, page_id: string }) {
+    // TODO: I need the ability to create a new component from highlighted text
     const [isPageLoading, setIsPageLoading] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successfulSubmit, setSuccessfulSubmit] = useState(false);
