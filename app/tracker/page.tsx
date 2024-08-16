@@ -1,11 +1,12 @@
 'use client'
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import EditIcon from '@mui/icons-material/Edit';
 import Styles from './styles.module.css'
+import useGetWordCountList from '@/hooks/useGetWordCount';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
@@ -28,11 +29,28 @@ const handleEditClick = (event: any) => {
     console.log('Button clicked');
 };
 
-const currentWordCount = 19000;
-const goalWordCount = 88000;
-const percentage = Math.floor(100 * (currentWordCount / goalWordCount));
 
 export default function CustomizedProgressBars() {
+    const { data: wordCountList = [], isLoading } = useGetWordCountList(1);
+
+    interface WordCount {
+        id: number;
+        wordCount: number;
+    }
+
+    const [currentWordCount, setCurrentWordCount] = useState<number>(0);
+
+    useEffect(() => {
+        if (isLoading) return;
+        if (!Array.isArray(wordCountList) || wordCountList.length === 0) return;
+        const latestWordCount = wordCountList.reduce((prev: WordCount, current: WordCount) =>
+            (prev.id > current.id) ? prev : current
+        );
+        setCurrentWordCount(latestWordCount.wordCount);
+    }, [wordCountList, isLoading]);
+
+    const goalWordCount = 88000;
+    const percentage = Math.floor(100 * (currentWordCount / goalWordCount));
     return (
         <>
             <Card style={{ margin: '1em' }} variant="outlined">
@@ -44,8 +62,8 @@ export default function CustomizedProgressBars() {
                         </div>
                         <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>Conner Kennedy</span>
                         <div style={{ display: 'flex', gap: '0.5em', marginTop: '0.5em', alignItems: 'center' }}>
-                            <BorderLinearProgress style={{ width: '300px' }} variant="determinate" value={percentage} />
-                            <span>{`${percentage}%`}</span>
+                            <BorderLinearProgress style={{ width: '300px' }} variant="determinate" value={isLoading ? 0 : percentage} />
+                            <span>{`${isLoading ? 0 : percentage}%`}</span>
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5em' }}>
                             <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>{`${currentWordCount} / ${goalWordCount}`}</span>
@@ -53,7 +71,7 @@ export default function CustomizedProgressBars() {
                     </div>
                 </CardActionArea>
             </Card>
-            <Card style={{ margin: '1em' }} variant="outlined">
+            {/* <Card style={{ margin: '1em' }} variant="outlined">
                 <CardActionArea onClick={handleCardClick}>
                     <div style={{ margin: '1em' }}>
                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -88,7 +106,7 @@ export default function CustomizedProgressBars() {
                         </div>
                     </div>
                 </CardActionArea>
-            </Card>
+            </Card> */}
         </>
     );
 }

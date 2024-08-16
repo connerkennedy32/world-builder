@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const fetchWordCountList = async (bookId: any) => {
     const response = await axios.get(`/api/books/wordCount/${bookId}`);
-    return response.data;
+    return response.data.wordEntries;
 };
 
 const useGetWordCountList = (bookId: any) => {
