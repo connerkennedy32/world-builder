@@ -36,14 +36,15 @@ export default function CustomizedProgressBars() {
     interface WordCount {
         id: number;
         wordCount: number;
+        date: string;
     }
 
     const [currentWordCount, setCurrentWordCount] = useState<number>(0);
 
     useEffect(() => {
-        if (!isLoading) {
+        if (!isLoading && wordCountList.length > 0) {
             const latestWordCount = wordCountList.reduce((prev: WordCount, current: WordCount) =>
-                (prev.id > current.id) ? prev : current
+                (new Date(prev.date) > new Date(current.date)) ? prev : current
             );
             setCurrentWordCount(latestWordCount.wordCount);
         }
