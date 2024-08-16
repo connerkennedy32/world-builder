@@ -6,11 +6,11 @@ const fetchWordCountList = async (bookId: any) => {
     return response.data.wordEntries;
 };
 
-const useGetWordCountList = (bookId: any) => {
+const useGetWordCount = (bookId: any) => {
     return useQuery({
         queryKey: ['wordCountList'],
         queryFn: () => fetchWordCountList(bookId),
     });
 };
 
-export default useGetWordCountList;
+export default useGetWordCount;

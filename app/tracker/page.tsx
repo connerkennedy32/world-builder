@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import EditIcon from '@mui/icons-material/Edit';
 import Styles from './styles.module.css'
-import useGetWordCountList from '@/hooks/useGetWordCount';
+import useGetWordCount from '@/hooks/useGetWordCount';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
@@ -31,7 +31,7 @@ const handleEditClick = (event: any) => {
 
 
 export default function CustomizedProgressBars() {
-    const { data: wordCountList = [], isLoading } = useGetWordCountList(1);
+    const { data: wordCountList = [], isLoading } = useGetWordCount(1);
 
     interface WordCount {
         id: number;
@@ -41,12 +41,12 @@ export default function CustomizedProgressBars() {
     const [currentWordCount, setCurrentWordCount] = useState<number>(0);
 
     useEffect(() => {
-        if (isLoading) return;
-        if (!Array.isArray(wordCountList) || wordCountList.length === 0) return;
-        const latestWordCount = wordCountList.reduce((prev: WordCount, current: WordCount) =>
-            (prev.id > current.id) ? prev : current
-        );
-        setCurrentWordCount(latestWordCount.wordCount);
+        if (!isLoading) {
+            const latestWordCount = wordCountList.reduce((prev: WordCount, current: WordCount) =>
+                (prev.id > current.id) ? prev : current
+            );
+            setCurrentWordCount(latestWordCount.wordCount);
+        }
     }, [wordCountList, isLoading]);
 
     const goalWordCount = 88000;
