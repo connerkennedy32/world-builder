@@ -65,7 +65,7 @@ model Book {
 
 model WordEntry {
   id        Int      @id @default(autoincrement())
-  wordCound Int
+  wordCount Int
   date      DateTime
   bookId    Int
   Book      Book     @relation(fields: [bookId], references: [id])
