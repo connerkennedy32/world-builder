@@ -53,24 +53,27 @@ export default function CustomizedProgressBars() {
     const percentage = Math.floor(100 * (currentWordCount / goalWordCount));
     return (
         <>
-            <Card style={{ margin: '1em' }} variant="outlined">
-                <CardActionArea disableRipple onClick={handleCardClick}>
-                    <div style={{ margin: '1em' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <span>Lunar Tides</span>
-                            <EditIcon className={Styles.editButton} onClick={handleEditClick} />
+            <div style={{ display: 'flex', alignItems: 'center', width: '100vw', justifyContent: 'center' }}>
+                <Card style={{ margin: '2em', width: '50%' }} variant="outlined">
+                    <CardActionArea disableRipple onClick={handleCardClick}>
+                        <div style={{ margin: '1em' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                <span>Lunar Tides</span>
+                                <EditIcon className={Styles.editButton} onClick={handleEditClick} />
+                            </div>
+                            <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>Conner Kennedy</span>
+                            <div style={{ display: 'flex', gap: '0.5em', marginTop: '0.5em', alignItems: 'center' }}>
+                                <BorderLinearProgress style={{ width: '100%' }} variant="determinate" value={isLoading ? 0 : percentage} />
+                                <span>{`${isLoading ? 0 : percentage}%`}</span>
+                            </div>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5em' }}>
+                                <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>{`${currentWordCount} / ${goalWordCount}`}</span>
+                            </div>
                         </div>
-                        <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>Conner Kennedy</span>
-                        <div style={{ display: 'flex', gap: '0.5em', marginTop: '0.5em', alignItems: 'center' }}>
-                            <BorderLinearProgress style={{ width: '300px' }} variant="determinate" value={isLoading ? 0 : percentage} />
-                            <span>{`${isLoading ? 0 : percentage}%`}</span>
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5em' }}>
-                            <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>{`${currentWordCount} / ${goalWordCount}`}</span>
-                        </div>
-                    </div>
-                </CardActionArea>
-            </Card>
+                    </CardActionArea>
+                </Card>
+            </div>
+
             {/* <Card style={{ margin: '1em' }} variant="outlined">
                 <CardActionArea onClick={handleCardClick}>
                     <div style={{ margin: '1em' }}>

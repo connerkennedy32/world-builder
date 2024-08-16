@@ -9,6 +9,7 @@ import Row from './Row';
 import ContextMenu from './ContextMenu';
 import useSavePageOrder from '@/hooks/useSavePageOrder';
 import useGetPageList from '@/hooks/useGetPageList';
+import { Button } from '@mui/material';
 
 export default function SideNav() {
     const savePageOrder = useSavePageOrder();
@@ -48,6 +49,14 @@ export default function SideNav() {
             </Reorder.Group>
             <ContextMenu />
             <CreatePage setNewPageValue={setNewPageValue} />
+            <Button
+                variant="contained"
+                color="primary"
+                style={{ margin: '1rem', width: '90%' }}
+                onClick={() => router.push('/tracker')}
+            >
+                Tracker
+            </Button>
         </>
     )
 }
