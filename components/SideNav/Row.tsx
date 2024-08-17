@@ -10,12 +10,14 @@ import Popover from '@mui/material/Popover';
 import { Page } from '@/types/pageTypes';
 import { azeret_mono } from '@/app/fonts';
 import ContextMenu from './ContextMenu';
+import { motion, Reorder } from 'framer-motion';
 
 export default function Row({ page, handleNavigation, setNewPageValue, currentId }: { page: Page, handleNavigation: any, setNewPageValue: any, currentId: any }) {
     const [areChildrenShown, setAreChildrenShown] = useState(false);
     const [newTitle, setNewTitle] = useState('');
     const [isEditing, setIsEditing] = useState(false);
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+    const [childOrder, setChildOrder] = useState<Page[]>([...(page.children || []), ...(page.pages || [])]);
 
     function truncateString(str: string, length = 16) {
         if (str.length > length) {
@@ -88,48 +90,78 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
         setIsEditing(false);
     }
 
+    const handleChildClick = (event: React.MouseEvent) => {
+        // if (isFolderType) {
+        //     setAreChildrenShown(!areChildrenShown);
+        // }
+    };
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
     const isCurrentlySelected = Boolean(Number(currentId) === page.id && !isFolderType)
 
+
     return (
-        <div onContextMenu={handleContextMenu} className={`${Styles.rowElement} ${open || isCurrentlySelected ? Styles.isBackgroundVisible : ''}`} onClick={isFolderType ? () => { } : () => handleNavigation(page.id)}>
-            <div className={Styles.titleSpan} style={{ display: 'flex', alignItems: 'center' }}>
-                {isFolderType ? <FolderIcon /> : <DescriptionOutlinedIcon sx={{ height: '20px' }} />}
-                {!isEditing ?
-                    <span className={azeret_mono.className} style={{ whiteSpace: 'nowrap' }} onClick={isFolderType ? () => { setAreChildrenShown(!areChildrenShown) } : () => { }}>
-                        {truncateString(page.title)}
-                    </span> :
-                    <input
-                        type="text"
-                        value={newTitle}
-                        onChange={(e) => setNewTitle(e.target.value)}
-                        onKeyPress={handleKeyPress}
-                        placeholder="Press Enter to submit"
-                    />}
-                <EditIcon aria-describedby={id} onClick={handleEdit} className={`${Styles.editIcon} ${open ? Styles.isIconVisible : ''}`} sx={{ height: '15px', marginLeft: 'auto' }} />
-                {!isFolderType && <DeleteIcon aria-describedby={id} onClick={handleClick} className={`${Styles.editIcon} ${open ? Styles.isIconVisible : ''}`} sx={{ height: '15px' }} />}
-                <Popover
-                    id={id}
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                    }}
+        <Reorder.Item value={page} id={page.id.toString()} onPointerUp={handleChildClick} className={Styles.rowElement}>
+            <div
+                onContextMenu={handleContextMenu}
+                className={`${open || isCurrentlySelected ? Styles.isBackgroundVisible : ''}`}
+                onClick={isFolderType ? () => { setAreChildrenShown(!areChildrenShown) } : () => handleNavigation(page.id)}
+            >
+                <div
+                    className={Styles.titleSpan}
+                    style={{ display: 'flex', alignItems: 'center' }}
                 >
-                    <ContextMenu />
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleDelete}>Delete</Button>
-                </Popover>
+                    {isFolderType ? <FolderIcon /> : <DescriptionOutlinedIcon sx={{ height: '20px' }} />}
+                    {!isEditing ?
+                        <span className={azeret_mono.className} style={{ whiteSpace: 'nowrap' }}>
+                            {truncateString(page.title)}
+                        </span> :
+                        <input
+                            type="text"
+                            value={newTitle}
+                            onChange={(e) => setNewTitle(e.target.value)}
+                            onKeyPress={handleKeyPress}
+                            placeholder="Press Enter to submit"
+                        />}
+                    <EditIcon aria-describedby={id} onClick={handleEdit} className={`${Styles.editIcon} ${open ? Styles.isIconVisible : ''}`} sx={{ height: '15px', marginLeft: 'auto' }} />
+                    {!isFolderType && <DeleteIcon aria-describedby={id} onClick={handleClick} className={`${Styles.editIcon} ${open ? Styles.isIconVisible : ''}`} sx={{ height: '15px' }} />}
+                    <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                    >
+                        <ContextMenu />
+                        <Button onClick={handleClose}>Cancel</Button>
+                        <Button onClick={handleDelete}>Delete</Button>
+                    </Popover>
+                </div>
             </div>
-            {isFolderType && areChildrenShown &&
-                [...(page.children || []), ...(page.pages || [])].map((page: any) => (
-                    <Row currentId={currentId} key={`${isFolderType ? 'folder-' : 'page-'}-${page.id}`} page={page} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
-                ))
-            }
-        </div>
+            {isFolderType && (
+                <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: areChildrenShown ? "auto" : 0, opacity: areChildrenShown ? 1 : 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    style={{ overflow: "hidden" }}
+                >
+                    <Reorder.Group axis="y" values={childOrder} onReorder={setChildOrder}>
+                        {childOrder.map((childPage: any) => (
+                            <Row
+                                currentId={currentId}
+                                key={`${isFolderType ? 'folder-' : 'page-'}-${childPage.id}`}
+                                page={childPage}
+                                handleNavigation={handleNavigation}
+                                setNewPageValue={setNewPageValue}
+                            />
+                        ))}
+                    </Reorder.Group>
+                </motion.div>
+            )}
+        </Reorder.Item>
     )
 }

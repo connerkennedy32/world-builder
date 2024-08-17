@@ -2,7 +2,9 @@
     text-decoration: none;
     color: black;
     padding-right: 1em;
-    margin-left: 1em;
+    margin-left: 0em;
+    list-style: none;
+    position: relative;
 }
 
 

@@ -42,9 +42,7 @@ export default function SideNav() {
         <>
             <Reorder.Group style={{ listStyle: 'none' }} axis='y' values={order} onReorder={setOrder}>
                 {order.map((page: Page) => (
-                    <Reorder.Item key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} value={page}>
-                        <Row page={page} currentId={currentId} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
-                    </Reorder.Item>
+                    <Row key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} page={page} currentId={currentId} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
                 ))}
             </Reorder.Group>
             <ContextMenu />
