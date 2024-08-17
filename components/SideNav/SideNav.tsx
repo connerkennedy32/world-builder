@@ -45,7 +45,6 @@ export default function SideNav() {
                     <Row key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} page={page} currentId={currentId} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
                 ))}
             </Reorder.Group>
-            <ContextMenu />
             <CreatePage setNewPageValue={setNewPageValue} />
             <Button
                 variant="contained"

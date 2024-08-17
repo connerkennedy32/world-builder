@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.isDragging {
+.greyBackground {
     background-color: rgba(200, 200, 200, 0.573);
     border: 0px solid black;
     border-radius: 10px;
@@ -38,10 +38,4 @@
 
 .isIconVisible {
     visibility: visible;
-}
-
-.isBackgroundVisible {
-    background-color: rgba(200, 200, 200, 0.573);
-    border: 0px solid black;
-    border-radius: 10px;
 }

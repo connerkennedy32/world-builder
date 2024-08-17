@@ -7,22 +7,29 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
-export default function ContextMenu() {
+interface ContextMenuProps {
+    fileType: string;
+    onRenameButtonClick: (event: React.MouseEvent<any>) => void;
+    onDeleteButtonClick: (event: React.MouseEvent<any>) => void;
+}
+
+export default function ContextMenu({ fileType, onRenameButtonClick, onDeleteButtonClick }: ContextMenuProps) {
+    const isFolderType = fileType === 'folder';
     return (
-        <Paper sx={{ width: 320, maxWidth: '100%' }}>
+        <Paper sx={{ width: 200, maxWidth: '100%' }}>
             <MenuList>
-                <MenuItem>
+                <MenuItem onClick={onRenameButtonClick}>
                     <ListItemIcon>
                         <DriveFileRenameOutlineIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Rename</ListItemText>
                 </MenuItem>
-                <MenuItem onClick={() => console.log("TESTTEST")}>
+                {!isFolderType && <MenuItem onClick={onDeleteButtonClick}>
                     <ListItemIcon>
                         <DeleteOutlineOutlinedIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Delete</ListItemText>
-                </MenuItem>
+                </MenuItem>}
             </MenuList>
         </Paper>
     );

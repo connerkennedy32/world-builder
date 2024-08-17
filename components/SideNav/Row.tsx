@@ -1,11 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Styles from './styles.module.css'
 import FolderIcon from '@mui/icons-material/Folder';
-import { Button, Typography } from '@mui/material';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Popover from '@mui/material/Popover';
 import { Page } from '@/types/pageTypes';
 import { azeret_mono } from '@/app/fonts';
@@ -40,11 +38,6 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
         return str;
     }
 
-    const handleClick = (event: React.MouseEvent<any>) => {
-        setAnchorEl(event.currentTarget);
-        setIsEditing(false);
-    };
-
     const handleClose = (event: any) => {
         setAnchorEl(null);
         event.stopPropagation();
@@ -52,13 +45,14 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
 
     const isFolderType = !!page.pages;
 
-    const handleEdit = (event: React.MouseEvent<any>) => {
+    const handleEditTitle = (event: React.MouseEvent<any>) => {
         setNewTitle(page.title)
         setIsEditing(!isEditing);
+        setAnchorEl(null);
         event.stopPropagation();
     }
 
-    const handleDelete = async (event: React.MouseEvent<any>) => {
+    const handleDeleteRow = async (event: React.MouseEvent<any>) => {
         event.stopPropagation();
         try {
             const response = await fetch(`/api/pages/${page.id}`, {
@@ -68,7 +62,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                 },
             });
             if (response) {
-                setNewPageValue(response);
+                setNewPageValue(`${page.title} ${page.id}`);
                 setAnchorEl(null);
             }
 
@@ -99,19 +93,16 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     }
 
     const handleContextMenu = (event: any) => {
+        if (isFolderType) {
+            event.stopPropagation();
+        }
         event.preventDefault();
         setAnchorEl(event.currentTarget);
         setIsEditing(false);
     }
 
-    const handleChildClick = (event: React.MouseEvent) => {
-        // if (isFolderType) {
-        //     setAreChildrenShown(!areChildrenShown);
-        // }
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    const isContextMenuOpen = !!anchorEl;
+    const id = isContextMenuOpen ? 'simple-popover' : undefined;
     const isCurrentlySelected = Boolean(Number(currentId) === page.id && !isFolderType)
 
 
@@ -119,15 +110,12 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
         <Reorder.Item
             value={page}
             id={page.id.toString()}
-            onPointerUp={handleChildClick}
-            className={`${Styles.rowElement} ${isDragging ? Styles.isDragging : ''}`}
+            className={`${Styles.rowElement} ${isDragging || isCurrentlySelected || isContextMenuOpen ? Styles.greyBackground : ''}`}
             style={{ y }}
             onDragStart={() => setIsDragging(true)}
             onDragEnd={() => setIsDragging(false)}
         >
             <div
-                onContextMenu={handleContextMenu}
-                className={`${open || isCurrentlySelected ? Styles.isBackgroundVisible : ''}`}
                 onClick={isFolderType ? handleDisplayFolderChildren : handleNavigationIfNotDragging}
             >
                 <div
@@ -146,11 +134,10 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                             onKeyPress={handleKeyPress}
                             placeholder="Press Enter to submit"
                         />}
-                    <EditIcon aria-describedby={id} onClick={handleEdit} className={`${Styles.editIcon} ${open ? Styles.isIconVisible : ''}`} sx={{ height: '15px', marginLeft: 'auto' }} />
-                    {!isFolderType && <DeleteIcon aria-describedby={id} onClick={handleClick} className={`${Styles.editIcon} ${open ? Styles.isIconVisible : ''}`} sx={{ height: '15px' }} />}
+                    <MoreVertIcon aria-describedby={id} onClick={handleContextMenu} className={`${Styles.editIcon} ${isContextMenuOpen ? Styles.isIconVisible : ''}`} sx={{ height: '20px', marginLeft: 'auto' }} />
                     <Popover
                         id={id}
-                        open={open}
+                        open={isContextMenuOpen}
                         anchorEl={anchorEl}
                         onClose={handleClose}
                         anchorOrigin={{
@@ -158,9 +145,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                             horizontal: 'left',
                         }}
                     >
-                        <ContextMenu />
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleDelete}>Delete</Button>
+                        <ContextMenu fileType={isFolderType ? 'folder' : 'page'} onRenameButtonClick={handleEditTitle} onDeleteButtonClick={handleDeleteRow} />
                     </Popover>
                 </div>
             </div>
