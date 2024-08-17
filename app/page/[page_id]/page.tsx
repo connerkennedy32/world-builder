@@ -3,7 +3,6 @@ import TipTap from "@/components/TipTap/TipTap";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 export default function Page({ params }: { params: { page_id: string } }) {
     const fetchPage = async () => {
