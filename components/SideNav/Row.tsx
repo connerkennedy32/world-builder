@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Styles from './styles.module.css'
 import FolderIcon from '@mui/icons-material/Folder';
 import { Button, Typography } from '@mui/material';
@@ -10,7 +10,7 @@ import Popover from '@mui/material/Popover';
 import { Page } from '@/types/pageTypes';
 import { azeret_mono } from '@/app/fonts';
 import ContextMenu from './ContextMenu';
-import { motion, Reorder } from 'framer-motion';
+import { motion, Reorder, useMotionValue } from 'framer-motion';
 
 export default function Row({ page, handleNavigation, setNewPageValue, currentId }: { page: Page, handleNavigation: any, setNewPageValue: any, currentId: any }) {
     const [areChildrenShown, setAreChildrenShown] = useState(false);
@@ -18,6 +18,20 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const [isEditing, setIsEditing] = useState(false);
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
     const [childOrder, setChildOrder] = useState<Page[]>([...(page.children || []), ...(page.pages || [])]);
+    const y = useMotionValue(0);
+    const [isDragging, setIsDragging] = useState(false);
+
+    const handleDisplayFolderChildren = () => {
+        if (!isDragging) {
+            setAreChildrenShown(!areChildrenShown);
+        }
+    }
+
+    const handleNavigationIfNotDragging = () => {
+        if (!isDragging) {
+            handleNavigation(page.id);
+        }
+    }
 
     function truncateString(str: string, length = 16) {
         if (str.length > length) {
@@ -102,11 +116,19 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
 
 
     return (
-        <Reorder.Item value={page} id={page.id.toString()} onPointerUp={handleChildClick} className={Styles.rowElement}>
+        <Reorder.Item
+            value={page}
+            id={page.id.toString()}
+            onPointerUp={handleChildClick}
+            className={`${Styles.rowElement} ${isDragging ? Styles.isDragging : ''}`}
+            style={{ y }}
+            onDragStart={() => setIsDragging(true)}
+            onDragEnd={() => setIsDragging(false)}
+        >
             <div
                 onContextMenu={handleContextMenu}
                 className={`${open || isCurrentlySelected ? Styles.isBackgroundVisible : ''}`}
-                onClick={isFolderType ? () => { setAreChildrenShown(!areChildrenShown) } : () => handleNavigation(page.id)}
+                onClick={isFolderType ? handleDisplayFolderChildren : handleNavigationIfNotDragging}
             >
                 <div
                     className={Styles.titleSpan}
