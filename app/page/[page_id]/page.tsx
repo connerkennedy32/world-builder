@@ -23,7 +23,7 @@ export default function Page({ params }: { params: { page_id: string } }) {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: !isLoading ? 1 : 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
             >
                 <TipTap page_content={data.page.content} page_id={params.page_id} />
             </motion.div>
