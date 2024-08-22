@@ -91,7 +91,7 @@
 
   .tiptap {
     padding: 1em;
-    /* outline: none; */
+    outline: none;
   }
 
   .highlighted-text {
