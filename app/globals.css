@@ -189,6 +189,10 @@
     list-style: disc
   }
 
+  li {
+    margin-left: 0.5rem;
+  }
+
   ol {
     list-style: decimal;
   }
