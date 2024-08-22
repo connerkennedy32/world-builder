@@ -17,3 +17,36 @@
     background-color: rgba(108, 177, 255, 0.565);
     padding: 1em;
 }
+
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.content {
+    min-width: 800px;
+    max-width: 800px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    .content {
+        min-width: 300px;
+        max-width: 300px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding-left: 1rem;
+    }
+}

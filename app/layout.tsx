@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google"
+import { cn } from "@/lib/utils"
 import "./globals.css";
 import Styles from './styles.module.css'
 import SideDrawer from "@/components/SideNav/SideDrawer";
 import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: "World Builder",
@@ -19,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(
+        "min-h-screen bg-background font-sans antialiased",
+        fontSans.variable
+      )}>
         <QueryProvider>
           <div className={Styles.columns}>
             <SideDrawer>

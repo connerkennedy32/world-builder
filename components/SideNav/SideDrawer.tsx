@@ -63,7 +63,7 @@ export default function SideDrawer({ children }: any) {
     const [open, setOpen] = useState(false);
 
     const handleDrawerOpen = () => {
-        setOpen(true);
+        setOpen(!open);
     };
 
     const handleDrawerClose = () => {
@@ -80,13 +80,11 @@ export default function SideDrawer({ children }: any) {
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
-                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                        sx={{ mr: 2 }}
                     >
-                        <MenuIcon />
+                        {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        World Builder
-                    </Typography>
+                    <h3>World Builder</h3>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -102,11 +100,7 @@ export default function SideDrawer({ children }: any) {
                 anchor="left"
                 open={open}
             >
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </DrawerHeader>
+                <DrawerHeader />
                 <Divider />
                 <SideNav />
 

@@ -123,6 +123,11 @@ export default function TipTap({ page_content, page_id }: { page_content: string
             })
         ],
         content: page_content,
+        editorProps: {
+            attributes: {
+                class: 'tiptap',
+            },
+        },
     })
 
     const [debouncedEditor] = useDebounce(editor?.state.doc.content, 3000);
@@ -184,9 +189,8 @@ export default function TipTap({ page_content, page_id }: { page_content: string
     };
 
     return (
-        <>
-
-            <div>
+        <div className={Styles.container}>
+            <div className={Styles.content}>
                 {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
                     <button
                         onClick={() => {
@@ -237,6 +241,6 @@ export default function TipTap({ page_content, page_id }: { page_content: string
                 </FloatingMenu>}
                 <EditorContent editor={editor} />
             </div>
-        </>
+        </div>
     )
 }

@@ -6,7 +6,6 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Popover from '@mui/material/Popover';
 import { Page } from '@/types/pageTypes';
-import { azeret_mono } from '@/app/fonts';
 import ContextMenu from './ContextMenu';
 import { motion, Reorder, useMotionValue } from 'framer-motion';
 
@@ -124,7 +123,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                 >
                     {isFolderType ? <FolderIcon /> : <DescriptionOutlinedIcon sx={{ height: '20px' }} />}
                     {!isEditing ?
-                        <span className={azeret_mono.className} style={{ whiteSpace: 'nowrap' }}>
+                        <span style={{ whiteSpace: 'nowrap' }}>
                             {truncateString(page.title)}
                         </span> :
                         <input
