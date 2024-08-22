@@ -256,14 +256,13 @@
     /* scroll-m-20 */
     border-bottom: 1px solid;
     /* border-b */
-    padding-bottom: 0.5rem;
-    /* pb-2 */
     font-size: 1.875rem;
     /* text-3xl */
     font-weight: 600;
     /* font-semibold */
     letter-spacing: -0.025em;
     /* tracking-tight */
+    margin-bottom: 0.75rem;
   }
 
   h2:first-child {
