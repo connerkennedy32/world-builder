@@ -240,6 +240,7 @@
     letter-spacing: -0.025em;
     /* tracking-tight */
     line-height: 1;
+    margin-bottom: 0.75rem;
   }
 
   @media (min-width: 1024px) {
