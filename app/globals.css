@@ -190,6 +190,10 @@
   }
 
   li {
+    margin-left: 0rem;
+  }
+
+  li li {
     margin-left: 0.5rem;
   }
 
