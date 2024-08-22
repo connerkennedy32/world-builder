@@ -185,6 +185,14 @@
     opacity: 1;
   }
 
+  ul {
+    list-style: disc
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
   /* Checkbox styling */
   ul[data-type="taskList"] {
     list-style: none;
