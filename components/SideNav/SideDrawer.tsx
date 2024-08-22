@@ -119,7 +119,9 @@ export default function SideDrawer({ children }: any) {
                 </List> */}
             </Drawer>
             <Main style={{ marginTop: '1.5em' }} open={open}>
-                {children}
+                <div onClick={handleDrawerClose}>
+                    {children}
+                </div>
             </Main>
         </Box>
     );
