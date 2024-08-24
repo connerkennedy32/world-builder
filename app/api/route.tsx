@@ -1,4 +1,5 @@
 import { prisma } from '../../backend/db'
+import { generateNewPageContent } from '../../utils/pagesHelper'
 
 export async function GET(req: any) {
     const page = req.nextUrl.searchParams.get('page') ? parseInt(req.nextUrl.searchParams.get('page'), 10) : 1;
@@ -50,7 +51,7 @@ export async function POST(req: any) {
     let { content, title } = res;
 
     if (!content && title) {
-        content = `<h1>${title}</h1>`;
+        content = generateNewPageContent(title);
     } else if (!content) {
         content = '';
     }
