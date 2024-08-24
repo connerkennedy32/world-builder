@@ -8,6 +8,7 @@ import Popover from '@mui/material/Popover';
 import { Page } from '@/types/pageTypes';
 import ContextMenu from './ContextMenu';
 import { motion, Reorder, useMotionValue } from 'framer-motion';
+import useDeletePage from '@/hooks/useDeletePage';
 
 export default function Row({ page, handleNavigation, setNewPageValue, currentId }: { page: Page, handleNavigation: any, setNewPageValue: any, currentId: any }) {
     const [areChildrenShown, setAreChildrenShown] = useState(false);
@@ -17,7 +18,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const [childOrder, setChildOrder] = useState<Page[]>([...(page.children || []), ...(page.pages || [])]);
     const y = useMotionValue(0);
     const [isDragging, setIsDragging] = useState(false);
-
+    const { mutate: deletePage, isSuccess: onDeleteSuccess } = useDeletePage(page.id);
     const handleDisplayFolderChildren = () => {
         if (!isDragging) {
             setAreChildrenShown(!areChildrenShown);
@@ -54,14 +55,8 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const handleDeleteRow = async (event: React.MouseEvent<any>) => {
         event.stopPropagation();
         try {
-            const response = await fetch(`/api/pages/${page.id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            });
-            if (response) {
-                setNewPageValue(`${page.title} ${page.id}`);
+            deletePage();
+            if (onDeleteSuccess) {
                 setAnchorEl(null);
             }
 

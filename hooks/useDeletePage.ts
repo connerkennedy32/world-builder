@@ -1,0 +1,32 @@
+import { useMutation, useQueryClient } from 'react-query';
+import axios from 'axios';
+
+const deletePage = async (id: number) => {
+    const response = await axios.delete(`/api/pages/${id}`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    return response.data;
+};
+
+const useDeletePage = (id: number) => {
+    const queryClient = useQueryClient();
+
+    return useMutation(
+        async () => {
+            const response = await deletePage(id);
+            return response;
+        },
+        {
+            onSuccess: () => {
+                queryClient.invalidateQueries('pageList');
+            },
+            onError: (error) => {
+                console.error('Failed to delete page:', error);
+            },
+        }
+    );
+};
+
+export default useDeletePage;

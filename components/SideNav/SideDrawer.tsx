@@ -72,7 +72,14 @@ export default function SideDrawer({ children }: any) {
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (drawerRef.current && !drawerRef.current.contains(event.target as Node) && open) {
+            const target = event.target as HTMLElement;
+            console.log('target', target);
+            if (drawerRef.current &&
+                !drawerRef.current.contains(target) &&
+                open &&
+                !target.classList.contains('MuiBackdrop-root') && // Don't close if clicking on backdrop
+                !target.closest('.MuiDrawer-paper') && // Don't close if clicking on drawer
+                !target.closest('.doNotCloseSideDrawer')) { // Don't close if clicking on context menu
                 handleDrawerClose();
             }
         };

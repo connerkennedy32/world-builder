@@ -6,9 +6,9 @@ const fetchPageList = async () => {
     return response.data;
 };
 
-const useGetPageList = (newPageValue: String) => {
+const useGetPageList = () => {
     return useQuery({
-        queryKey: ['pageList', newPageValue],
+        queryKey: ['pageList'],
         queryFn: fetchPageList,
     });
 };

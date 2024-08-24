@@ -14,7 +14,7 @@ import { Button } from '@mui/material';
 export default function SideNav() {
     const savePageOrder = useSavePageOrder();
     const [newPageValue, setNewPageValue] = useState<String>('');
-    const { data: pages = [], isLoading } = useGetPageList(newPageValue);
+    const { data: pages = [], isLoading } = useGetPageList();
     const [order, setOrder] = useState<Page[]>(pages);
     const router = useRouter();
     const [debouncedEditor] = useDebounce(order, 500);

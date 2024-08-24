@@ -18,13 +18,13 @@ export default function ContextMenu({ fileType, onRenameButtonClick, onDeleteBut
     return (
         <Paper sx={{ width: 200, maxWidth: '100%' }}>
             <MenuList>
-                <MenuItem onClick={onRenameButtonClick}>
+                <MenuItem className='doNotCloseSideDrawer' onClick={onRenameButtonClick}>
                     <ListItemIcon>
                         <DriveFileRenameOutlineIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Rename</ListItemText>
                 </MenuItem>
-                {!isFolderType && <MenuItem onClick={onDeleteButtonClick}>
+                {!isFolderType && <MenuItem className='doNotCloseSideDrawer' onClick={onDeleteButtonClick}>
                     <ListItemIcon>
                         <DeleteOutlineOutlinedIcon fontSize="small" />
                     </ListItemIcon>
