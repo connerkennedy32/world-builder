@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useCreatePage from '@/hooks/useCreatePage';
 
 const CreatePage = () => {
     const [query, setQuery] = useState('');
-    const { mutate: createPage, isLoading: isCreatingPage, error: createPageError } = useCreatePage();
+    const { mutate: createPage, isSuccess } = useCreatePage();
     const handleKeyDown = async (event: { key: string; }) => {
         if (event.key === 'Enter' && query !== '') {
             try {
@@ -14,6 +14,11 @@ const CreatePage = () => {
             }
         }
     };
+    useEffect(() => {
+        if (isSuccess) {
+            setQuery('');
+        }
+    }, [isSuccess]);
 
     return (
         <input
