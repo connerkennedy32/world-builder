@@ -12,87 +12,42 @@ import suggestion from '../Mentions/suggestion'
 import { useDebounce } from 'use-debounce';
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
+import { Node } from '@tiptap/core';
+import { ReactNodeViewRenderer } from '@tiptap/react';
+import HighlightedText from '../HighlightedText/HighlightedText';
 
-// const CustomHighlight = Highlight.extend({
-//     name: 'test',
-//     addNodeView() {
-//         return () => {
-//             const container = document.createElement('div')
+const CustomComponentExtension = Node.create({
+    name: 'customComponent',
+    group: 'inline',
+    inline: true,
+    atom: true,
 
-//             container.addEventListener('click', event => {
-//                 alert('clicked on the container')
-//             })
+    addAttributes() {
+        return {
+            text: {
+                default: '',
+            },
+        };
+    },
 
-//             const content = document.createElement('div')
-//             container.append(content)
+    parseHTML() {
+        return [
+            {
+                tag: 'span[data-type="custom-component"]',
+            },
+        ];
+    },
 
-//             return {
-//                 dom: container,
-//                 contentDOM: content,
-//             }
-//         }
-//     },
-// })
+    renderHTML({ HTMLAttributes }) {
+        return ['span', { 'data-type': 'custom-component', ...HTMLAttributes }, 0];
+    },
 
-// const HighlightedText = Mark.create({
-//     name: "comment",
-//     addNodeView() {
-//         return () => {
-//             const container = document.createElement('div')
+    addNodeView() {
+        return ReactNodeViewRenderer(HighlightedText);
+    },
+});
 
-//             container.addEventListener('click', event => {
-//                 alert('clicked on the container')
-//                 console.log("HELLO THERE")
-//             })
-
-//             const content = document.createElement('div')
-//             container.append(content)
-
-//             return {
-//                 dom: container,
-//                 contentDOM: content,
-//             }
-//         }
-//     },
-//     toDOM: () => {
-//         return ["span", { class: "highlighted-text" }, 0];
-//     },
-//     renderHTML({ HTMLAttributes }) {
-//         return ["span", mergeAttributes({ class: "highlighted-text" }, HTMLAttributes), 0];
-//     },
-//     parseHTML() {
-//         return [{ tag: "span.highlighted-text" }];
-//     },
-//     addKeyboardShortcuts() {
-//         return {
-//             'Mod-l': () => this.editor.chain().focus().toggleMark('comment').run(),
-//         }
-//     },
-// });
-
-// const HoverExtension = Extension.create({
-//     name: 'hover',
-
-//     addProseMirrorPlugins() {
-//         return [
-//             new Plugin({
-//                 key: new PluginKey('hover'),
-//                 props: {
-//                     handleClick: {
-//                         mouseover(view, event) {
-
-//                             console.log("HVOERILKSDF", view)
-//                             // do whatever you want
-//                         }
-//                     },
-//                 },
-//             }),
-//         ]
-//     },
-// })
-
-export default function TipTap({ page_content, page_id }: { page_content: string | null, page_id: string }) {
-    // TODO: I need the ability to create a new component from highlighted text
+export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
     const [isPageLoading, setIsPageLoading] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successfulSubmit, setSuccessfulSubmit] = useState(false);
@@ -113,14 +68,8 @@ export default function TipTap({ page_content, page_id }: { page_content: string
                 },
                 // @ts-ignore
                 suggestion,
-                // renderHTML({ options, node }) {
-                //     return [
-                //         "a",
-                //         mergeAttributes({ href: `/profile/${node.attrs.id}` }, options.HTMLAttributes),
-                //         `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`,
-                //     ];
-                // },
-            })
+            }),
+            CustomComponentExtension,
         ],
         content: page_content,
         editorProps: {
@@ -146,7 +95,7 @@ export default function TipTap({ page_content, page_id }: { page_content: string
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editor, page_content])
 
-    function resetEditorContent(newContent: string | null) {
+    function resetEditorContent(newContent: JSON | null) {
         editor?.commands.setContent(newContent);
 
         // The following code clears the history. Hopefully without side effects.
@@ -169,7 +118,7 @@ export default function TipTap({ page_content, page_id }: { page_content: string
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    content: editor?.getHTML(),
+                    content: editor?.getJSON(),
                 }),
             });
 
@@ -186,6 +135,19 @@ export default function TipTap({ page_content, page_id }: { page_content: string
             console.error('Error submitting form:', error);
             // Handle error, e.g., show an error message to the user
         }
+    };
+
+    const replaceWithCustomComponent = () => {
+        const selection = editor?.state.selection;
+        if (!selection) return; // No selection
+        const { from, to } = selection;
+        if (from === to) return; // No selection
+
+        const text = editor?.state.doc.textBetween(from, to);
+        editor?.chain().focus().deleteSelection().insertContent({
+            type: 'customComponent',
+            attrs: { text },
+        }).run();
     };
 
     return (
@@ -217,6 +179,12 @@ export default function TipTap({ page_content, page_id }: { page_content: string
                         className={editor.isActive('taskList') ? 'is-active' : ''}
                     >
                         Tasks
+                    </button>
+                    <button
+                        onClick={replaceWithCustomComponent}
+                        className={editor.isActive('customComponent') ? 'is-active' : ''}
+                    >
+                        Custom Component
                     </button>
                 </BubbleMenu>}
                 {editor && <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>
