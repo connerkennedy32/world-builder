@@ -73,7 +73,6 @@ export default function SideDrawer({ children }: any) {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as HTMLElement;
-            console.log('target', target);
             if (drawerRef.current &&
                 !drawerRef.current.contains(target) &&
                 open &&
