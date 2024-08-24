@@ -1,10 +1,10 @@
 
 'use client'
-import { useState } from 'react'
-import { styled, useTheme } from '@mui/material/styles';
-import { Box, Drawer, CssBaseline, Toolbar, Typography, Divider, IconButton } from '@mui/material'
+import { useState, useEffect, useRef } from 'react'
+import { styled } from '@mui/material/styles';
+import { Box, Drawer, CssBaseline, Toolbar, Divider, IconButton } from '@mui/material'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { Menu as MenuIcon, ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@mui/icons-material'
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@mui/icons-material'
 import SideNav from "@/components/SideNav/SideNav";
 
 const drawerWidth = 300;
@@ -59,8 +59,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function SideDrawer({ children }: any) {
-    const theme = useTheme();
     const [open, setOpen] = useState(false);
+    const drawerRef = useRef<HTMLDivElement>(null);
 
     const handleDrawerOpen = () => {
         setOpen(!open);
@@ -69,6 +69,19 @@ export default function SideDrawer({ children }: any) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (drawerRef.current && !drawerRef.current.contains(event.target as Node) && open) {
+                handleDrawerClose();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [open]);
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -100,10 +113,11 @@ export default function SideDrawer({ children }: any) {
                 anchor="left"
                 open={open}
             >
-                <DrawerHeader />
-                <Divider />
-                <SideNav />
-
+                <div ref={drawerRef}>
+                    <DrawerHeader />
+                    <Divider />
+                    <SideNav />
+                </div>
 
                 {/* <List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -119,9 +133,7 @@ export default function SideDrawer({ children }: any) {
                 </List> */}
             </Drawer>
             <Main style={{ marginTop: '1.5em' }} open={open}>
-                <div onClick={handleDrawerClose}>
-                    {children}
-                </div>
+                {children}
             </Main>
         </Box>
     );
