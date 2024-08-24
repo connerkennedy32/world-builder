@@ -18,7 +18,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const [childOrder, setChildOrder] = useState<Page[]>([...(page.children || []), ...(page.pages || [])]);
     const y = useMotionValue(0);
     const [isDragging, setIsDragging] = useState(false);
-    const { mutate: deletePage, isSuccess: onDeleteSuccess } = useDeletePage(page.id);
+    const { mutate: deletePage, isSuccess: onDeleteSuccess } = useDeletePage();
     const handleDisplayFolderChildren = () => {
         if (!isDragging) {
             setAreChildrenShown(!areChildrenShown);
@@ -55,7 +55,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const handleDeleteRow = async (event: React.MouseEvent<any>) => {
         event.stopPropagation();
         try {
-            deletePage();
+            deletePage(page.id);
             if (onDeleteSuccess) {
                 setAnchorEl(null);
             }

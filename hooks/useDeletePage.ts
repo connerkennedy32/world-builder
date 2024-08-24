@@ -10,11 +10,11 @@ const deletePage = async (id: number) => {
     return response.data;
 };
 
-const useDeletePage = (id: number) => {
+const useDeletePage = () => {
     const queryClient = useQueryClient();
 
     return useMutation(
-        async () => {
+        async (id: number) => {
             const response = await deletePage(id);
             return response;
         },
