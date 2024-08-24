@@ -125,7 +125,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                             type="text"
                             value={newTitle}
                             onChange={(e) => setNewTitle(e.target.value)}
-                            onKeyPress={handleKeyPress}
+                            onKeyDown={handleKeyPress}
                             placeholder="Press Enter to submit"
                         />}
                     <MoreVertIcon aria-describedby={id} onClick={handleContextMenu} className={`${Styles.editIcon} ${isContextMenuOpen ? Styles.isIconVisible : ''}`} sx={{ height: '20px', marginLeft: 'auto' }} />

@@ -6,7 +6,6 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
 import { Page } from '@/types/pageTypes';
 import Row from './Row';
-import ContextMenu from './ContextMenu';
 import useSavePageOrder from '@/hooks/useSavePageOrder';
 import useGetPageList from '@/hooks/useGetPageList';
 import { Button } from '@mui/material';
@@ -45,7 +44,7 @@ export default function SideNav() {
                     <Row key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} page={page} currentId={currentId} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
                 ))}
             </Reorder.Group>
-            <CreatePage setNewPageValue={setNewPageValue} />
+            <CreatePage />
             <Button
                 variant="contained"
                 color="primary"

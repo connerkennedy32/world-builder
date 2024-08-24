@@ -1,21 +1,13 @@
 import { useState } from 'react';
+import useCreatePage from '@/hooks/useCreatePage';
 
-const CreatePage = ({ setNewPageValue }: any) => {
+const CreatePage = () => {
     const [query, setQuery] = useState('');
-
-    const handleKeyPress = async (event: { key: string; }) => {
+    const { mutate: createPage, isLoading: isCreatingPage, error: createPageError } = useCreatePage();
+    const handleKeyDown = async (event: { key: string; }) => {
         if (event.key === 'Enter' && query !== '') {
             try {
-                const response = await fetch('/api', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ title: query })
-                });
-                if (response) {
-                    setNewPageValue(query);
-                }
+                createPage(query);
             } catch (error) {
                 // Handle error
                 console.error(error);
@@ -28,7 +20,7 @@ const CreatePage = ({ setNewPageValue }: any) => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
             placeholder="Press Enter to submit"
         />
     );
