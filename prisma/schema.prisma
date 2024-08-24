@@ -27,7 +27,7 @@ model User {
 
 model Page {
   id          Int     @id @default(autoincrement())
-  content     Json
+  content     String
   title       String  @default("new page")
   folderId    Int?
   userId      Int
