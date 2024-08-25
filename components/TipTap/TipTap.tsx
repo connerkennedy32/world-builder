@@ -12,40 +12,7 @@ import suggestion from '../Mentions/suggestion'
 import { useDebounce } from 'use-debounce';
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
-import { Node } from '@tiptap/core';
-import { ReactNodeViewRenderer } from '@tiptap/react';
-import HighlightedText from '../HighlightedText/HighlightedText';
-
-const CustomComponentExtension = Node.create({
-    name: 'customComponent',
-    group: 'inline',
-    inline: true,
-    atom: true,
-
-    addAttributes() {
-        return {
-            text: {
-                default: '',
-            },
-        };
-    },
-
-    parseHTML() {
-        return [
-            {
-                tag: 'span[data-type="custom-component"]',
-            },
-        ];
-    },
-
-    renderHTML({ HTMLAttributes }) {
-        return ['span', { 'data-type': 'custom-component', ...HTMLAttributes }, 0];
-    },
-
-    addNodeView() {
-        return ReactNodeViewRenderer(HighlightedText);
-    },
-});
+import CustomComponentExtension from './extensions/CustomComponent';
 
 export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
     const [isPageLoading, setIsPageLoading] = useState(true);
