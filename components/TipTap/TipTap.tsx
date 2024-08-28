@@ -4,7 +4,7 @@ import Styles from './styles.module.css'
 import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
 import Mention from '@tiptap/extension-mention'
-import { EditorContent, useEditor, BubbleMenu, mergeAttributes, FloatingMenu } from '@tiptap/react'
+import { EditorContent, useEditor, BubbleMenu, FloatingMenu } from '@tiptap/react'
 import { EditorState } from 'prosemirror-state';
 import StarterKit from '@tiptap/starter-kit'
 import React, { useEffect, useState } from 'react'
@@ -13,11 +13,41 @@ import { useDebounce } from 'use-debounce';
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 import CustomComponentExtension from './extensions/CustomComponent';
+import useSavePageContent from '@/hooks/useSavePageContent';
 
 export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
-    const [isPageLoading, setIsPageLoading] = useState(true);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [successfulSubmit, setSuccessfulSubmit] = useState(false);
+    const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+
+    const { mutate: savePageContent, isSuccess: isPageSaveSuccess } = useSavePageContent();
+
+    useEffect(() => {
+        return () => {
+            if (hasUnsavedChanges) {
+                savePage();
+            }
+        };
+    }, [page_id, hasUnsavedChanges]);
+
+    useEffect(() => {
+        if (isPageSaveSuccess) {
+            setHasUnsavedChanges(false);
+        }
+    }, [isPageSaveSuccess]);
+
+    useEffect(() => {
+        const handleBeforeUnload = (event: { preventDefault: () => void; returnValue: string }) => {
+            if (hasUnsavedChanges) {
+                event.preventDefault();
+                event.returnValue = '';
+            }
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, [hasUnsavedChanges]);
 
 
     const editor = useEditor({
@@ -29,13 +59,13 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
             TaskItem.configure({
                 nested: true,
             }),
-            Mention.configure({
-                HTMLAttributes: {
-                    class: 'mention'
-                },
-                // @ts-ignore
-                suggestion,
-            }),
+            // Mention.configure({
+            //     HTMLAttributes: {
+            //         class: 'mention'
+            //     },
+            //     // @ts-ignore
+            //     suggestion,
+            // }),
             CustomComponentExtension,
         ],
         content: page_content,
@@ -44,12 +74,16 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
                 class: 'tiptap',
             },
         },
+        onUpdate: () => {
+            setHasUnsavedChanges(true);
+        }
     })
 
-    const [debouncedEditor] = useDebounce(editor?.state.doc.content, 3000);
+    const [debouncedEditor] = useDebounce(editor?.state.doc.content, 10000);
 
     useEffect(() => {
         if (debouncedEditor) {
+            console.log('Saving page...');
             savePage();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,7 +96,7 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [editor, page_content])
 
-    function resetEditorContent(newContent: JSON | null) {
+    const resetEditorContent = (newContent: JSON | null) => {
         editor?.commands.setContent(newContent);
 
         // The following code clears the history. Hopefully without side effects.
@@ -75,33 +109,7 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
     }
 
     const savePage = async () => {
-        console.log("Saving page")
-        try {
-            setIsSubmitting(true);
-
-            const response = await fetch(`/api?id=${page_id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    content: editor?.getJSON(),
-                }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to submit form');
-            }
-
-            // Handle success, e.g., redirect to another page or update state
-            setIsSubmitting(false);
-            setSuccessfulSubmit(true);
-            console.log('Form submitted successfully');
-        } catch (error) {
-            setIsSubmitting(false);
-            console.error('Error submitting form:', error);
-            // Handle error, e.g., show an error message to the user
-        }
+        savePageContent({ page_id, content: editor?.getJSON() || {} });
     };
 
     const replaceWithCustomComponent = () => {
