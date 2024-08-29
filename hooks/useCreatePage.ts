@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import axios from 'axios';
 
 const createPage = async (title: string) => {
-    const response = await axios.post('/api', { title }, {
+    const response = await axios.post('/api/pages', { title }, {
         headers: {
             'Content-Type': 'application/json'
         }

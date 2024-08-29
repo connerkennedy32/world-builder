@@ -9,6 +9,7 @@ import { Page } from '@/types/pageTypes';
 import ContextMenu from './ContextMenu';
 import { motion, Reorder, useMotionValue } from 'framer-motion';
 import useDeletePage from '@/hooks/useDeletePage';
+import { useQueryClient } from 'react-query';
 
 export default function Row({ page, handleNavigation, setNewPageValue, currentId }: { page: Page, handleNavigation: any, setNewPageValue: any, currentId: any }) {
     const [areChildrenShown, setAreChildrenShown] = useState(false);
@@ -19,6 +20,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const y = useMotionValue(0);
     const [isDragging, setIsDragging] = useState(false);
     const { mutate: deletePage, isSuccess: onDeleteSuccess } = useDeletePage();
+    const queryClient = useQueryClient();
     const handleDisplayFolderChildren = () => {
         if (!isDragging) {
             setAreChildrenShown(!areChildrenShown);
@@ -67,6 +69,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
 
     const handleKeyPress = async (event: { key: string; }) => {
         if (event.key === 'Enter' && newTitle !== '') {
+            // TODO: Create react query mutation to update the page title
             try {
                 const response = await fetch(`/api/${isFolderType ? 'folders' : 'pages'}/${page.id}`, {
                     method: 'PUT',
@@ -78,6 +81,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                 if (response) {
                     setNewPageValue(newTitle);
                     setIsEditing(false);
+                    queryClient.invalidateQueries('pageList');
                 }
 
             } catch (error) {
