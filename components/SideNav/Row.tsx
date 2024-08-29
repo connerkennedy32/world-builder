@@ -67,6 +67,12 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
         }
     }
 
+    const handleAddToFolder = async (event: React.MouseEvent<any>) => {
+        // event.stopPropagation();
+        // event.preventDefault();
+        // setAnchorEl(null);
+    }
+
     const handleKeyPress = async (event: { key: string; }) => {
         if (event.key === 'Enter' && newTitle !== '') {
             // TODO: Create react query mutation to update the page title
@@ -143,7 +149,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                             horizontal: 'left',
                         }}
                     >
-                        <ContextMenu fileType={isFolderType ? 'folder' : 'page'} onRenameButtonClick={handleEditTitle} onDeleteButtonClick={handleDeleteRow} />
+                        <ContextMenu fileType={isFolderType ? 'folder' : 'page'} onRenameButtonClick={handleEditTitle} onDeleteButtonClick={handleDeleteRow} onAddToFolderButtonClick={handleAddToFolder} />
                     </Popover>
                 </div>
             </div>

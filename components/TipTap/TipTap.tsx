@@ -13,12 +13,12 @@ import { useDebounce } from 'use-debounce';
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 import CustomComponentExtension from './extensions/CustomComponent';
-import useSavePageContent from '@/hooks/useSavePageContent';
+import useUpdatePage from '@/hooks/useUpdatePage';
 
 export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
     const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
-    const { mutate: savePageContent, isSuccess: isPageSaveSuccess } = useSavePageContent();
+    const { mutate: savePageContent, isSuccess: isPageSaveSuccess } = useUpdatePage();
 
     useEffect(() => {
         return () => {
@@ -26,6 +26,7 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
                 savePage();
             }
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page_id, hasUnsavedChanges]);
 
     useEffect(() => {

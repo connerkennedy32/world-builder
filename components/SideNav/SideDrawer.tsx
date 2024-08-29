@@ -78,7 +78,9 @@ export default function SideDrawer({ children }: any) {
                 open &&
                 !target.classList.contains('MuiBackdrop-root') && // Don't close if clicking on backdrop
                 !target.closest('.MuiDrawer-paper') && // Don't close if clicking on drawer
-                !target.closest('.doNotCloseSideDrawer')) { // Don't close if clicking on context menu
+                !target.closest('.doNotCloseSideDrawer') &&
+                !target.closest('.MuiPopover-root') // Don't close if clicking on context menu
+            ) {
                 handleDrawerClose();
             }
         };
