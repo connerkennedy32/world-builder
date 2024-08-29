@@ -1,5 +1,4 @@
 import { prisma } from '../../backend/db'
-import { generateNewPageContent } from '../../utils/pagesHelper'
 
 export async function GET(req: any) {
     const page = req.nextUrl.searchParams.get('page') ? parseInt(req.nextUrl.searchParams.get('page'), 10) : 1;
@@ -44,33 +43,6 @@ export async function GET(req: any) {
     const combinedItems = [...pages, ...folders].sort((a, b) => a.order - b.order);
 
     return Response.json(combinedItems);
-}
-
-export async function POST(req: any) {
-    const res = await req.json()
-    let { content, title } = res;
-
-    if (!content && title) {
-        content = generateNewPageContent(title);
-    } else if (!content) {
-        content = '';
-    }
-
-    const mostRecentPage = await prisma.page.findFirst({
-        select: { order: true },
-        orderBy: { order: 'desc' },
-    });
-
-    const newPage = await prisma.page.create({
-        data: {
-            content,
-            title,
-            userId: 1, // Update when I create more than one user
-            order: mostRecentPage ? mostRecentPage.order + 1000 : 1000
-        },
-    });
-
-    return Response.json({ newPage })
 }
 
 export async function PUT(req: any) {
