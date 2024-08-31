@@ -13,7 +13,6 @@ import { Button } from '@mui/material';
 
 export default function SideNav() {
     const savePageOrder = useSavePageOrder();
-    const [newPageValue, setNewPageValue] = useState<String>('');
     const [isFolderIconVisible, setIsFolderIconVisible] = useState(true);
     const [isPageIconVisible, setIsPageIconVisible] = useState(true);
     const { data: pages = [], isSuccess } = useGetPageList();
@@ -48,7 +47,7 @@ export default function SideNav() {
             </div>
             <Reorder.Group style={{ listStyle: 'none' }} axis='y' values={order} onReorder={setOrder}>
                 {order.map((page: Page) => (
-                    <Row key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} page={page} currentId={currentId} handleNavigation={handleNavigation} setNewPageValue={setNewPageValue} />
+                    <Row key={`${page.pages ? 'folder-' : 'page-'}-${page.id}`} page={page} currentId={currentId} handleNavigation={handleNavigation} />
                 ))}
             </Reorder.Group>
             <Button

@@ -11,7 +11,7 @@ import { motion, Reorder, useMotionValue } from 'framer-motion';
 import { useDeletePage, useUpdatePage, useUpdateFolder } from '@/hooks';
 import { useQueryClient } from 'react-query';
 
-export default function Row({ page, handleNavigation, setNewPageValue, currentId }: { page: Page, handleNavigation: any, setNewPageValue: any, currentId: any }) {
+export default function Row({ page, handleNavigation, currentId }: { page: Page, handleNavigation: any, currentId: any }) {
     const [areChildrenShown, setAreChildrenShown] = useState(false);
     const [newTitle, setNewTitle] = useState('');
     const [isEditing, setIsEditing] = useState(false);
@@ -27,9 +27,8 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     useEffect(() => {
         if (onUpdatePageSuccess || onUpdateFolderSuccess) {
             setIsEditing(false);
-            setNewPageValue(newTitle);
         }
-    }, [onUpdatePageSuccess, onUpdateFolderSuccess, queryClient, newTitle, setNewPageValue, setIsEditing]);
+    }, [onUpdatePageSuccess, onUpdateFolderSuccess, queryClient, setIsEditing]);
 
     const handleDisplayFolderChildren = () => {
         if (!isDragging) {
@@ -165,7 +164,6 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                                 key={`${isFolderType ? 'folder-' : 'page-'}-${childPage.id}`}
                                 page={childPage}
                                 handleNavigation={handleNavigation}
-                                setNewPageValue={setNewPageValue}
                             />
                         ))}
                     </Reorder.Group>
