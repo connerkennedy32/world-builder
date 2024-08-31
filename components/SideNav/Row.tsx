@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Styles from './styles.module.css'
 import FolderIcon from '@mui/icons-material/Folder';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
@@ -8,7 +8,7 @@ import Popover from '@mui/material/Popover';
 import { Page } from '@/types/pageTypes';
 import ContextMenu from './ContextMenu';
 import { motion, Reorder, useMotionValue } from 'framer-motion';
-import useDeletePage from '@/hooks/useDeletePage';
+import { useDeletePage, useUpdatePage, useUpdateFolder } from '@/hooks';
 import { useQueryClient } from 'react-query';
 
 export default function Row({ page, handleNavigation, setNewPageValue, currentId }: { page: Page, handleNavigation: any, setNewPageValue: any, currentId: any }) {
@@ -20,7 +20,17 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     const y = useMotionValue(0);
     const [isDragging, setIsDragging] = useState(false);
     const { mutate: deletePage, isSuccess: onDeleteSuccess } = useDeletePage();
+    const { mutate: updatePage, isSuccess: onUpdatePageSuccess } = useUpdatePage();
+    const { mutate: updateFolder, isSuccess: onUpdateFolderSuccess } = useUpdateFolder();
     const queryClient = useQueryClient();
+
+    useEffect(() => {
+        if (onUpdatePageSuccess || onUpdateFolderSuccess) {
+            setIsEditing(false);
+            setNewPageValue(newTitle);
+        }
+    }, [onUpdatePageSuccess, onUpdateFolderSuccess, queryClient, newTitle, setNewPageValue, setIsEditing]);
+
     const handleDisplayFolderChildren = () => {
         if (!isDragging) {
             setAreChildrenShown(!areChildrenShown);
@@ -76,23 +86,10 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
 
     const handleKeyPress = async (event: { key: string; }) => {
         if (event.key === 'Enter' && newTitle !== '') {
-            // TODO: Create react query mutation to update the page title
-            try {
-                const response = await fetch(`/api/${isFolderType ? 'folders' : 'pages'}/${page.id}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ title: newTitle })
-                });
-                if (response) {
-                    setNewPageValue(newTitle);
-                    setIsEditing(false);
-                    queryClient.invalidateQueries('pageList');
-                }
-
-            } catch (error) {
-                console.error(error);
+            if (isFolderType) {
+                updateFolder({ folderId: String(page.id), title: newTitle });
+            } else {
+                updatePage({ page_id: String(page.id), title: newTitle });
             }
         }
     }
