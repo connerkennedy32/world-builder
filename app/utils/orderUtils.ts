@@ -26,8 +26,8 @@ export const getHighestNestedOrder = async (folderId: number) => {
     });
 
     const highestNestedOrder = Math.max(
-        highestNestedOrderPage?.order || -1,
-        highestNestedOrderFolder?.order || -1
+        highestNestedOrderPage?.order ?? -1,
+        highestNestedOrderFolder?.order ?? -1
     );
     return highestNestedOrder;
 }

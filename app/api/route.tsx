@@ -16,7 +16,6 @@ export async function GET(req: any) {
         }
     });
 
-    console.log(pages)
     const fetchFoldersRecursively = async (parentId: number | null = null): Promise<any[]> => {
         const folders = await prisma.folder.findMany({
             where: { parentId },

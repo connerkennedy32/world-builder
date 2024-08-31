@@ -31,7 +31,7 @@ export async function PUT(req: any) {
     const shouldUpdateOrder = !!parentId && !order;
 
     let newNestedOrder = order;
-    if (!!parentId && !order) {
+    if (shouldUpdateOrder) {
         newNestedOrder = await getHighestNestedOrder(parentId);
     }
 
