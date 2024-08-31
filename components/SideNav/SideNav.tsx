@@ -16,7 +16,7 @@ export default function SideNav() {
     const [newPageValue, setNewPageValue] = useState<String>('');
     const [isFolderIconVisible, setIsFolderIconVisible] = useState(true);
     const [isPageIconVisible, setIsPageIconVisible] = useState(true);
-    const { data: pages = [], isLoading } = useGetPageList();
+    const { data: pages = [], isSuccess } = useGetPageList();
     const [order, setOrder] = useState<Page[]>(pages);
     const router = useRouter();
     const [debouncedEditor] = useDebounce(order, 500);
@@ -24,10 +24,10 @@ export default function SideNav() {
     const currentId = pathName.split('/').pop();
 
     useEffect(() => {
-        if (!isLoading) {
+        if (isSuccess) {
             setOrder(pages);
         }
-    }, [pages, isLoading]);
+    }, [pages, isSuccess]);
 
     useEffect(() => {
         if (debouncedEditor) {

@@ -1,4 +1,5 @@
 import { prisma } from '../../../../backend/db'
+import { getHighestNestedOrder } from '@/app/utils/orderUtils';
 
 // Handle GET request to retrieve product information for a specific ID
 export async function GET(req: any) {
@@ -25,7 +26,14 @@ export async function PUT(req: any) {
     const lastSegment = pathSegments[pathSegments.length - 1];
 
     const pageId = parseInt(lastSegment, 10);
-    const { title, content, order, nestedOrder, folderId } = await req.json();
+    const { title, content, order, parentId } = await req.json();
+
+    const shouldUpdateOrder = !!parentId && !order;
+
+    let newNestedOrder = order;
+    if (!!parentId && !order) {
+        newNestedOrder = await getHighestNestedOrder(parentId);
+    }
 
     try {
         const updatedPage = await prisma.page.update({
@@ -35,9 +43,8 @@ export async function PUT(req: any) {
             data: {
                 title,
                 content,
-                order,
-                nestedOrder,
-                folderId,
+                order: shouldUpdateOrder ? newNestedOrder + 1 : order,
+                parentId,
             },
         });
         return Response.json({ updatedPage });

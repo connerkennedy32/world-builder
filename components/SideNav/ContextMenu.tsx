@@ -8,32 +8,50 @@ import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutli
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutlined';
 import Popover from '@mui/material/Popover';
+import useGetFolderList from '@/hooks/useGetFolderList';
+import useUpdateFolder from '@/hooks/useUpdateFolder';
+import useUpdatePage from '@/hooks/useUpdatePage';
 
 interface ContextMenuProps {
     fileType: string;
     onRenameButtonClick: (event: React.MouseEvent<any>) => void;
     onDeleteButtonClick: (event: React.MouseEvent<any>) => void;
     onAddToFolderButtonClick: (event: React.MouseEvent<any>) => void;
+    handleContextMenuClose: (event: React.MouseEvent<any>) => void;
+    rowId: string;
 }
 
-export default function ContextMenu({ fileType, onRenameButtonClick, onDeleteButtonClick, onAddToFolderButtonClick }: ContextMenuProps) {
+export default function ContextMenu({ rowId, fileType, onRenameButtonClick, onDeleteButtonClick, onAddToFolderButtonClick, handleContextMenuClose }: ContextMenuProps) {
     const isFolderType = fileType === 'folder';
     const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
+    const { data: folderList, isLoading: folderListLoading, error: folderListError } = useGetFolderList();
+    const { mutate: addFolderToFolder } = useUpdateFolder();
+    const { mutate: addPageToFolder } = useUpdatePage();
 
     const handleAddToFolderClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
-        // event.stopPropagation();
         onAddToFolderButtonClick(event);
     };
 
-    const handleClose = () => {
+    const handleFolderSelect = (event: React.MouseEvent<HTMLElement>, folderId: number) => {
+        if (fileType === 'folder') {
+            addFolderToFolder({ folderId: rowId, parentId: folderId });
+        } else {
+            addPageToFolder({ page_id: rowId, parentId: folderId });
+        }
+        handleClose(event);
+    };
+
+    const handleClose = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(null);
+        handleContextMenuClose(event);
     };
 
     const open = Boolean(anchorEl);
     const id = open ? 'folder-popover' : undefined;
 
-    const folderList = ['Folder 1', 'Folder 2', 'Folder 3', 'Folder 4', 'Folder 5'];
+    if (folderListLoading) return <div>Loading...</div>;
+    if (folderListError) return <div>Error</div>;
 
     return (
         <Paper sx={{ width: 200, maxWidth: '100%' }}>
@@ -69,9 +87,9 @@ export default function ContextMenu({ fileType, onRenameButtonClick, onDeleteBut
             >
                 <Paper>
                     <MenuList>
-                        {folderList.map((folder, index) => (
-                            <MenuItem key={index} onClick={handleClose}>
-                                <ListItemText>{folder}</ListItemText>
+                        {folderList.folders.map((folder: any, index: any) => (
+                            <MenuItem key={index} onClick={(event) => handleFolderSelect(event, folder.id)}>
+                                <ListItemText>{folder.title}</ListItemText>
                             </MenuItem>
                         ))}
                     </MenuList>

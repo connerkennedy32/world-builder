@@ -39,3 +39,21 @@ export async function POST(req: any) {
         return Response.json({ error: 'An error occurred while creating the folder.' }, { status: 500 });
     }
 }
+
+export async function GET() {
+    try {
+        const folders = await prisma.folder.findMany({
+            where: {
+                userId: 1, // Update when you create more than one user
+            },
+            orderBy: {
+                order: 'asc',
+            },
+        });
+
+        return Response.json({ folders });
+    } catch (error) {
+        console.error('Error fetching folders:', error);
+        return Response.json({ error: 'An error occurred while fetching folders.' }, { status: 500 });
+    }
+}

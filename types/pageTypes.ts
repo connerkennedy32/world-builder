@@ -8,3 +8,11 @@ export interface Page {
     pages?: Page[]
     children?: Page[]
 }
+
+export interface Folder {
+    id: number;
+    title: string;
+    order: number;
+    pages?: Page[]
+    children?: Page[]
+}

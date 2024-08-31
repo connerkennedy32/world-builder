@@ -45,7 +45,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
         event.stopPropagation();
     };
 
-    const isFolderType = !!page.pages;
+    const isFolderType = 'pages' in page;
 
     const handleEditTitle = (event: React.MouseEvent<any>) => {
         setNewTitle(page.title)
@@ -149,7 +149,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                             horizontal: 'left',
                         }}
                     >
-                        <ContextMenu fileType={isFolderType ? 'folder' : 'page'} onRenameButtonClick={handleEditTitle} onDeleteButtonClick={handleDeleteRow} onAddToFolderButtonClick={handleAddToFolder} />
+                        <ContextMenu rowId={String(page.id)} handleContextMenuClose={handleClose} fileType={isFolderType ? 'folder' : 'page'} onRenameButtonClick={handleEditTitle} onDeleteButtonClick={handleDeleteRow} onAddToFolderButtonClick={handleAddToFolder} />
                     </Popover>
                 </div>
             </div>

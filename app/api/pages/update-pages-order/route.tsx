@@ -1,12 +1,12 @@
 import { prisma } from '../../../../backend/db'
-import { Page } from '@/types/pageTypes';
+import { Page, Folder } from '@prisma/client';
 
 export async function PUT(req: any) {
-    const pages: Page[] = await req.json();
+    const rows: Page[] | Folder[] = await req.json();
 
     try {
-        const updatePromises = pages.map(async (page, index) => {
-            const isFolderType = !!page.pages;
+        rows.map(async (page, index) => {
+            const isFolderType = 'pages' in page;
             if (isFolderType) {
                 await prisma.folder.update({
                     where: { id: page.id },
@@ -21,7 +21,6 @@ export async function PUT(req: any) {
         }
         );
 
-        await Promise.all(updatePromises);
         return Response.json('Page orders updated successfully', { status: 200 });
     } catch (error) {
         console.error('Error updating page orders:', error);

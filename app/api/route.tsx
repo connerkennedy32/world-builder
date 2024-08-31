@@ -7,7 +7,7 @@ export async function GET(req: any) {
 
     let pages = await prisma.page.findMany({
         where: {
-            folderId: {
+            parentId: {
                 equals: null
             }
         },
@@ -16,29 +16,31 @@ export async function GET(req: any) {
         }
     });
 
-    let folders = await prisma.folder.findMany({
-        where: {
-            nestedOrder: {
-                equals: null,
-            }
-        },
-        include: {
-            children: {
-                include: {
-                    children: true,
-                    pages: true,
+    console.log(pages)
+    const fetchFoldersRecursively = async (parentId: number | null = null): Promise<any[]> => {
+        const folders = await prisma.folder.findMany({
+            where: { parentId },
+            include: {
+                pages: {
+                    orderBy: { order: 'asc' }
+                },
+                children: {
+                    include: {
+                        pages: true
+                    }
                 }
             },
-            pages: {
-                orderBy: {
-                    order: 'asc'
-                }
-            }
-        },
-        orderBy: {
-            order: 'asc'
+            orderBy: { order: 'asc' }
+        });
+
+        for (let folder of folders) {
+            folder.children = await fetchFoldersRecursively(folder.id);
         }
-    })
+
+        return folders;
+    };
+
+    let folders = await fetchFoldersRecursively();
 
     const combinedItems = [...pages, ...folders].sort((a, b) => a.order - b.order);
 
