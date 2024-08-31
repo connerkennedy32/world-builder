@@ -46,9 +46,10 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
     };
 
     const isFolderType = 'pages' in page;
+    const isFolderEmpty = isFolderType && page.pages?.length === 0 && page.children?.length === 0;
 
     const handleEditTitle = (event: React.MouseEvent<any>) => {
-        setNewTitle(page.title)
+        setNewTitle(page.title);
         setIsEditing(!isEditing);
         setAnchorEl(null);
         event.stopPropagation();
@@ -126,7 +127,7 @@ export default function Row({ page, handleNavigation, setNewPageValue, currentId
                     className={Styles.titleSpan}
                     style={{ display: 'flex', alignItems: 'center' }}
                 >
-                    {isFolderType ? <FolderIcon /> : <DescriptionOutlinedIcon sx={{ height: '20px' }} />}
+                    {isFolderType ? <FolderIcon style={{ color: isFolderEmpty ? 'grey' : 'inherit' }} /> : <DescriptionOutlinedIcon sx={{ height: '20px' }} />}
                     {!isEditing ?
                         <span style={{ whiteSpace: 'nowrap' }}>
                             {truncateString(page.title)}
