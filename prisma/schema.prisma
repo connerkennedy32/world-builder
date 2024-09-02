@@ -21,8 +21,27 @@ model User {
   password String
   pages    Page[]
   folders  Folder[]
+  items    Item[]
 
   @@unique([id])
+}
+
+enum ItemType {
+  FOLDER
+  PAGE
+}
+
+model Item {
+  id       String   @id @default(uuid()) // ID as a string type
+  name     String
+  itemType ItemType
+  title    String   @default("new item")
+  content  String?
+  userId   Int
+  parentId String?
+  parent   Item?    @relation("ParentChildren", fields: [parentId], references: [id])
+  children Item[]   @relation("ParentChildren")
+  user     User     @relation(fields: [userId], references: [id])
 }
 
 model Page {
