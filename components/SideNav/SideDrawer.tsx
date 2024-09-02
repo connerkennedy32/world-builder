@@ -6,7 +6,7 @@ import { Box, Drawer, CssBaseline, Toolbar, Divider, IconButton } from '@mui/mat
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@mui/icons-material'
 import SideNav from "@/components/SideNav/SideNav";
-
+// import { FileTree } from '@/components/FileTree/FileTree';
 const drawerWidth = 300;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
@@ -125,6 +125,7 @@ export default function SideDrawer({ children }: any) {
                     <DrawerHeader />
                     <Divider />
                     <SideNav />
+                    {/* <FileTree /> */}
                 </div>
 
                 {/* <List>
