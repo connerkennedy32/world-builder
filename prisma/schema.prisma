@@ -33,7 +33,6 @@ enum ItemType {
 
 model Item {
   id       String   @id @default(uuid()) // ID as a string type
-  name     String
   itemType ItemType
   title    String   @default("new item")
   content  String?
