@@ -35,7 +35,7 @@ model Item {
   id       String   @id @default(uuid()) // ID as a string type
   itemType ItemType
   title    String   @default("new item")
-  content  String?
+  content  Json?
   userId   Int
   parentId String?
   parent   Item?    @relation("ParentChildren", fields: [parentId], references: [id])
