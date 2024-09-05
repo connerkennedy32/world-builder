@@ -2,11 +2,12 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import { styled } from '@mui/material/styles';
-import { Box, Drawer, CssBaseline, Toolbar, Divider, IconButton } from '@mui/material'
+import { Box, Drawer, CssBaseline, Toolbar, Divider, IconButton, Skeleton } from '@mui/material'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@mui/icons-material'
-import SideNav from "@/components/SideNav/SideNav";
-// import { FileTree } from '@/components/FileTree/FileTree';
+import { FileTree } from '@/components/FileTree/FileTree';
+import { useGetItemList } from '@/hooks';
+
 const drawerWidth = 300;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
@@ -59,6 +60,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function SideDrawer({ children }: any) {
+    const { data: itemList, isLoading } = useGetItemList();
     const [open, setOpen] = useState(false);
     const drawerRef = useRef<HTMLDivElement>(null);
 
@@ -124,22 +126,9 @@ export default function SideDrawer({ children }: any) {
                 <div ref={drawerRef}>
                     <DrawerHeader />
                     <Divider />
-                    <SideNav />
-                    {/* <FileTree /> */}
+                    {/* <SideNav /> */}
+                    {isLoading ? <Skeleton /> : <FileTree items={itemList} />}
                 </div>
-
-                {/* <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List> */}
             </Drawer>
             <Main style={{ marginTop: '1.5em' }} open={open}>
                 {children}

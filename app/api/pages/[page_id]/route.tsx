@@ -4,11 +4,9 @@ import { getHighestNestedOrder } from '@/app/utils/orderUtils';
 // Handle GET request to retrieve product information for a specific ID
 export async function GET(req: any) {
     const pathSegments = req.nextUrl.pathname.split('/');
-    const lastSegment = pathSegments[pathSegments.length - 1];
+    const pageId = pathSegments[pathSegments.length - 1];
 
-    const pageId = parseInt(lastSegment, 10);
-
-    const page = await prisma.page.findUnique({
+    const page = await prisma.item.findUnique({
         where: {
             id: pageId,
         },
@@ -23,27 +21,18 @@ export async function GET(req: any) {
 
 export async function PUT(req: any) {
     const pathSegments = req.nextUrl.pathname.split('/');
-    const lastSegment = pathSegments[pathSegments.length - 1];
+    const pageId = pathSegments[pathSegments.length - 1];
 
-    const pageId = parseInt(lastSegment, 10);
-    const { title, content, order, parentId } = await req.json();
-
-    const shouldUpdateOrder = !!parentId && !order;
-
-    let newNestedOrder = order;
-    if (shouldUpdateOrder) {
-        newNestedOrder = await getHighestNestedOrder(parentId);
-    }
+    const { title, content, parentId } = await req.json();
 
     try {
-        const updatedPage = await prisma.page.update({
+        const updatedPage = await prisma.item.update({
             where: {
                 id: pageId,
             },
             data: {
                 title,
                 content,
-                order: shouldUpdateOrder ? newNestedOrder + 1 : order,
                 parentId,
             },
         });
@@ -56,12 +45,10 @@ export async function PUT(req: any) {
 
 export async function DELETE(req: any) {
     const pathSegments = req.nextUrl.pathname.split('/');
-    const lastSegment = pathSegments[pathSegments.length - 1];
-
-    const pageId = parseInt(lastSegment, 10);
+    const pageId = pathSegments[pathSegments.length - 1];
 
     try {
-        const deletedPage = await prisma.page.delete({
+        const deletedPage = await prisma.item.delete({
             where: {
                 id: pageId,
             }

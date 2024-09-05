@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from 'react-query';
 import axios from 'axios';
 
-const createFolder = async (title: string, folderId?: number, order?: number, nestedOrder?: number) => {
-    const response = await axios.post('/api/folders', { title, folderId, order, nestedOrder }, {
+const createFolder = async (id: string | null, title: string, parentId: string | null, index: number) => {
+    const response = await axios.post('/api/folders', { id, title, parentId, index }, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -13,9 +13,9 @@ const createFolder = async (title: string, folderId?: number, order?: number, ne
 const useCreateFolder = () => {
     const queryClient = useQueryClient();
     return useMutation(
-        async (variables: { title: string; folderId?: number; order?: number; nestedOrder?: number }) => {
-            const { title, folderId, order, nestedOrder } = variables;
-            const response = await createFolder(title, folderId, order, nestedOrder);
+        async (variables: { id: string | null, title: string; parentId: string | null; index: number }) => {
+            const { id, title, parentId, index } = variables;
+            const response = await createFolder(id, title, parentId, index);
             return response;
         },
         {

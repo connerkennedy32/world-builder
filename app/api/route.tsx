@@ -5,45 +5,32 @@ export async function GET(req: any) {
     const perPage = req.nextUrl.searchParams.get('perPage') ? parseInt(req.nextUrl.searchParams.get('perPage'), 10) : 10;
     const searchQuery = req.nextUrl.searchParams.get('searchQuery') || '';
 
-    let pages = await prisma.page.findMany({
-        where: {
-            parentId: {
-                equals: null
-            }
-        },
-        orderBy: {
-            order: 'asc'
-        }
-    });
-
-    const fetchFoldersRecursively = async (parentId: number | null = null): Promise<any[]> => {
-        const folders = await prisma.folder.findMany({
+    const fetchItemsRecursively = async (parentId: string | null = null): Promise<any[]> => {
+        const items = await prisma.item.findMany({
             where: { parentId },
-            include: {
-                pages: {
-                    orderBy: { order: 'asc' }
-                },
-                children: {
-                    include: {
-                        pages: true
-                    }
-                }
+            select: {
+                id: true,
+                parentId: true,
+                title: true,
+                itemType: true,
+                index: true,
+                children: true,
             },
-            orderBy: { order: 'asc' }
+            orderBy: {
+                index: 'asc',
+            },
         });
 
-        for (let folder of folders) {
-            folder.children = await fetchFoldersRecursively(folder.id);
+        for (let item of items) {
+            item.children = await fetchItemsRecursively(item.id);
         }
 
-        return folders;
+        return items;
     };
 
-    let folders = await fetchFoldersRecursively();
+    let items = await fetchItemsRecursively();
 
-    const combinedItems = [...pages, ...folders].sort((a, b) => a.order - b.order);
-
-    return Response.json(combinedItems);
+    return Response.json(items);
 }
 
 export async function PUT(req: any) {

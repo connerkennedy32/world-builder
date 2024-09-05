@@ -3,27 +3,19 @@ import { getHighestNestedOrder } from '@/app/utils/orderUtils';
 
 export async function PUT(req: any) {
     const pathSegments = req.nextUrl.pathname.split('/'); // Split the path into segments
-    const lastSegment = pathSegments[pathSegments.length - 1];
+    const folderId = pathSegments[pathSegments.length - 1];
 
-    const folderId = parseInt(lastSegment, 10);
-    const { title, order, parentId } = await req.json();
-
-    const shouldUpdateOrder = !!parentId && !order;
-
-    let newNestedOrder = order;
-    if (shouldUpdateOrder) {
-        newNestedOrder = await getHighestNestedOrder(parentId);
-    }
+    const { title, parentId, index } = await req.json();
 
     try {
-        const updatedFolder = await prisma.folder.update({
+        const updatedFolder = await prisma.item.update({
             where: {
                 id: folderId,
             },
             data: {
                 title,
-                order: shouldUpdateOrder ? newNestedOrder + 1 : order,
                 parentId,
+                index,
             },
         })
         return Response.json({ updatedFolder });

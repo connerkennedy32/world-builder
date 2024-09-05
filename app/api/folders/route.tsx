@@ -3,33 +3,20 @@ import { prisma } from '../../../backend/db'
 export async function POST(req: any) {
     try {
         const res = await req.json()
-        let { title, folderId, order, nestedOrder } = res;
-
-        const mostRecentFolder = await prisma.folder.findFirst({
-            select: { order: true },
-            orderBy: { order: 'desc' },
-        });
+        let { title, parentId, index } = res;
 
         const folderData: any = {
             title,
+            itemType: "FOLDER",
             userId: 1, // Update when I create more than one user
+            index,
         };
 
-        if (order !== undefined) {
-            folderData.order = order;
-        } else {
-            folderData.order = mostRecentFolder ? mostRecentFolder.order + 1000 : 1000;
+        if (parentId) {
+            folderData.parentId = parentId;
         }
 
-        if (folderId) {
-            folderData.parentId = folderId;
-        }
-
-        if (nestedOrder !== undefined) {
-            folderData.nestedOrder = nestedOrder;
-        }
-
-        const newFolder = await prisma.folder.create({
+        const newFolder = await prisma.item.create({
             data: folderData,
         });
 
@@ -42,12 +29,10 @@ export async function POST(req: any) {
 
 export async function GET() {
     try {
-        const folders = await prisma.folder.findMany({
+        const folders = await prisma.item.findMany({
             where: {
+                itemType: "FOLDER",
                 userId: 1, // Update when you create more than one user
-            },
-            orderBy: {
-                order: 'asc',
             },
         });
 

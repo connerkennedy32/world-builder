@@ -8,13 +8,13 @@ const CreatePage = ({ visible, setIsFolderIconVisible, isFolderIconVisible }: { 
     const [isInputOpen, setIsInputOpen] = useState(false);
     const { mutate: createPage, isSuccess } = useCreatePage();
     const handleKeyDown = async (event: { key: string; }) => {
-        if (event.key === 'Enter' && query !== '') {
-            try {
-                createPage(query);
-            } catch (error) {
-                console.error(error);
-            }
-        }
+        // if (event.key === 'Enter' && query !== '') {
+        //     try {
+        //         createPage({ title: query });
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // }
     };
     useEffect(() => {
         if (isSuccess) {

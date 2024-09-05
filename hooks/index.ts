@@ -4,7 +4,7 @@ import useCreatePage from './useCreatePage';
 import useDeletePage from './useDeletePage';
 import useGetFolderList from './useGetFolderList';
 import useGetPageInfo from './useGetPageInfo';
-import useGetPageList from './useGetPageList';
+import useGetItemList from './useGetItemList';
 import useGetWordCount from './useGetWordCount';
 import useSavePageOrder from './useSavePageOrder';
 import useUpdateFolder from './useUpdateFolder';
@@ -17,7 +17,7 @@ export {
     useDeletePage,
     useGetFolderList,
     useGetPageInfo,
-    useGetPageList,
+    useGetItemList,
     useGetWordCount,
     useSavePageOrder,
     useUpdateFolder,

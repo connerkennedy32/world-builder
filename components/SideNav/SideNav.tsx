@@ -4,21 +4,17 @@ import CreatePage from '../CreatePageInput/CreatePageInput';
 import CreateFolder from '../CreateFolder/CreateFolder';
 import { Reorder } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
-import { useDebounce } from 'use-debounce';
 import { Page } from '@/types/pageTypes';
 import Row from './Row';
-import useSavePageOrder from '@/hooks/useSavePageOrder';
-import useGetPageList from '@/hooks/useGetPageList';
+import useGetItemList from '@/hooks/useGetItemList';
 import { Button } from '@mui/material';
 
 export default function SideNav() {
-    const savePageOrder = useSavePageOrder();
     const [isFolderIconVisible, setIsFolderIconVisible] = useState(true);
     const [isPageIconVisible, setIsPageIconVisible] = useState(true);
-    const { data: pages = [], isSuccess } = useGetPageList();
+    const { data: pages = [], isSuccess } = useGetItemList();
     const [order, setOrder] = useState<Page[]>(pages);
     const router = useRouter();
-    const [debouncedEditor] = useDebounce(order, 500);
     const pathName = usePathname();
     const currentId = pathName.split('/').pop();
 
@@ -27,13 +23,6 @@ export default function SideNav() {
             setOrder(pages);
         }
     }, [pages, isSuccess]);
-
-    useEffect(() => {
-        if (debouncedEditor) {
-            savePageOrder.mutate(order || []);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [debouncedEditor]);
 
     const handleNavigation = (id: string) => {
         router.push(`/page/${id}`)

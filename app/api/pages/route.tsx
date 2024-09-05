@@ -7,8 +7,9 @@ export async function GET(req: NextRequest) {
     const title = searchParams.get('title')
 
     if (title) {
-        const page = await prisma.page.findFirst({
+        const page = await prisma.item.findFirst({
             where: {
+                itemType: "PAGE",
                 title: {
                     equals: title,
                     mode: 'insensitive'
@@ -18,13 +19,9 @@ export async function GET(req: NextRequest) {
 
         return Response.json(page)
     } else {
-        const pages = await prisma.folder.findMany({
-            include: {
-                pages: {
-                    orderBy: {
-                        order: 'asc'
-                    }
-                }
+        const pages = await prisma.item.findMany({
+            where: {
+                itemType: "PAGE",
             },
         });
 
@@ -34,7 +31,7 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: any) {
     const res = await req.json()
-    let { content, title } = res;
+    let { id, content, title, index, parentId } = res;
 
     if (!content && title) {
         content = generateNewPageContent(title);
@@ -42,17 +39,15 @@ export async function POST(req: any) {
         content = '';
     }
 
-    const mostRecentPage = await prisma.page.findFirst({
-        select: { order: true },
-        orderBy: { order: 'desc' },
-    });
-
-    const newPage = await prisma.page.create({
+    const newPage = await prisma.item.create({
         data: {
+            id,
+            itemType: "PAGE",
             content,
             title,
             userId: 1, // Update when I create more than one user
-            order: mostRecentPage ? mostRecentPage.order + 1000 : 1000
+            index,
+            parentId,
         },
     });
 

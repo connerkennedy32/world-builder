@@ -1,16 +1,16 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 
-const fetchPageList = async () => {
+const fetchItemList = async () => {
     const response = await axios.get('/api');
     return response.data;
 };
 
-const useGetPageList = () => {
+const useGetItemList = () => {
     return useQuery({
         queryKey: ['pageList'],
-        queryFn: fetchPageList,
+        queryFn: fetchItemList,
     });
 };
 
-export default useGetPageList;
+export default useGetItemList;

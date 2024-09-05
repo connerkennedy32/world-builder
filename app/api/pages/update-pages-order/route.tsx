@@ -1,29 +1,30 @@
 import { prisma } from '../../../../backend/db'
-import { Page, Folder } from '@prisma/client';
+import { TreeItem } from '@/types/itemTypes'
 
 export async function PUT(req: any) {
-    const rows: Page[] | Folder[] = await req.json();
+    const items: TreeItem[] = await req.json();
 
     try {
-        rows.map(async (page, index) => {
-            const isFolderType = 'pages' in page;
-            if (isFolderType) {
-                await prisma.folder.update({
-                    where: { id: page.id },
-                    data: { order: index }
-                })
-            } else {
-                await prisma.page.update({
-                    where: { id: page.id },
-                    data: { order: index }
-                })
+        const updateItemIndexes = async (items: TreeItem[], parentId: string | null = null) => {
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                if (item.index !== i || item.parentId !== parentId) {
+                    await prisma.item.update({
+                        where: { id: item.id },
+                        data: { index: i, parentId }
+                    });
+                }
+                if (item.children && item.children.length > 0) {
+                    await updateItemIndexes(item.children, item.id);
+                }
             }
-        }
-        );
+        };
 
-        return Response.json('Page orders updated successfully', { status: 200 });
+        await updateItemIndexes(items);
+
+        return Response.json('Item orders updated successfully', { status: 200 });
     } catch (error) {
-        console.error('Error updating page orders:', error);
-        return Response.json('Error updating page orders', { status: 500 });
+        console.error('Error updating item orders:', error);
+        return Response.json('Error updating item orders', { status: 500 });
     }
 }

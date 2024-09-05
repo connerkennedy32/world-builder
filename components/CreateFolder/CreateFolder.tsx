@@ -9,13 +9,13 @@ const CreateFolder = ({ visible, setIsPageIconVisible, isPageIconVisible }: { vi
     const { mutate: createFolder, isSuccess } = useCreateFolder();
 
     const handleKeyDown = async (event: { key: string; }) => {
-        if (event.key === 'Enter' && query !== '') {
-            try {
-                createFolder({ title: query });
-            } catch (error) {
-                console.error(error);
-            }
-        }
+        // if (event.key === 'Enter' && query !== '') {
+        //     try {
+        //         createFolder({ title: query });
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // }
     };
 
     const handleClick = () => {
