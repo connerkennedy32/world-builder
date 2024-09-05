@@ -41,6 +41,7 @@ model Item {
   parent   Item?    @relation("ParentChildren", fields: [parentId], references: [id])
   children Item[]   @relation("ParentChildren")
   user     User     @relation(fields: [userId], references: [id])
+  index    Int
 }
 
 model Page {
