@@ -18,19 +18,23 @@
     padding: 1em;
 }
 
-.container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
+.containerDrawerOpen {
+    width: calc(100vw - 240px);
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.containerDrawerClosed {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
 }
 
 .content {
-    min-width: 800px;
-    max-width: 800px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: 2rem 4rem;
 }
 
 @media (max-width: 768px) {

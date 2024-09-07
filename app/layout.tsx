@@ -5,7 +5,7 @@ import "./globals.css";
 import Styles from './styles.module.css'
 import SideDrawer from "@/components/SideNav/SideDrawer";
 import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
-
+import { GlobalContextProvider } from "@/components/GlobalContextProvider";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -28,11 +28,13 @@ export default function RootLayout({
         fontSans.variable
       )}>
         <QueryProvider>
-          <div className={Styles.columns}>
-            <SideDrawer>
-              {children}
-            </SideDrawer>
-          </div>
+          <GlobalContextProvider>
+            <div className={Styles.columns}>
+              <SideDrawer>
+                {children}
+              </SideDrawer>
+            </div>
+          </GlobalContextProvider>
         </QueryProvider>
       </body>
     </html>

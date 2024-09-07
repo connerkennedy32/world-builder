@@ -9,7 +9,6 @@ import useGetWordCount from './useGetWordCount';
 import useSavePageOrder from './useSavePageOrder';
 import useUpdateFolder from './useUpdateFolder';
 import useUpdatePage from './useUpdatePage';
-import useLocalStorage from './useLocalStorage';
 export {
     useCreateFolder,
     useCreateNewWordEntry,
@@ -22,5 +21,4 @@ export {
     useSavePageOrder,
     useUpdateFolder,
     useUpdatePage,
-    useLocalStorage
 };

@@ -1,100 +1,39 @@
-
 'use client'
-import { useState, useEffect, useRef } from 'react'
-import { styled } from '@mui/material/styles';
-import { Box, Drawer, CssBaseline, Toolbar, Divider, IconButton, Skeleton } from '@mui/material'
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from '@mui/icons-material'
-import { FileTree } from '@/components/FileTree/FileTree';
+import React, { useContext } from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import { FileTree } from '../FileTree/FileTree';
+import { GlobalContext } from '../GlobalContextProvider';
 import { useGetItemList } from '@/hooks';
-import { useLocalStorage } from '@/hooks';
-
 const drawerWidth = 240;
 
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
-    open?: boolean;
-}>(({ theme }) => ({
-    flexGrow: 1,
-    transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    variants: [
-        {
-            props: ({ open }) => open,
-            style: {
-                transition: theme.transitions.create('margin', {
-                    easing: theme.transitions.easing.easeOut,
-                    duration: theme.transitions.duration.enteringScreen,
-                }),
-                marginLeft: 0,
-            },
-        },
-    ],
-}));
-
-interface AppBarProps extends MuiAppBarProps {
-    open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme }) => ({
-    transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-    }),
-    variants: [
-        {
-            props: ({ open }) => open,
-            style: {
-                width: `calc(100% - ${drawerWidth}px)`,
-                marginLeft: `${drawerWidth}px`,
-                transition: theme.transitions.create(['margin', 'width'], {
-                    easing: theme.transitions.easing.easeOut,
-                    duration: theme.transitions.duration.enteringScreen,
-                }),
-            },
-        },
-    ],
-}));
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-}));
-
-export default function SideDrawer({ children }: any) {
-    const { data: itemList, isLoading } = useGetItemList();
-    const [open, setOpen] = useLocalStorage('isDrawerOpen', false);
-    const drawerRef = useRef<HTMLDivElement>(null);
-
-    const handleDrawerOpen = () => {
-        setOpen(!open);
-    };
-
+export default function SideDrawer({ children }: { children: React.ReactNode }) {
+    const { isOpen, setIsOpen } = useContext(GlobalContext);
+    const { data: itemList } = useGetItemList();
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open}>
+            <AppBar
+                position="fixed"
+                sx={{ width: `calc(100% - ${isOpen ? drawerWidth : 0}px)` }}
+            >
                 <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                    >
-                        {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    <IconButton onClick={() => setIsOpen(!isOpen)}>
+                        <MenuIcon />
                     </IconButton>
-                    <h3>World Builder</h3>
+                    <Typography variant="h6" noWrap component="div">
+                        World Builder
+                    </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer
+            {isOpen && <Drawer
                 sx={{
                     width: drawerWidth,
                     flexShrink: 0,
@@ -103,19 +42,14 @@ export default function SideDrawer({ children }: any) {
                         boxSizing: 'border-box',
                     },
                 }}
-                variant="persistent"
+                variant="permanent"
                 anchor="left"
-                open={open}
             >
-                <div ref={drawerRef}>
-                    <DrawerHeader />
-                    <Divider />
-                    {isLoading ? <Skeleton /> : <FileTree items={itemList} />}
-                </div>
-            </Drawer>
-            <Main style={{ marginTop: '1.5em' }} open={open}>
-                {children}
-            </Main>
+                <Toolbar />
+                <Divider />
+                {itemList && <FileTree items={itemList} />}
+            </Drawer>}
+            {children}
         </Box>
     );
 }

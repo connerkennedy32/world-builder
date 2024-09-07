@@ -7,17 +7,17 @@ import Mention from '@tiptap/extension-mention'
 import { EditorContent, useEditor, BubbleMenu, FloatingMenu } from '@tiptap/react'
 import { EditorState } from 'prosemirror-state';
 import StarterKit from '@tiptap/starter-kit'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import suggestion from '../Mentions/suggestion'
 import { useDebounce } from 'use-debounce';
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
 import CustomComponentExtension from './extensions/CustomComponent';
-import useUpdatePage from '@/hooks/useUpdatePage';
-
+import { useUpdatePage } from '@/hooks';
+import { GlobalContext } from '../GlobalContextProvider';
 export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
     const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-
+    const { isOpen } = useContext(GlobalContext);
     const { mutate: savePageContent, isSuccess: isPageSaveSuccess } = useUpdatePage();
 
     useEffect(() => {
@@ -127,8 +127,8 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
     };
 
     return (
-        <div className={Styles.container}>
-            <div className={Styles.content}>
+        <div className={isOpen ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
+            <div className={`${Styles.content}`}>
                 {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
                     <button
                         onClick={() => {
