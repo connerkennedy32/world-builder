@@ -81,7 +81,7 @@ export default function CustomizedProgressBars() {
     return (
         <>
             <div className={isOpen ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
-                <Card style={{ margin: '2em', width: '50%' }} variant="outlined">
+                <Card className={Styles.content} variant="outlined">
                     <CardActionArea disableRipple onClick={handleCardClick}>
                         <div style={{ margin: '1em' }}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
