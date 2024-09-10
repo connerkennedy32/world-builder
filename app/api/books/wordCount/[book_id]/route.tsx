@@ -6,7 +6,7 @@ export async function GET(req: any) {
 
     const wordEntries = await prisma.wordEntry.findMany({
         where: {
-            bookId,
+            bookId: parseInt(bookId),
         },
     });
 
