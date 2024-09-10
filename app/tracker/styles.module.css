@@ -5,3 +5,22 @@
 .editButton:hover {
     color: grey
 }
+
+.containerDrawerOpen {
+    width: calc(100vw - 240px);
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.containerDrawerClosed {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.content {
+    width: 70%;
+    margin: 2rem 4rem;
+}

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import Card from '@mui/material/Card';
@@ -13,6 +13,7 @@ import useCreateNewWordEntry from '@/hooks/useCreateNewWordEntry';
 import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
+import { GlobalContext } from '../../components/GlobalContextProvider';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
@@ -28,6 +29,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 
 export default function CustomizedProgressBars() {
+    const { isOpen } = useContext(GlobalContext);
     const { data: wordCountList = [], isLoading } = useGetWordCount(1);
     const [currentWordCount, setCurrentWordCount] = useState<number>(0);
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -78,7 +80,7 @@ export default function CustomizedProgressBars() {
 
     return (
         <>
-            <div style={{ display: 'flex', alignItems: 'center', width: '100vw', justifyContent: 'center' }}>
+            <div className={isOpen ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
                 <Card style={{ margin: '2em', width: '50%' }} variant="outlined">
                     <CardActionArea disableRipple onClick={handleCardClick}>
                         <div style={{ margin: '1em' }}>
