@@ -6,6 +6,7 @@ import Styles from './styles.module.css'
 import SideDrawer from "@/components/SideNav/SideDrawer";
 import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
 import { GlobalContextProvider } from "@/components/GlobalContextProvider";
+import { ClerkProvider } from '@clerk/nextjs'
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -22,21 +23,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(
-        "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable
-      )}>
-        <QueryProvider>
-          <GlobalContextProvider>
-            <div className={Styles.columns}>
-              <SideDrawer>
-                {children}
-              </SideDrawer>
-            </div>
-          </GlobalContextProvider>
-        </QueryProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}>
+          <QueryProvider>
+            <GlobalContextProvider>
+              <div className={Styles.columns}>
+                <SideDrawer>
+                  {children}
+                </SideDrawer>
+              </div>
+            </GlobalContextProvider>
+          </QueryProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

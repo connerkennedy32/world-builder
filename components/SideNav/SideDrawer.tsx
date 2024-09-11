@@ -1,25 +1,19 @@
 'use client'
 import React, { useContext } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+import { Box, Drawer, CssBaseline, AppBar, Toolbar, Typography, Divider, Button, Skeleton, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { FileTree } from '../FileTree/FileTree';
 import { GlobalContext } from '../GlobalContextProvider';
 import { useGetItemList } from '@/hooks';
 import { useRouter } from 'next/navigation';
+import { UserButton, ClerkLoaded, ClerkLoading } from '@clerk/nextjs'
 const drawerWidth = 240;
 
 export default function SideDrawer({ children }: { children: React.ReactNode }) {
     const { isOpen, setIsOpen } = useContext(GlobalContext);
     const router = useRouter();
     const { data: itemList } = useGetItemList();
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -27,13 +21,19 @@ export default function SideDrawer({ children }: { children: React.ReactNode }) 
                 position="fixed"
                 sx={{ width: `calc(100% - ${isOpen ? drawerWidth : 0}px)` }}
             >
-                <Toolbar>
+                <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <IconButton onClick={() => setIsOpen(!isOpen)}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         World Builder
                     </Typography>
+                    <ClerkLoaded>
+                        <UserButton />
+                    </ClerkLoaded>
+                    <ClerkLoading>
+                        <Skeleton variant="circular" width={30} height={30} />
+                    </ClerkLoading>
                 </Toolbar>
             </AppBar>
             {isOpen && <Drawer
