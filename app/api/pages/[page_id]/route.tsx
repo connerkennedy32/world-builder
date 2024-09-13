@@ -1,8 +1,13 @@
 import { prisma } from '../../../../backend/db'
 import { getHighestNestedOrder } from '@/app/utils/orderUtils';
+import { getCurrentUserId } from '@/app/utils/userUtils';
 
 // Handle GET request to retrieve product information for a specific ID
 export async function GET(req: any) {
+    const userId = await getCurrentUserId()
+    if (!userId) {
+        return Response.json({ error: 'User not found' }, { status: 401 });
+    }
     const pathSegments = req.nextUrl.pathname.split('/');
     const pageId = pathSegments[pathSegments.length - 1];
 
@@ -13,13 +18,21 @@ export async function GET(req: any) {
     });
 
     if (!page) {
-        return Response.json({ error: "No page with that ID" });
+        return Response.json({ error: "No page with that ID" }, { status: 404 });
+    }
+
+    if (page?.userId !== userId) {
+        return Response.json({ error: 'User not authorized to access this page' }, { status: 401 });
     }
 
     return Response.json({ page });
 }
 
 export async function PUT(req: any) {
+    const userId = await getCurrentUserId()
+    if (!userId) {
+        return Response.json({ error: 'User not found' }, { status: 401 });
+    }
     const pathSegments = req.nextUrl.pathname.split('/');
     const pageId = pathSegments[pathSegments.length - 1];
 
@@ -29,6 +42,7 @@ export async function PUT(req: any) {
         const updatedPage = await prisma.item.update({
             where: {
                 id: pageId,
+                userId: userId,
             },
             data: {
                 title,

@@ -1,13 +1,15 @@
-import { prisma } from '../../backend/db'
+import { prisma } from '@/backend/db'
+import { getCurrentUserId } from '@/app/utils/userUtils'
 
 export async function GET(req: any) {
-    const page = req.nextUrl.searchParams.get('page') ? parseInt(req.nextUrl.searchParams.get('page'), 10) : 1;
-    const perPage = req.nextUrl.searchParams.get('perPage') ? parseInt(req.nextUrl.searchParams.get('perPage'), 10) : 10;
-    const searchQuery = req.nextUrl.searchParams.get('searchQuery') || '';
+    const userId = await getCurrentUserId()
+    if (!userId) {
+        return Response.json({ error: 'User not found' }, { status: 401 })
+    }
 
     const fetchItemsRecursively = async (parentId: string | null = null): Promise<any[]> => {
         const items = await prisma.item.findMany({
-            where: { parentId },
+            where: { parentId, userId },
             select: {
                 id: true,
                 parentId: true,

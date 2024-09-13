@@ -1,6 +1,6 @@
 'use client'
 import React, { useContext } from 'react';
-import { Box, Drawer, CssBaseline, AppBar, Toolbar, Typography, Divider, Button, Skeleton, IconButton } from '@mui/material';
+import { CircularProgress, Box, Drawer, CssBaseline, AppBar, Toolbar, Typography, Divider, Button, Skeleton, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { FileTree } from '../FileTree/FileTree';
 import { GlobalContext } from '../GlobalContextProvider';
@@ -12,7 +12,7 @@ const drawerWidth = 240;
 export default function SideDrawer({ children }: { children: React.ReactNode }) {
     const { isOpen, setIsOpen } = useContext(GlobalContext);
     const router = useRouter();
-    const { data: itemList } = useGetItemList();
+    const { data: itemList, isLoading, isError } = useGetItemList();
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -60,6 +60,10 @@ export default function SideDrawer({ children }: { children: React.ReactNode }) 
                 </Toolbar>
                 <Divider />
                 {itemList && <FileTree items={itemList} />}
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                    {isError && <div>Error fetching item list</div>}
+                    {isLoading && <CircularProgress />}
+                </div>
             </Drawer>}
             {children}
         </Box>

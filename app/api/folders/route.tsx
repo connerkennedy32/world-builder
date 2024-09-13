@@ -1,14 +1,19 @@
-import { prisma } from '../../../backend/db'
+import { prisma } from '@/backend/db'
+import { getCurrentUserId } from '@/app/utils/userUtils'
 
 export async function POST(req: any) {
     try {
+        const userId = await getCurrentUserId()
+        if (!userId) {
+            return Response.json({ error: 'User not found' }, { status: 401 });
+        }
         const res = await req.json()
         let { title, parentId, index } = res;
 
         const folderData: any = {
             title,
             itemType: "FOLDER",
-            userId: 1, // Update when I create more than one user
+            userId,
             index,
         };
 
@@ -29,10 +34,14 @@ export async function POST(req: any) {
 
 export async function GET() {
     try {
+        const userId = await getCurrentUserId()
+        if (!userId) {
+            return Response.json({ error: 'User not found' }, { status: 401 });
+        }
         const folders = await prisma.item.findMany({
             where: {
                 itemType: "FOLDER",
-                userId: 1, // Update when you create more than one user
+                userId,
             },
         });
 

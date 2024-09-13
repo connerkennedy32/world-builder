@@ -1,6 +1,7 @@
 import { prisma } from '../../../backend/db'
 import { NextRequest } from 'next/server'
 import { generateNewPageContent } from '../../../utils/pagesHelper'
+import { getCurrentUserId } from '@/app/utils/userUtils';
 
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url)
@@ -30,6 +31,10 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: any) {
+    const userId = await getCurrentUserId()
+    if (!userId) {
+        return Response.json({ error: 'User not found' }, { status: 401 });
+    }
     const res = await req.json()
     let { id, content, title, index, parentId } = res;
 
@@ -45,7 +50,7 @@ export async function POST(req: any) {
             itemType: "PAGE",
             content,
             title,
-            userId: 1, // Update when I create more than one user
+            userId,
             index,
             parentId,
         },
