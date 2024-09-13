@@ -14,6 +14,7 @@ import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { GlobalContext } from '../../components/GlobalContextProvider';
+import { Book } from '@prisma/client';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
@@ -27,10 +28,16 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     },
 }));
 
+const calculatePercentage = (currentWordCount: number, goalWordCount: number | null) => {
+    if (goalWordCount === null) return 0;
+    return Math.floor(100 * (currentWordCount / goalWordCount));
+}
 
-export default function BookCard({ bookId }: { bookId: number }) {
+
+export default function BookCard({ book }: { book: Book }) {
+    const { id, title, goalWordCount, author } = book
     const { isOpen } = useContext(GlobalContext);
-    const { data: wordCountList = [], isLoading } = useGetWordCount(bookId);
+    const { data: wordCountList = [], isLoading } = useGetWordCount(id);
     const [currentWordCount, setCurrentWordCount] = useState<number>(0);
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [date, setDate] = useState<string>('');
@@ -63,12 +70,11 @@ export default function BookCard({ bookId }: { bookId: number }) {
         }
     }, [wordCountList, isLoading]);
 
-    const goalWordCount = 88000;
-    const percentage = Math.floor(100 * (currentWordCount / goalWordCount));
+    const percentage = calculatePercentage(currentWordCount, goalWordCount);
 
     const handleSubmit = () => {
         createNewWordEntry(
-            { bookId: bookId, date, wordCount: wordCount || 0 },
+            { bookId: id, date, wordCount: wordCount || 0 },
             {
                 onSuccess: () => {
                     setShowCheckmark(true);
@@ -85,10 +91,10 @@ export default function BookCard({ bookId }: { bookId: number }) {
                     <CardActionArea disableRipple onClick={handleCardClick}>
                         <div style={{ margin: '1em' }}>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <span>Lunar Tides</span>
+                                <span>{title}</span>
                                 <EditIcon className={Styles.editButton} onClick={handleEditClick} />
                             </div>
-                            <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>Conner Kennedy</span>
+                            <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>{author || 'N/A'}</span>
                             <div style={{ display: 'flex', gap: '0.5em', marginTop: '0.5em', alignItems: 'center' }}>
                                 <BorderLinearProgress style={{ width: '100%' }} variant="determinate" value={isLoading ? 0 : percentage} />
                                 <span>{`${isLoading ? 0 : percentage}%`}</span>

@@ -76,11 +76,13 @@ model Folder {
 }
 
 model Book {
-  id          Int         @id @default(autoincrement())
-  title       String
-  userId      Int
-  description String?
-  wordEntries WordEntry[]
+  id            Int         @id @default(autoincrement())
+  title         String
+  userId        Int
+  description   String?
+  goalWordCount Int?
+  author        String?
+  wordEntries   WordEntry[]
 }
 
 model WordEntry {

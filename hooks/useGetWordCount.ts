@@ -8,7 +8,7 @@ const fetchWordCountList = async (bookId: any) => {
 
 const useGetWordCount = (bookId: any) => {
     return useQuery({
-        queryKey: ['wordCountList'],
+        queryKey: ['wordCountList', bookId],
         queryFn: () => fetchWordCountList(bookId),
     });
 };
