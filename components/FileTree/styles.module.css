@@ -1,0 +1,7 @@
+.folderEmpty {
+    opacity: 0.7;
+}
+
+.selected {
+    background-color: #e0e0e0;
+}

@@ -10,9 +10,14 @@ import { UserButton, ClerkLoaded, ClerkLoading } from '@clerk/nextjs'
 const drawerWidth = 240;
 
 export default function SideDrawer({ children }: { children: React.ReactNode }) {
-    const { isOpen, setIsOpen } = useContext(GlobalContext);
+    const { isOpen, setIsOpen, setSelectedItemId } = useContext(GlobalContext);
     const router = useRouter();
     const { data: itemList, isLoading, isError } = useGetItemList();
+
+    const handleTrackerButtonClick = () => {
+        setSelectedItemId('');
+        router.push('/tracker');
+    }
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -53,7 +58,7 @@ export default function SideDrawer({ children }: { children: React.ReactNode }) 
                         variant="contained"
                         color="primary"
                         style={{ margin: '1rem', width: '90%' }}
-                        onClick={() => router.push('/tracker')}
+                        onClick={handleTrackerButtonClick}
                     >
                         Tracker
                     </Button>
