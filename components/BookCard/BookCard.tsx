@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { GlobalContext } from '../../components/GlobalContextProvider';
-import { Book } from '@prisma/client';
+import { Book, WordEntry } from '@prisma/client';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
@@ -33,6 +33,64 @@ const calculatePercentage = (currentWordCount: number, goalWordCount: number | n
     return Math.floor(100 * (currentWordCount / goalWordCount));
 }
 
+const calculateWordsPerDay = (wordCountList: WordEntry[], startDate?: Date, endDate?: Date) => {
+    const mostRecentDate = new Date(wordCountList[0].date);
+    const oldestDate = new Date(wordCountList[wordCountList.length - 1].date);
+    let startDateCalc;
+    let endDateCalc;
+    if (startDate) {
+        if (startDate.getTime() < oldestDate.getTime() || startDate.getTime() > mostRecentDate.getTime()) {
+            return 0;
+        } else {
+            startDateCalc = startDate;
+        }
+    } else {
+        startDateCalc = oldestDate;
+    }
+
+    if (endDate) {
+        if (endDate.getTime() < oldestDate.getTime() || endDate.getTime() > mostRecentDate.getTime()) {
+            return 0;
+        } else {
+            endDateCalc = endDate;
+        }
+    } else {
+        endDateCalc = mostRecentDate;
+    }
+
+
+
+    let startWordCount = wordCountList.find(wordEntry => wordEntry.date === startDateCalc)?.wordCount;
+    if (!startWordCount) {
+        for (let i = 0; i < wordCountList.length; i++) {
+            if (wordCountList[i].date > startDateCalc) { }
+        }
+        // Calculate the word count for the start date
+        // Find the nearest previous word count
+        const previousWordCount = wordCountList.find(wordEntry => wordEntry.date < startDateCalc)?.wordCount;
+        // Find the next word cound after the start date
+        const nextWordCount = wordCountList.find(wordEntry => wordEntry.date > startDateCalc)?.wordCount;
+    }
+
+    const endWordCount = wordCountList.find(wordEntry => wordEntry.date === endDateCalc)?.wordCount;
+    if (!endWordCount) {
+        // Calculate the word count for the end date
+    }
+
+
+    const mostRecentWordCount = wordCountList[0].wordCount;
+
+    const oldestWordCount = wordCountList[wordCountList.length - 1].wordCount;
+
+    const oldestDateObj = new Date(oldestDate);
+    const mostRecentDateObj = new Date(mostRecentDate);
+    const diffTime = Math.abs(mostRecentDateObj.getTime() - oldestDateObj.getTime());
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    const wordsPerDay = Math.floor((mostRecentWordCount - oldestWordCount) / diffDays);
+    return wordsPerDay;
+}
+
 
 export default function BookCard({ book }: { book: Book }) {
     const { id, title, goalWordCount, author } = book
@@ -46,7 +104,8 @@ export default function BookCard({ book }: { book: Book }) {
     const { mutate: createNewWordEntry, isLoading: isCreatingWordEntry } = useCreateNewWordEntry();
 
     const handleCardClick = () => {
-        console.log("CLICKING NOW")
+        // Return the words / day metric over a given period
+        console.log(calculateWordsPerDay(wordCountList))
     }
 
     const handleEditClick = (event: any) => {
@@ -63,10 +122,7 @@ export default function BookCard({ book }: { book: Book }) {
 
     useEffect(() => {
         if (!isLoading && wordCountList.length > 0) {
-            const latestWordCount = wordCountList.reduce((prev: WordCount, current: WordCount) =>
-                (new Date(prev.date) > new Date(current.date)) ? prev : current
-            );
-            setCurrentWordCount(latestWordCount.wordCount);
+            setCurrentWordCount(wordCountList[0].wordCount);
         }
     }, [wordCountList, isLoading]);
 

@@ -8,6 +8,9 @@ export async function GET(req: any) {
         where: {
             bookId: parseInt(bookId),
         },
+        orderBy: {
+            date: 'desc'
+        }
     });
 
     if (!wordEntries) {
