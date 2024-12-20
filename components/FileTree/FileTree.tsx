@@ -46,7 +46,7 @@ export const FileTree = ({ items }: { items: Item[] }) => {
             <Button disabled={!newItemTitle} onClick={handleFolderButtonClick}>Add Folder</Button>
 
             {/* @ts-ignore */}
-            <Tree openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>{Node}</Tree>
+            <Tree height={1000} openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>{Node}</Tree>
         </>
     )
 }
