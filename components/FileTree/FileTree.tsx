@@ -1,7 +1,7 @@
 'use client'
 import { Tree } from 'react-arborist';
 import { useSimpleTree2 } from './useSimpleTree2';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import { Item } from '@prisma/client';
@@ -52,6 +52,22 @@ export const FileTree = ({ items }: { items: Item[] }) => {
 }
 
 function Node({ node, style, dragHandle }: { node: any; style: any; dragHandle?: any }) {
+    const handleFolderToggle = () => {
+        if (node.isOpen) {
+            window.localStorage.removeItem(node.id);
+            node.close();
+        } else {
+            window.localStorage.setItem(node.id, 'true');
+            node.open();
+        }
+    }
+
+    useEffect(() => {
+        if (window.localStorage.getItem(node.id)) {
+            node.open();
+        }
+    }, [node])
+
     const { selectedItemId } = useContext(GlobalContext);
     const router = useRouter();
 
@@ -63,7 +79,7 @@ function Node({ node, style, dragHandle }: { node: any; style: any; dragHandle?:
         <div
             className={`${isPage ? 'cursor-pointer' : ''} ${isFolderEmpty ? Styles.folderEmpty : ''} ${isItemSelected ? Styles.selected : ''}`}
             style={style} ref={dragHandle}
-            onClick={() => isPage ? router.push(`/page/${node.data.id}`) : node.toggle()}
+            onClick={() => isPage ? router.push(`/page/${node.data.id}`) : handleFolderToggle()}
         >
             {isPage ? <DescriptionOutlinedIcon /> : <FolderOpenIcon />}
             {node.data.title}
