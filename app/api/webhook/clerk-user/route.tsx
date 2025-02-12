@@ -53,16 +53,16 @@ export async function POST(req: NextRequest) {
     const payload: ClerkWebhookEvent = await req.json()
     const body = JSON.stringify(payload)
 
-    // const newUser = await prisma.user.create({
-    //     data: {
-    //         clerkId: payload.data.id,
-    //         email: payload.data.email_addresses ? payload.data.email_addresses[0]?.email_address : null,
-    //         username: payload.data.username || '',
-    //         createdAt: new Date(payload.data.created_at),
-    //         updatedAt: new Date(payload.data.updated_at),
-    //     },
-    // })
+    const newUser = await prisma.user.create({
+        data: {
+            clerkId: payload.data.id,
+            email: payload.data.email_addresses ? payload.data.email_addresses[0]?.email_address : null,
+            username: payload.data.username || '',
+            createdAt: new Date(payload.data.created_at),
+            updatedAt: new Date(payload.data.updated_at),
+        },
+    })
 
-    return Response.json({ body })
+    return Response.json({ newUser })
     // return Response.json({ newUser })
 }
