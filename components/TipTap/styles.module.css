@@ -19,13 +19,15 @@
 }
 
 .containerDrawerOpen {
-    width: calc(100vw - 240px);
+    transition: width 0.3s ease;
+    width: calc(100vw - 256px);
     display: flex;
     justify-content: center;
     padding-top: 1rem;
 }
 
 .containerDrawerClosed {
+    transition: width 0.3s ease;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -33,8 +35,8 @@
 }
 
 .content {
-    width: 70%;
-    max-width: 1100px;
+    max-width: 70%;
+    max-width: 900px;
     margin: 2rem 4rem;
 }
 

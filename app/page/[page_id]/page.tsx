@@ -28,7 +28,6 @@ export default function Page({ params }: { params: { page_id: string } }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: !isLoading ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
-                style={{ marginTop: '1.5em' }}
             >
                 <TipTap page_content={data.page.content} page_id={params.page_id} />
             </motion.div>
