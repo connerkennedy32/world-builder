@@ -35,7 +35,7 @@
 }
 
 .content {
-    max-width: 70%;
+    width: 70%;
     max-width: 900px;
     margin: 2rem 4rem;
 }

@@ -12,7 +12,7 @@ import { Folder, FolderOpen, FileText } from "lucide-react"
 export const FileTree = ({ data, controller }: { data: readonly TreeItem[], controller: any }) => {
     return (
         <>  {/* @ts-ignore */}
-            <Tree height={1000} openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>{Node}</Tree>
+            <Tree width={240} openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>{Node}</Tree>
         </>
     )
 }
