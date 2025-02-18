@@ -27,7 +27,7 @@ const useUpdatePage = () => {
         },
         {
             onSuccess: () => {
-                queryClient.invalidateQueries('pageList');
+                // queryClient.invalidateQueries('pageList');
             },
             onError: (error) => {
                 console.error('Failed to save page:', error);

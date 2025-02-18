@@ -95,7 +95,7 @@
   }
 
   [data-sidebar="trigger"] {
-    position: fixed
+    position: fixed;
   }
 
   .mention {

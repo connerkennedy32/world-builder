@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import axios from 'axios';
 
-const deletePage = async (id: number) => {
+const deletePage = async (id: string) => {
     const response = await axios.delete(`/api/pages/${id}`, {
         headers: {
             'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ const useDeletePage = () => {
     const queryClient = useQueryClient();
 
     return useMutation(
-        async (id: number) => {
+        async (id: string) => {
             const response = await deletePage(id);
             return response;
         },

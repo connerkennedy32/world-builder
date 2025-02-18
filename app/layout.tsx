@@ -6,6 +6,7 @@ import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
 import { GlobalContextProvider } from "@/components/GlobalContextProvider";
 import { ClerkProvider } from '@clerk/nextjs'
 import { SideBarWrapper } from "@/components/SideBar/SideBarWrapper"
+import { Toaster } from "@/components/ui/toaster"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
               <SideBarWrapper>
                 {children}
               </SideBarWrapper>
+              <Toaster />
             </GlobalContextProvider>
           </QueryProvider>
         </body>
