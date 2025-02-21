@@ -1,5 +1,5 @@
 'use client'
-import { Home, Settings, ChartLine } from "lucide-react"
+import { Home, Settings, ChartLine, Bot } from "lucide-react"
 import {
     Sidebar,
     SidebarContent,
@@ -15,6 +15,8 @@ import { User2 } from "lucide-react"
 import { ChevronUp } from "lucide-react"
 import { useUser, useClerk } from '@clerk/nextjs'
 import { useRouter } from "next/navigation"
+import AIChat from "../AIChat/Chat"
+import { useState } from "react"
 
 const items = [
     {
@@ -39,12 +41,14 @@ export function AppSidebar() {
     const router = useRouter();
     const { user } = useUser();
     const { signOut } = useClerk();
+    const [isChatOpen, setIsChatOpen] = useState(false);
 
     return (
         <Sidebar>
             <SidebarContent>
                 {itemList && <FileNavigator itemList={itemList} />}
             </SidebarContent>
+            <AIChat open={isChatOpen} setOpen={setIsChatOpen} />
             <SidebarFooter>
                 <SidebarMenu>
                     {items.map((item) => (
@@ -57,6 +61,14 @@ export function AppSidebar() {
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                     ))}
+                    <SidebarMenuItem className="cursor-pointer">
+                        <SidebarMenuButton asChild>
+                            <a onClick={() => setIsChatOpen(true)}>
+                                <Bot />
+                                <span>AI Thesaurus</span>
+                            </a>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
                 </SidebarMenu>
                 <SidebarMenu>
                     <SidebarMenuItem>
