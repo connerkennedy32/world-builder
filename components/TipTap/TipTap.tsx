@@ -110,7 +110,7 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
         editor?.view.updateState(newEditorState);
     }
 
-    const savePage = async () => {
+    const savePage = () => {
         savePageContent({ page_id, content: editor?.getJSON() || {} });
     };
 
