@@ -1,8 +1,8 @@
 export default function Home() {
   return (
-    <>
-      <h1>World Builder!</h1>
-      <h2>Build your world here!</h2>
-    </>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-4xl font-bold">World Builder!</h1>
+      <h2 className="text-2xl font-bold">Build your world here!</h2>
+    </div>
   );
 }
