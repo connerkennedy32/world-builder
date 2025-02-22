@@ -17,12 +17,11 @@ import { useUpdatePage } from '@/hooks';
 import { GlobalContext } from '../GlobalContextProvider';
 export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
     const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-    const { isOpen } = useContext(GlobalContext);
+    const { isOpen, selectedItemId } = useContext(GlobalContext);
     const { mutate: savePageContent, isSuccess: isPageSaveSuccess } = useUpdatePage();
 
     useEffect(() => {
         return () => {
-            console.log('Unmounting TipTap...');
             if (hasUnsavedChanges) {
                 savePage();
             }
@@ -126,6 +125,10 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
             attrs: { text },
         }).run();
     };
+
+    if (selectedItemId !== page_id) {
+        return null;
+    }
 
     return (
         <div className={isOpen ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>

@@ -42,7 +42,7 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
         }
     }, [node])
 
-    const { selectedItemId } = useContext(GlobalContext);
+    const { selectedItemId, setSelectedItemId } = useContext(GlobalContext);
     const router = useRouter();
 
     const isPage = node.data.itemType === "PAGE"
@@ -50,6 +50,15 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
     const isItemSelected = node.data.id === selectedItemId;
 
     const folderIcon = node.isOpen ? <FolderOpen size={20} /> : <Folder size={20} />
+
+    const handleItemClick = () => {
+        if (isPage) {
+            setSelectedItemId(node.data.id);
+            router.push(`/page/${node.data.id}`);
+        } else {
+            handleFolderToggle();
+        }
+    }
 
     return (
         <div
@@ -59,7 +68,7 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
             <SidebarMenuItem
                 key={node.data.title}
                 style={{ display: 'flex', alignItems: 'center' }}
-                onClick={() => isPage ? router.push(`/page/${node.data.id}`) : handleFolderToggle()}
+                onClick={handleItemClick}
             >
                 {isPage ? <FileText size={20} /> : folderIcon}
                 {isRenaming ? <input
