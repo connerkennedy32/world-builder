@@ -36,22 +36,20 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
         }
     }, [isPageSaveSuccess]);
 
-    // TODO: This is causing a delay in the page select UI. I need to figure out why.
+    useEffect(() => {
+        const handleBeforeUnload = (event: { preventDefault: () => void; returnValue: string }) => {
+            if (hasUnsavedChanges) {
+                event.preventDefault();
+                event.returnValue = '';
+            }
+        };
 
-    // useEffect(() => {
-    //     const handleBeforeUnload = (event: { preventDefault: () => void; returnValue: string }) => {
-    //         if (hasUnsavedChanges) {
-    //             event.preventDefault();
-    //             event.returnValue = '';
-    //         }
-    //     };
+        window.addEventListener('beforeunload', handleBeforeUnload);
 
-    //     window.addEventListener('beforeunload', handleBeforeUnload);
-
-    //     return () => {
-    //         window.removeEventListener('beforeunload', handleBeforeUnload);
-    //     };
-    // }, [hasUnsavedChanges]);
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, [hasUnsavedChanges]);
 
 
     const editor = useEditor({
