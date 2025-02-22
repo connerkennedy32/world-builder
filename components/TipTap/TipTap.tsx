@@ -80,7 +80,7 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
         }
     })
 
-    const [debouncedEditor] = useDebounce(editor?.state.doc.content, 10000);
+    const [debouncedEditor] = useDebounce(editor?.state.doc.content, 5000);
 
     useEffect(() => {
         if (debouncedEditor) {

@@ -26,8 +26,8 @@ const useUpdatePage = () => {
             return response.data;
         },
         {
-            onSuccess: () => {
-                // queryClient.invalidateQueries('pageList');
+            onSuccess: (_, variables) => {
+                queryClient.removeQueries({ queryKey: ['page', variables.page_id] });
             },
             onError: (error) => {
                 console.error('Failed to save page:', error);
