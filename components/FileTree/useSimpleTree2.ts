@@ -55,11 +55,10 @@ export function useSimpleTree2<T extends TreeItem>(initialData: readonly T[]) {
     };
 
     const onRename: RenameHandler<T> = ({ name, id }) => {
-        console.log("onRename", name, id);
+        tree.update({ id, changes: { title: name } as any });
+        setData(tree.data);
         updatePage({ page_id: id, title: name }, {
             onSuccess: () => {
-                tree.update({ id, changes: { title: name } as any });
-                setData(tree.data);
                 toast({
                     title: "Page renamed",
                     description: `'${name}' renamed successfully`,

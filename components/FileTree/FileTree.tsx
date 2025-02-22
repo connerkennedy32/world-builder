@@ -99,7 +99,7 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
                         e.stopPropagation();
                         setIsRenaming(true);
                     }}>
-                        <span>Edit</span>
+                        <span>Rename</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem onSelect={(e) => {
                         setShowDeleteDialog(true);
