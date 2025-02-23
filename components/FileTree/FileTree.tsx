@@ -77,7 +77,7 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
                     placeholder="Enter new name"
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
-                            controller.onRename({ id: node.data.id, name: newTitle });
+                            controller.onRename({ id: node.data.id, name: newTitle, node: node });
                             setIsRenaming(false);
                         }
                         if (e.key === ' ' || e.key === 'Backspace') {

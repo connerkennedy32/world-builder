@@ -20,8 +20,8 @@ export function useSimpleTree2<T extends TreeItem>(initialData: readonly T[]) {
     const { mutate: createPage } = useCreatePage();
     const { mutate: createFolder } = useCreateFolder();
     const { mutate: savePageOrder } = useSavePageOrder();
-    const { mutate: deletePage } = useDeletePage();
-    const { mutate: updatePage } = useUpdatePage();
+    const { mutate: deleteItem } = useDeletePage();
+    const { mutate: renameItem } = useUpdatePage();
 
     const [data, setData] = useState(initialData);
     const tree = useMemo(
@@ -39,6 +39,7 @@ export function useSimpleTree2<T extends TreeItem>(initialData: readonly T[]) {
         for (const id of args.dragIds) {
             tree.move({ id, parentId: args.parentId, index: args.index });
         }
+        setData(tree.data);
         savePageOrder(tree.data, {
             onSuccess: () => {
                 setData(tree.data);
@@ -54,23 +55,27 @@ export function useSimpleTree2<T extends TreeItem>(initialData: readonly T[]) {
         });
     };
 
-    const onRename: RenameHandler<T> = ({ name, id }) => {
+    const onRename: RenameHandler<T> = ({ name, id, node }) => {
         tree.update({ id, changes: { title: name } as any });
         setData(tree.data);
-        updatePage({ page_id: id, title: name }, {
+        let toastTitle = "Page";
+        if (node.data.itemType === "FOLDER") {
+            toastTitle = "Folder";
+        }
+        renameItem({ page_id: id, title: name }, {
             onSuccess: () => {
                 toast({
-                    title: "Page renamed",
+                    title: `${toastTitle} renamed`,
                     description: `'${name}' renamed successfully`,
                 });
             },
             onError: (error) => {
                 toast({
-                    title: "Page renaming failed",
+                    title: `${toastTitle} renaming failed`,
                     description: `'${name}' renaming failed`,
                     variant: "destructive",
                 });
-                console.error("Failed to rename page:", error);
+                console.error(`Failed to rename ${toastTitle}:`, error);
             }
         });
     };
@@ -138,10 +143,10 @@ export function useSimpleTree2<T extends TreeItem>(initialData: readonly T[]) {
 
             const item = findItemInTree(tree.data, id);
             if (item?.itemType === "PAGE") {
-                deletePage(id, {
+                tree.drop({ id });
+                setData(tree.data);
+                deleteItem(id, {
                     onSuccess: () => {
-                        tree.drop({ id });
-                        setData(tree.data);
                         toast({
                             title: "Page deleted",
                             description: `'${item.title}' deleted successfully`,
@@ -151,6 +156,34 @@ export function useSimpleTree2<T extends TreeItem>(initialData: readonly T[]) {
                         console.error("Failed to delete page:", error);
                         toast({
                             title: "Page deletion failed",
+                            description: `'${item.title}' deletion failed`,
+                            variant: "destructive",
+                        });
+                    }
+                });
+            } else if (item?.itemType === "FOLDER") {
+                if (item.children.length > 0) {
+                    toast({
+                        title: "Folder is not empty",
+                        description: `'${item.title}' is not empty. Please delete the items inside the folder first.`,
+                        variant: 'destructive'
+                    });
+                    return;
+                }
+                deleteItem(id, {
+                    onSuccess: () => {
+                        tree.drop({ id });
+                        setData(tree.data);
+                        toast({
+                            title: "Folder deleted",
+                            description: `'${item.title}' deleted successfully`,
+                            variant: "default"
+                        });
+                    },
+                    onError: (error) => {
+                        console.error("Failed to delete folder:", error);
+                        toast({
+                            title: "Folder deletion failed",
                             description: `'${item.title}' deletion failed`,
                             variant: "destructive",
                         });
