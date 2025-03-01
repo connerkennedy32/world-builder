@@ -1,5 +1,5 @@
 'use client'
-import { Home, Settings, ChartLine, Bot } from "lucide-react"
+import { Home, Settings, ChartLine, Bot, BookOpen } from "lucide-react"
 import {
     Sidebar,
     SidebarContent,
@@ -17,6 +17,7 @@ import { useUser, useClerk } from '@clerk/nextjs'
 import { useRouter } from "next/navigation"
 import AIChat from "../AIChat/Chat"
 import { useState } from "react"
+import { Tutorial } from "../Tutorial/Tutorial"
 
 const items = [
     {
@@ -42,10 +43,12 @@ export function AppSidebar() {
     const { user } = useUser();
     const { signOut } = useClerk();
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [runTour, setRunTour] = useState(false);
 
     return (
         <Sidebar>
-            <SidebarContent>
+            <Tutorial runTour={runTour} setRunTour={setRunTour} />
+            <SidebarContent id="sidebar-content">
                 {itemList && <FileNavigator itemList={itemList} />}
             </SidebarContent>
             <AIChat open={isChatOpen} setOpen={setIsChatOpen} />
@@ -66,6 +69,14 @@ export function AppSidebar() {
                             <a onClick={() => setIsChatOpen(true)}>
                                 <Bot />
                                 <span>AI Thesaurus</span>
+                            </a>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem className="cursor-pointer">
+                        <SidebarMenuButton asChild>
+                            <a onClick={() => setRunTour(true)}>
+                                <BookOpen />
+                                <span>Start Tutorial</span>
                             </a>
                         </SidebarMenuButton>
                     </SidebarMenuItem>

@@ -131,7 +131,7 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
     }
 
     return (
-        <div className={isOpen ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
+        <div id="tiptap-editor" className={isOpen ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
             <div className={`${Styles.content}`}>
                 {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
                     <button

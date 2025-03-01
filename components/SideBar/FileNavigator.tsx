@@ -44,7 +44,7 @@ export function FileNavigator({ itemList }: { itemList: any }) {
                 <span className="overflow-hidden text-ellipsis whitespace-nowrap">World Builder</span>
                 <div className="flex gap-1">
                     <Popover open={isFolderPopoverOpen} onOpenChange={setIsFolderPopoverOpen}>
-                        <PopoverTrigger><FolderPlus className="cursor-pointer" size={20} /></PopoverTrigger>
+                        <PopoverTrigger><FolderPlus id="create-folder-button" className="cursor-pointer" size={20} /></PopoverTrigger>
                         <PopoverContent className="flex gap-2">
                             <Input placeholder="Folder Name" value={newItemTitle} onChange={(e) => setNewItemTitle(e.target.value)} />
                             <Button disabled={newItemTitle.length === 0} onClick={handleFolderButtonClick}>
@@ -53,7 +53,7 @@ export function FileNavigator({ itemList }: { itemList: any }) {
                         </PopoverContent>
                     </Popover>
                     <Popover open={isPagePopoverOpen} onOpenChange={setIsPagePopoverOpen}>
-                        <PopoverTrigger><FilePlus className="cursor-pointer" size={20} /></PopoverTrigger>
+                        <PopoverTrigger><FilePlus id="create-page-button" className="cursor-pointer" size={20} /></PopoverTrigger>
                         <PopoverContent className="flex gap-2">
                             <Input placeholder="Page Name" value={newItemTitle} onChange={(e) => setNewItemTitle(e.target.value)} />
                             <Button disabled={newItemTitle.length === 0} onClick={() => {
