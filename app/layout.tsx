@@ -33,7 +33,9 @@ export default function RootLayout({
           <QueryProvider>
             <GlobalContextProvider>
               <SideBarWrapper>
-                {children}
+                <div id="tutorial-start">
+                  {children}
+                </div>
               </SideBarWrapper>
               <Toaster />
             </GlobalContextProvider>

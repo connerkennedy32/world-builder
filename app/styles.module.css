@@ -1,3 +1,19 @@
 .columns {
     display: flex;
 }
+
+.containerDrawerOpen {
+    transition: width 0.3s ease;
+    width: calc(100vw - 256px);
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.containerDrawerClosed {
+    transition: width 0.3s ease;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}

@@ -1,19 +1,29 @@
+'use client'
 import dynamic from "next/dynamic"
+import { useContext } from "react";
+import { GlobalContext } from "../GlobalContextProvider";
 
 const JoyrideNoSSR = dynamic(() => import('react-joyride'), {
     ssr: false
 })
 
-export function Tutorial({ runTour, setRunTour }: { runTour: boolean, setRunTour: (runTour: boolean) => void }) {
+export function Tutorial() {
+    const { runTour, setRunTour } = useContext(GlobalContext);
     const steps = [
         {
-            target: "#create-folder-button",
-            content: "Create new folders to organize your items",
+            target: "#tutorial-start",
+            content: "Welcome to World Builder! Let's take a quick tour to help you get started.",
+            placement: "center" as const,
             disableBeacon: true,
         },
         {
             target: "#create-page-button",
             content: "Create new pages to add content",
+            disableBeacon: true,
+        },
+        {
+            target: "#create-folder-button",
+            content: "Create new folders to organize your items",
             disableBeacon: true,
         },
         {
@@ -23,7 +33,7 @@ export function Tutorial({ runTour, setRunTour }: { runTour: boolean, setRunTour
         },
         {
             target: "#tiptap-editor",
-            content: "Edit your content using the editor. Try adding a space after the '#' to create a new heading. Enjoy!",
+            content: "Edit your content using the editor. Try creating / selecting a page to see the magic happen. Enjoy!",
             disableBeacon: true,
         }
     ]

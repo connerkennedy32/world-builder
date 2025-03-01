@@ -3,30 +3,30 @@
 import { createContext, useState } from 'react';
 
 interface IGlobalContextProps {
-    isOpen: boolean;
-    setIsOpen: (isOpen: boolean) => void;
     selectedItemId: string;
     setSelectedItemId: (selectedItemId: string) => void;
+    runTour: boolean;
+    setRunTour: (runTour: boolean) => void;
 }
 
 export const GlobalContext = createContext<IGlobalContextProps>({
-    isOpen: true,
-    setIsOpen: () => { },
     selectedItemId: '',
     setSelectedItemId: () => { },
+    runTour: true,
+    setRunTour: () => { },
 });
 
 export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
     // I can use useLocalStorage here to persist the state across sessions, but there's a hydration error...
-    const [isOpen, setIsOpen] = useState(true);
     const [selectedItemId, setSelectedItemId] = useState('');
+    const [runTour, setRunTour] = useState(false);
     return (
         <GlobalContext.Provider
             value={{
-                isOpen,
-                setIsOpen,
                 selectedItemId,
                 setSelectedItemId,
+                runTour,
+                setRunTour,
             }}
         >
             {children}

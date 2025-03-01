@@ -1,6 +1,6 @@
 import { prisma } from '../../../../backend/db'
 import { NextRequest } from 'next/server'
-import { WebhookEvent } from '@clerk/nextjs/server'
+import { generateTutorialPageContent } from '@/utils/pagesHelper';
 
 interface ClerkWebhookEvent {
     data: {
@@ -63,6 +63,17 @@ export async function POST(req: NextRequest) {
         },
     })
 
+    if (newUser) {
+        await prisma.item.create({
+            data: {
+                title: 'Tutorial',
+                itemType: 'PAGE',
+                userId: newUser.id,
+                index: 0,
+                content: generateTutorialPageContent(),
+            }
+        });
+    }
+
     return Response.json({ newUser })
-    // return Response.json({ newUser })
 }

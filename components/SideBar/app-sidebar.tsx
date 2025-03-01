@@ -16,8 +16,9 @@ import { ChevronUp } from "lucide-react"
 import { useUser, useClerk } from '@clerk/nextjs'
 import { useRouter } from "next/navigation"
 import AIChat from "../AIChat/Chat"
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Tutorial } from "../Tutorial/Tutorial"
+import { GlobalContext } from "../GlobalContextProvider"
 
 const items = [
     {
@@ -43,11 +44,24 @@ export function AppSidebar() {
     const { user } = useUser();
     const { signOut } = useClerk();
     const [isChatOpen, setIsChatOpen] = useState(false);
-    const [runTour, setRunTour] = useState(false);
+    const { runTour, setRunTour } = useContext(GlobalContext);
+
+    useEffect(() => {
+        if (user && !user.unsafeMetadata?.hasCompletedTutorial) {
+            setRunTour(true);
+            // Update user metadata to mark tutorial as shown
+            user.update({
+                unsafeMetadata: {
+                    ...user.unsafeMetadata,
+                    hasCompletedTutorial: true
+                }
+            });
+        }
+    }, [user]);
 
     return (
         <Sidebar>
-            <Tutorial runTour={runTour} setRunTour={setRunTour} />
+            <Tutorial />
             <SidebarContent id="sidebar-content">
                 {itemList && <FileNavigator itemList={itemList} />}
             </SidebarContent>
@@ -77,6 +91,21 @@ export function AppSidebar() {
                             <a onClick={() => setRunTour(true)}>
                                 <BookOpen />
                                 <span>Start Tutorial</span>
+                            </a>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem className="cursor-pointer">
+                        <SidebarMenuButton asChild>
+                            <a onClick={() => {
+                                user?.update({
+                                    unsafeMetadata: {
+                                        ...user.unsafeMetadata,
+                                        hasCompletedTutorial: false
+                                    }
+                                });
+                            }}>
+                                <BookOpen />
+                                <span>RESET TUTORIAL</span>
                             </a>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
