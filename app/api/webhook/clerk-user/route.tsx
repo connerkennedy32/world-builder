@@ -1,6 +1,8 @@
 import { prisma } from '../../../../backend/db'
 import { NextRequest } from 'next/server'
 import { generateTutorialPageContent } from '@/utils/pagesHelper';
+import { Webhook } from 'svix';
+import { headers } from 'next/headers';
 
 interface ClerkWebhookEvent {
     data: {
@@ -48,18 +50,46 @@ interface ClerkWebhookEvent {
 
 
 export async function POST(req: NextRequest) {
-    // THERE IS NO SECURITY CHECKS HERE
-    // TODO: Add security checks
-    const payload: ClerkWebhookEvent = await req.json()
-    const body = JSON.stringify(payload)
+    const headerPayload = headers();
+    const svixId = headerPayload.get('svix-id');
+    const svixTimestamp = headerPayload.get('svix-timestamp');
+    const svixSignature = headerPayload.get('svix-signature');
+
+    if (!svixId || !svixTimestamp || !svixSignature) {
+        return new Response('Missing svix headers', { status: 400 });
+    }
+
+    const payload = await req.text();
+    const body = payload;
+
+    const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
+    if (!webhookSecret) {
+        return new Response('Webhook secret not configured', { status: 500 });
+    }
+
+    const wh = new Webhook(webhookSecret);
+
+    let evt: ClerkWebhookEvent;
+
+    try {
+        // Verify the signature
+        evt = wh.verify(body, {
+            'svix-id': svixId,
+            'svix-timestamp': svixTimestamp,
+            'svix-signature': svixSignature,
+        }) as ClerkWebhookEvent;
+    } catch (err) {
+        console.error('Error verifying webhook:', err);
+        return new Response('Invalid signature', { status: 400 });
+    }
 
     const newUser = await prisma.user.create({
         data: {
-            clerkId: payload.data.id,
-            email: payload.data.email_addresses ? payload.data.email_addresses[0]?.email_address : null,
-            username: payload.data.username || '',
-            createdAt: new Date(payload.data.created_at),
-            updatedAt: new Date(payload.data.updated_at),
+            clerkId: evt.data.id,
+            email: evt.data.email_addresses ? evt.data.email_addresses[0]?.email_address : null,
+            username: evt.data.username || '',
+            createdAt: new Date(evt.data.created_at),
+            updatedAt: new Date(evt.data.updated_at),
         },
     })
 
