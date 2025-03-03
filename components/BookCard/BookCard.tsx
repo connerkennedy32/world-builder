@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { GlobalContext } from '../../components/GlobalContextProvider';
 import { Book, WordEntry } from '@prisma/client';
+import { useSidebar } from '../ui/sidebar';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
@@ -93,8 +94,8 @@ const calculateWordsPerDay = (wordCountList: WordEntry[], startDate?: Date, endD
 
 
 export default function BookCard({ book }: { book: Book }) {
-    const { id, title, goalWordCount, author } = book
-    const { isOpen } = useContext(GlobalContext);
+    const { id, title, goalWordCount, author } = book;
+    const { state: sidebarState } = useSidebar();
     const { data: wordCountList = [], isLoading } = useGetWordCount(id);
     const [currentWordCount, setCurrentWordCount] = useState<number>(0);
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -142,7 +143,7 @@ export default function BookCard({ book }: { book: Book }) {
 
     return (
         <>
-            <div className={isOpen ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
+            <div className={sidebarState === "expanded" ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
                 <Card className={Styles.content} variant="outlined">
                     <CardActionArea disableRipple onClick={handleCardClick}>
                         <div style={{ margin: '1em' }}>
