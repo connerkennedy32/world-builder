@@ -126,7 +126,9 @@ export function AppSidebar() {
                                 <DropdownMenuItem>
                                     <span>Account</span>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => signOut()}>
+                                <DropdownMenuItem onClick={() => signOut(() => {
+                                    window.location.href = '/';
+                                })}>
                                     <span>Sign out</span>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
