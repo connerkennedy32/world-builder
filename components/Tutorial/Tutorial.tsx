@@ -12,7 +12,7 @@ export function Tutorial() {
     const steps = [
         {
             target: "#tutorial-start",
-            content: "Welcome to World Builder! Let's take a quick tour to help you get started.",
+            content: "Welcome to World Builder! Let's take a quick tour to help you get started",
             placement: "center" as const,
             disableBeacon: true,
         },
@@ -28,12 +28,12 @@ export function Tutorial() {
         },
         {
             target: "#sidebar-content",
-            content: "Click on a folder or page to open it. You can click and drag to rearrange them.",
+            content: "Click on a folder or page to open it. You can click and drag to rearrange them",
             disableBeacon: true,
         },
         {
             target: "#tiptap-editor",
-            content: "Edit your content using the editor. Try creating / selecting a page to see the magic happen. Enjoy!",
+            content: "Edit your content using the editor. Try creating or selecting a page to see the magic happen. Enjoy!",
             disableBeacon: true,
         }
     ]
@@ -43,10 +43,10 @@ export function Tutorial() {
             steps={steps}
             continuous={true}
             showSkipButton={true}
-            showProgress={true}
+            showProgress={false}
             run={runTour}
             disableOverlayClose={true}
-            hideBackButton={true}
+            hideBackButton={false}
             locale={{
                 last: "Get Started!"
             }}

@@ -7,18 +7,20 @@ import { useUser } from "@clerk/nextjs";
 import { useSidebar } from "@/components/ui/sidebar";
 export default function Home() {
   const { runTour, setRunTour } = useContext(GlobalContext);
-  const { state: sidebarState } = useSidebar();
+  const { state: sidebarState, toggleSidebar, open } = useSidebar();
 
   return (
     <div id="tiptap-editor" className={`${sidebarState === "collapsed" ? Styles.containerDrawerClosed : Styles.containerDrawerOpen} flex flex-col items-center justify-center h-screen`}>
       <h1 className="text-4xl font-bold">World Builder</h1>
       <h2 className="text-2xl font-bold">Build your world here!</h2>
-      {<Button
+      {sidebarState === "collapsed" && <Button
         variant="default"
         className="mt-4"
         onClick={() => {
-          setRunTour(!runTour);
-
+          toggleSidebar();
+          if (!open) {
+            setRunTour(!runTour);
+          }
         }}
       >
         Get Started

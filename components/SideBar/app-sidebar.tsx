@@ -1,5 +1,5 @@
 'use client'
-import { Home, Settings, ChartLine, Bot, BookOpen } from "lucide-react"
+import { Home, Settings, ChartLine, Bot, BookOpen, ExternalLink } from "lucide-react"
 import {
     Sidebar,
     SidebarContent,
@@ -44,20 +44,7 @@ export function AppSidebar() {
     const { user } = useUser();
     const { signOut } = useClerk();
     const [isChatOpen, setIsChatOpen] = useState(false);
-    const { runTour, setRunTour } = useContext(GlobalContext);
-
-    useEffect(() => {
-        if (user && !user.unsafeMetadata?.hasCompletedTutorial) {
-            setRunTour(true);
-            // Update user metadata to mark tutorial as shown
-            user.update({
-                unsafeMetadata: {
-                    ...user.unsafeMetadata,
-                    hasCompletedTutorial: true
-                }
-            });
-        }
-    }, [user]);
+    const { setRunTour } = useContext(GlobalContext);
 
     return (
         <Sidebar>
@@ -90,22 +77,15 @@ export function AppSidebar() {
                         <SidebarMenuButton asChild>
                             <a onClick={() => setRunTour(true)}>
                                 <BookOpen />
-                                <span>Start Tutorial</span>
+                                <span>Tutorial</span>
                             </a>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                     <SidebarMenuItem className="cursor-pointer">
                         <SidebarMenuButton asChild>
-                            <a onClick={() => {
-                                user?.update({
-                                    unsafeMetadata: {
-                                        ...user.unsafeMetadata,
-                                        hasCompletedTutorial: false
-                                    }
-                                });
-                            }}>
-                                <BookOpen />
-                                <span>RESET TUTORIAL</span>
+                            <a onClick={() => window.open('https://forms.gle/roGp4N1gQjmUBda57', '_blank')}>
+                                <ExternalLink />
+                                <span>Submit Feedback</span>
                             </a>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
