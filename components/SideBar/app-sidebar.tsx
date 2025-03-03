@@ -126,8 +126,8 @@ export function AppSidebar() {
                                 <DropdownMenuItem>
                                     <span>Account</span>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <span onClick={() => signOut()}>Sign out</span>
+                                <DropdownMenuItem onClick={() => signOut()}>
+                                    <span>Sign out</span>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
