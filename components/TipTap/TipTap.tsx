@@ -111,19 +111,6 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
         savePageContent({ page_id, content: editor?.getJSON() || {} });
     };
 
-    const replaceWithCustomComponent = () => {
-        const selection = editor?.state.selection;
-        if (!selection) return; // No selection
-        const { from, to } = selection;
-        if (from === to) return; // No selection
-
-        const text = editor?.state.doc.textBetween(from, to);
-        editor?.chain().focus().deleteSelection().insertContent({
-            type: 'customComponent',
-            attrs: { text },
-        }).run();
-    };
-
     if (selectedItemId !== page_id) {
         return null;
     }

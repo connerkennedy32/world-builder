@@ -14,6 +14,7 @@ export async function GET(req: any) {
     const page = await prisma.item.findUnique({
         where: {
             id: pageId,
+            userId: userId,
         },
     });
 

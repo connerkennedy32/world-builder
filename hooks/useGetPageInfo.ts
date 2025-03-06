@@ -4,7 +4,7 @@ import axios from 'axios';
 const fetchPageInfo = async (title: string) => {
     const response = await axios.get('/api/pages', {
         params: {
-            title: title
+            title: title,
         }
     });
     return response.data;

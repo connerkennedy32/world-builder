@@ -6,7 +6,7 @@ import { getCurrentUserId } from '@/app/utils/userUtils';
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url)
     const title = searchParams.get('title')
-
+    const userId = await getCurrentUserId()
     if (title) {
         const page = await prisma.item.findFirst({
             where: {
@@ -14,7 +14,8 @@ export async function GET(req: NextRequest) {
                 title: {
                     equals: title,
                     mode: 'insensitive'
-                }
+                },
+                userId: userId
             }
         });
 
