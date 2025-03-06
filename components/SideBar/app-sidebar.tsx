@@ -16,7 +16,7 @@ import { ChevronUp } from "lucide-react"
 import { useUser, useClerk } from '@clerk/nextjs'
 import { useRouter } from "next/navigation"
 import AIChat from "../AIChat/Chat"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { Tutorial } from "../Tutorial/Tutorial"
 import { GlobalContext } from "../GlobalContextProvider"
 

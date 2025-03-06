@@ -98,14 +98,6 @@
     position: fixed;
   }
 
-  .mention {
-    border: 1px solid #000;
-    border-radius: 0.4rem;
-    box-decoration-break: clone;
-    text-decoration: none;
-    color: black;
-  }
-
   .mention:hover {
     background-color: rgb(205, 205, 205);
   }

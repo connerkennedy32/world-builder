@@ -3,8 +3,7 @@
 import Styles from './styles.module.css'
 import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
-import Mention from '@tiptap/extension-mention'
-import { EditorContent, useEditor, BubbleMenu, FloatingMenu } from '@tiptap/react'
+import { EditorContent, useEditor, BubbleMenu, FloatingMenu, ReactNodeViewRenderer } from '@tiptap/react'
 import { EditorState } from 'prosemirror-state';
 import StarterKit from '@tiptap/starter-kit'
 import React, { useEffect, useState, useContext } from 'react'
@@ -12,10 +11,11 @@ import suggestion from '../Mentions/suggestion'
 import { useDebounce } from 'use-debounce';
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
-import CustomComponentExtension from './extensions/CustomComponent';
 import { useUpdatePage } from '@/hooks';
 import { GlobalContext } from '../GlobalContextProvider';
 import { useSidebar } from '../ui/sidebar'
+import { CustomMentionExtension } from './extensions/MentionExtenstion';
+
 export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
     const { state: sidebarState } = useSidebar();
     const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
@@ -62,14 +62,10 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
             TaskItem.configure({
                 nested: true,
             }),
-            // Mention.configure({
-            //     HTMLAttributes: {
-            //         class: 'mention'
-            //     },
-            //     // @ts-ignore
-            //     suggestion,
-            // }),
-            CustomComponentExtension,
+            CustomMentionExtension.configure({
+                // @ts-ignore
+                suggestion,
+            }),
         ],
         content: page_content,
         editorProps: {
@@ -161,12 +157,6 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
                         className={editor.isActive('taskList') ? 'is-active' : ''}
                     >
                         Tasks
-                    </button>
-                    <button
-                        onClick={replaceWithCustomComponent}
-                        className={editor.isActive('customComponent') ? 'is-active' : ''}
-                    >
-                        Custom Component
                     </button>
                 </BubbleMenu>}
                 {editor && <FloatingMenu editor={editor} tippyOptions={{ duration: 100 }}>

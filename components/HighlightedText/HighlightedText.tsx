@@ -23,16 +23,15 @@ import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography';
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
-import CustomComponentExtension from '@/components/TipTap/extensions/CustomComponent';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
+import { CustomMentionExtension } from '../TipTap/extensions/MentionExtenstion';
 
 const HighlightedText = ({ node }: { node: any }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isClient, setIsClient] = useState(false);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const router = useRouter();
-    const { data: pageInfo, isLoading: pageInfoLoading } = useGetPageInfo(node.attrs.text);
-
+    const { data: pageInfo, isLoading: pageInfoLoading } = useGetPageInfo(node.attrs.id);
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -42,7 +41,11 @@ const HighlightedText = ({ node }: { node: any }) => {
             TaskItem.configure({
                 nested: true,
             }),
-            CustomComponentExtension,
+            CustomMentionExtension.configure({
+                HTMLAttributes: {
+                    class: 'mention'
+                },
+            }),
         ],
         content: '',
         editorProps: {
@@ -84,7 +87,7 @@ const HighlightedText = ({ node }: { node: any }) => {
 
     return (
         <NodeViewWrapper
-            style={{ backgroundColor: 'yellow', display: 'inline', cursor: 'pointer' }}
+            style={{ display: 'inline', cursor: 'pointer', textDecoration: 'underline' }}
             className="custom-component"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -92,12 +95,12 @@ const HighlightedText = ({ node }: { node: any }) => {
             <TooltipProvider delayDuration={100}>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <span onClick={handleWordClick} className="custom-highlight">{node.attrs.text}</span>
+                        <span onClick={handleWordClick} className="custom-highlight">{node.attrs.id}</span>
                     </TooltipTrigger>
                     <TooltipContent
                         onMouseDown={handlePopoverClick}
                     >
-                        <h3 className="text-lg font-semibold mb-2">{node.attrs.text}</h3>
+                        <h3 className="text-lg font-semibold mb-2">{node.attrs.id}</h3>
                         {pageInfoLoading ? <p>Loading...</p> : <p className="text-sm">{pageInfo?.id}</p>}
                     </TooltipContent>
                 </Tooltip>
