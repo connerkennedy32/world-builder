@@ -24,6 +24,7 @@ export async function GET(req: NextRequest) {
         const pages = await prisma.item.findMany({
             where: {
                 itemType: "PAGE",
+                userId: userId
             },
         });
 
