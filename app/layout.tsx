@@ -26,6 +26,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        <head>
+          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        </head>
         <body className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
