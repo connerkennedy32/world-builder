@@ -13,11 +13,11 @@ import { Button } from '@/components/ui/button';
 
 export const FileTree = ({ data, controller }: { data: readonly TreeItem[], controller: any }) => {
     return (
-        <>  {/* @ts-ignore */}
-            <Tree width={240} openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>
+        <div className="border rounded-md pl-2">  {/* @ts-ignore */}
+            <Tree width={230} height={400} openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>
                 {(props) => <Node {...props} controller={controller} />}
             </Tree>
-        </>
+        </div>
     )
 }
 
