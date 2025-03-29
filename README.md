@@ -27,6 +27,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ```bash
 npx prisma migrate dev --name your_migration_name
+npx prisma db push
+
 ```
 
 This generates a new migration in the migrations folder and syncs your local db with the schema.

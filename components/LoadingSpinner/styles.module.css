@@ -1,0 +1,21 @@
+.centerSidebarOpen {
+    transition: width 0.3s ease;
+    width: calc(100vw - 256px);
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.centerSidebarClosed {
+    transition: width 0.3s ease;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
