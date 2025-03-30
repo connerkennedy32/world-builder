@@ -30,7 +30,7 @@ export default function BookTrackerPage() {
     const progressPercentage = goalWordCount > 0 ? (currentWordCount / goalWordCount) * 100 : 0;
 
     const chartData = convertWordEntriesToChartData(wordEntries);
-
+    console.log('chartData', chartData);
     const chartConfig = {
         wordCount: {
             label: "Word Count",
