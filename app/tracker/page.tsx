@@ -11,7 +11,7 @@ import { useState } from 'react';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 
 export default function TrackerPage() {
-    const { data, isLoading, isError } = useGetBookList(true);
+    const { data: books, isLoading, isError } = useGetBookList(true);
     const { mutate: createBook, isLoading: isCreating } = useCreateBook();
     const [isOpen, setIsOpen] = useState(false);
     const [title, setTitle] = useState('');
@@ -47,7 +47,7 @@ export default function TrackerPage() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '4rem' }}  >
-            {data?.map((book: Book) => (
+            {books?.map((book: Book) => (
                 <BookCard key={book.id} book={book} />
             ))}
 

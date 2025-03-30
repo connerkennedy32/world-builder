@@ -1,136 +1,109 @@
 'use client'
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import EditIcon from '@mui/icons-material/Edit';
-import Styles from './styles.module.css'
-import { LineChart } from '@mui/x-charts/LineChart';
-import { axisClasses } from '@mui/x-charts/ChartsAxis';
+import useGetBookById from '@/hooks/useGetBookById';
+import { useParams } from 'next/navigation';
+import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
+import useGetBookWordEntries from '@/hooks/useGetBookWordEntries';
+import { ChartConfig, ChartContainer } from "@/components/ui/chart"
+import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { convertWordEntriesToChartData } from '@/app/utils/wordEntryUtils';
 
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-    height: 20,
-    borderRadius: 5,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-        backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-        borderRadius: 5,
-        backgroundColor: '#51ffdf',
-    },
-}));
+export default function BookTrackerPage() {
+    const { book_id: bookId } = useParams() as { book_id: string };
+    const { data: bookDetails, isLoading: bookDetailsLoading, isError: bookDetailsError } = useGetBookById(bookId);
+    const { data: wordEntries, isLoading: wordEntriesLoading, isError: wordEntriesError } = useGetBookWordEntries(bookId);
 
-const handleCardClick = () => {
-    console.log("CLICKING NOW")
-}
+    const isLoading = bookDetailsLoading || wordEntriesLoading;
 
-const handleEditClick = (event: any) => {
-    event.stopPropagation();
-    console.log('Button clicked');
-};
+    if (isLoading) {
+        return <LoadingSpinner />;
+    }
 
-const dataset = [
-    {
-        words: 10000,
-        month: 'January',
-    },
-    {
-        words: 15000,
-        month: 'February',
-    },
-    {
-        words: 18000,
-        month: 'March',
-    },
-    {
-        words: 21000,
-        month: 'April',
-    },
-    {
-        words: 25000,
-        month: 'May',
-    },
-    {
-        words: 29000,
-        month: 'June',
-    },
-    {
-        words: 32000,
-        month: 'July',
-    },
-    {
-        words: 40000,
-        month: 'August',
-    },
-    {
-        words: 43000,
-        month: 'September',
-    },
-    {
-        words: 46000,
-        month: 'October',
-    },
-    {
-        words: 49000,
-        month: 'November',
-    },
-    {
-        words: 52000,
-        month: 'December',
-    },
-];
+    if (bookDetailsError || wordEntriesError || !bookDetails || !wordEntries) {
+        return <div>Error loading data or no data found.</div>;
+    }
 
-const valueFormatter = (value: number | null) => `${value?.toLocaleString('en-US')}`;
+    const currentWordCount = wordEntries.length > 0 ? wordEntries[wordEntries.length - 1]?.wordCount || 0 : 0;
+    const goalWordCount = bookDetails?.goalWordCount || 0;
+    const progressPercentage = goalWordCount > 0 ? (currentWordCount / goalWordCount) * 100 : 0;
 
-const otherSetting = {
-    height: 300,
-    yAxis: [{ label: 'rainfall (mm)' }],
-    grid: { horizontal: true },
-    sx: {
-        [`& .${axisClasses.left} .${axisClasses.label}`]: {
-            transform: 'translateX(-10px)',
+    const chartData = convertWordEntriesToChartData(wordEntries);
+
+    const chartConfig = {
+        wordCount: {
+            label: "Word Count",
+            color: "hsl(var(--chart-1))",
         },
-    },
-};
+    } satisfies ChartConfig
 
-const currentWordCount = 19000;
-const goalWordCount = 88000;
-const percentage = Math.floor(100 * (currentWordCount / goalWordCount));
-
-export default function CustomizedProgressBars() {
     return (
-        // width: '100vw' needs to be set if this is a top-level component
-        <div style={{ display: 'flex', alignItems: 'center', width: '100vw', justifyContent: 'center' }}>
-            <Card style={{ margin: '1em' }} variant="outlined">
-                <div style={{ margin: '1em' }}>
-                    <h1>Lunar Tides</h1>
-                    <h3 style={{ fontStyle: 'italic' }}>Conner Kennedy</h3>
-                    <div style={{ display: 'flex', gap: '0.5em', marginTop: '0.5em', alignItems: 'center' }}>
-                        <BorderLinearProgress style={{ width: '1100px' }} variant="determinate" value={percentage} />
-                        <span>{`${percentage}%`}</span>
+        <div className="p-4 md:p-8">
+            <Card className="w-full max-w-4xl mx-auto">
+                <CardHeader>
+                    <CardTitle>{bookDetails?.title}</CardTitle>
+                    <CardDescription>{bookDetails?.author}</CardDescription>
+                    <div className="pt-2">
+                        <div className="flex justify-between text-sm text-muted-foreground mb-1">
+                            <span>Current: {currentWordCount.toLocaleString()} words</span>
+                            <span>Goal: {goalWordCount.toLocaleString()} words</span>
+                        </div>
+                        <Progress value={progressPercentage} aria-label={`${progressPercentage.toFixed(0)}% towards goal`} />
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5em' }}>
-                        <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>{`${currentWordCount} / ${goalWordCount}`}</span>
-                    </div>
-                </div>
-                <div>
-                    <LineChart
-                        dataset={dataset}
-                        xAxis={[
-                            {
-                                scaleType: 'band',
-                                dataKey: 'month',
-                                valueFormatter: (month, context) =>
-                                    context.location === 'tick'
-                                        ? `${month.slice(0, 3)} \n2024`
-                                        : `${month} 2024`,
-                            },
-                        ]}
-                        series={[{ dataKey: 'words', label: 'Word count', valueFormatter }]}
-                        {...otherSetting}
-                    />
-                </div>
+                </CardHeader>
+                <CardContent>
+                    <ChartContainer config={chartConfig} className="min-h-[300px] w-full">
+                        <AreaChart
+                            width={500}
+                            height={300}
+                            data={chartData}
+                            margin={{
+                                top: 10,
+                                right: 30,
+                                left: 0,
+                                bottom: 0,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis
+                                dataKey="date"
+                                tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                                tickLine={false}
+                                axisLine={false}
+                            />
+                            <YAxis
+                                domain={[0, goalWordCount > 0 ? goalWordCount : 'dataMax']}
+                                dataKey="wordCount"
+                                tickLine={false}
+                                axisLine={false}
+                                tickFormatter={(value) => value.toLocaleString()}
+                            />
+                            <Tooltip
+                                cursor={false}
+                                contentStyle={{
+                                    backgroundColor: 'hsl(var(--background))',
+                                    borderColor: 'hsl(var(--border))',
+                                    borderRadius: 'var(--radius)',
+                                }}
+                                labelFormatter={(label) => new Date(label).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                formatter={(value: number, name: string) => {
+                                    return [`${value.toLocaleString()} words`, chartConfig.wordCount.label];
+                                }}
+                            />
+                            <Area
+                                dataKey="wordCount"
+                                type="monotone"
+                                fill="var(--color-wordCount)"
+                                fillOpacity={0.7}
+                                stroke="var(--color-wordCount)"
+                                stackId="a"
+                                connectNulls
+                                dot={true}
+                            />
+                        </AreaChart>
+                    </ChartContainer>
+                </CardContent>
             </Card>
         </div>
     );

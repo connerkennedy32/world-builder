@@ -16,7 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { GlobalContext } from '../../components/GlobalContextProvider';
 import { Book, WordEntry } from '@prisma/client';
 import { useSidebar } from '../ui/sidebar';
-
+import { useRouter } from 'next/navigation';
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
     borderRadius: 5,
@@ -103,10 +103,12 @@ export default function BookCard({ book }: { book: Book }) {
     const [wordCount, setWordCount] = useState<number | null>(currentWordCount);
     const [showCheckmark, setShowCheckmark] = useState<boolean>(false);
     const { mutate: createNewWordEntry, isLoading: isCreatingWordEntry } = useCreateNewWordEntry();
+    const router = useRouter();
 
     const handleCardClick = () => {
         // Return the words / day metric over a given period
         console.log(calculateWordsPerDay(wordCountList))
+        router.push(`/tracker/${id}`);
     }
 
     const handleEditClick = (event: any) => {
