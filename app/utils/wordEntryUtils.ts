@@ -13,12 +13,13 @@ export const convertWordEntriesToChartData = (wordEntries: WordEntry[]) => {
 
     const chartData = [];
     let currentDate = new Date(minDate);
-
     while (currentDate <= maxDate) {
+        // Deal with daylight savings
         const dateString = currentDate.toISOString();
         const wordCount = wordEntries.find((entry: any) => entry.date === dateString)?.wordCount || null;
         chartData.push({ date: dateString, wordCount });
-        currentDate.setDate(currentDate.getDate() + 1);
+        currentDate.setUTCHours(0, 0, 0, 0);
+        currentDate.setDate(currentDate.getUTCDate() + 1);
     }
 
     // Sort the chart data by date
