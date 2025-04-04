@@ -16,6 +16,11 @@ export async function GET(req: any) {
         },
     });
 
+    // Conner and Sam can see all books
+    if (userId == 1 || userId == 2) {
+        return Response.json(book);
+    }
+
     if (!book) {
         return Response.json({ error: "No book with that ID" }, { status: 404 });
     }
