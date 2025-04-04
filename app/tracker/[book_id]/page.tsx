@@ -20,6 +20,7 @@ export default function BookTrackerPage() {
     const { data: bookDetails, isLoading: bookDetailsLoading, isError: bookDetailsError } = useGetBookById(bookId);
     const { data: wordEntries, isLoading: wordEntriesLoading, isError: wordEntriesError } = useGetBookWordEntries(bookId);
     const { mutate: updateBookMutation, isLoading: updateBookLoading } = useUpdateBook();
+    const [showDots, setShowDots] = React.useState(false);
 
     const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
     const [formData, setFormData] = React.useState({
@@ -53,7 +54,6 @@ export default function BookTrackerPage() {
     const progressPercentage = goalWordCount > 0 ? (currentWordCount / goalWordCount) * 100 : 0;
 
     const chartData = convertWordEntriesToChartData(wordEntries);
-    console.log('chartData', chartData);
     const chartConfig = {
         wordCount: {
             label: "Word Count",
@@ -96,9 +96,14 @@ export default function BookTrackerPage() {
                         <h1 className="text-2xl font-semibold tracking-tight">{bookDetails?.title}</h1>
                         <p className="text-sm text-muted-foreground">{bookDetails?.author}</p>
                     </div>
-                    <Button variant="outline" size="sm" onClick={handleEditClick}>
-                        Edit
-                    </Button>
+                    <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={handleEditClick}>
+                            Edit
+                        </Button>
+                        <Button variant="outline" size="sm" onClick={() => setShowDots(!showDots)}>
+                            {showDots ? 'Hide Dots' : 'Show Dots'}
+                        </Button>
+                    </div>
                 </div>
                 <div className="pt-2">
                     <div className="flex justify-between text-sm text-muted-foreground mb-1">
@@ -153,7 +158,7 @@ export default function BookTrackerPage() {
                             stroke="var(--color-wordCount)"
                             stackId="a"
                             connectNulls
-                            dot={true}
+                            dot={showDots}
                         />
                     </AreaChart>
                 </ChartContainer>
