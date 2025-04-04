@@ -129,7 +129,8 @@ export default function BookCard({ book }: { book: Book }) {
         }
     }, [wordCountList, isLoading]);
 
-    const percentage = calculatePercentage(currentWordCount, goalWordCount);
+    const textPercentage = calculatePercentage(currentWordCount, goalWordCount);
+    const percentage = Math.min(textPercentage, 100);
 
     const handleSubmit = () => {
         createNewWordEntry(
@@ -156,7 +157,7 @@ export default function BookCard({ book }: { book: Book }) {
                             <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>{author || 'N/A'}</span>
                             <div style={{ display: 'flex', gap: '0.5em', marginTop: '0.5em', alignItems: 'center' }}>
                                 <BorderLinearProgress style={{ width: '100%' }} variant="determinate" value={isLoading ? 0 : percentage} />
-                                <span>{`${isLoading ? 0 : percentage}%`}</span>
+                                <span>{`${isLoading ? 0 : textPercentage}%`}</span>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5em' }}>
                                 <span style={{ fontSize: '0.75em', fontStyle: 'italic' }}>{`${currentWordCount} / ${goalWordCount}`}</span>
