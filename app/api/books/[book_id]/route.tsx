@@ -12,7 +12,7 @@ export async function GET(req: any) {
     const book = await prisma.book.findUnique({
         where: {
             id: Number(bookId),
-            userId: userId,
+            // userId: userId,
         },
     });
 
