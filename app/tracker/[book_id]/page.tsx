@@ -14,6 +14,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { convertWordEntriesToChartData } from '@/app/utils/wordEntryUtils';
 import Styles from './styles.module.css';
+import FinishByCalculator from '@/components/FinishByCalculator/FinishByCalculator';
 
 export default function BookTrackerPage() {
     const { book_id: bookId } = useParams() as { book_id: string };
@@ -163,6 +164,8 @@ export default function BookTrackerPage() {
                     </AreaChart>
                 </ChartContainer>
             </div>
+
+            <FinishByCalculator currentWordCount={currentWordCount} goalWordCount={goalWordCount} />
 
             <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
                 <DialogContent className="sm:max-w-[425px]">
