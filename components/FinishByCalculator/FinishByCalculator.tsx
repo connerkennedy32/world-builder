@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function FinishByCalculator({ currentWordCount, goalWordCount }: { currentWordCount: number, goalWordCount: number }) {
-    const [dailyWordCount, setDailyWordCount] = useState<number>(500);
+    const [dailyWordCount, setDailyWordCount] = useState<number>(300);
     const [finishDate, setFinishDate] = useState<Date | null>(null);
     const [daysToFinish, setDaysToFinish] = useState<number>(0);
 
