@@ -1,8 +1,9 @@
 'use client'
 import * as React from 'react';
+import { useContext } from 'react';
 import useGetBookById from '@/hooks/useGetBookById';
 import useUpdateBook from '@/hooks/useUpdateBook';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner/LoadingSpinner';
 import useGetBookWordEntries from '@/hooks/useGetBookWordEntries';
 import { ChartConfig, ChartContainer } from "@/components/ui/chart"
@@ -15,15 +16,31 @@ import { Label } from '@/components/ui/label';
 import { convertWordEntriesToChartData } from '@/app/utils/wordEntryUtils';
 import Styles from './styles.module.css';
 import FinishByCalculator from '@/components/FinishByCalculator/FinishByCalculator';
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { ChevronDown } from 'lucide-react';
+import useGetBookList from '@/hooks/useGetBookList';
+import { Book } from '@prisma/client';
+import { toast } from '@/hooks/use-toast';
+import useCreateNewTimeEntry from '@/hooks/useCreateNewTimeEntry';
+import { GlobalContext } from '@/components/GlobalContextProvider';
+import useCreateNewWordEntry from '@/hooks/useCreateNewWordEntry';
+import { useQueryClient } from 'react-query';
 export default function BookTrackerPage() {
     const { book_id: bookId } = useParams() as { book_id: string };
     const { data: bookDetails, isLoading: bookDetailsLoading, isError: bookDetailsError } = useGetBookById(bookId);
     const { data: wordEntries, isLoading: wordEntriesLoading, isError: wordEntriesError } = useGetBookWordEntries(bookId);
+    const { mutate: createNewTimeEntry, isLoading: createNewTimeEntryLoading } = useCreateNewTimeEntry();
+    const { mutate: createNewWordEntry, isLoading: createNewWordEntryLoading } = useCreateNewWordEntry();
+    const { data: books, isLoading: booksLoading, isError: booksError } = useGetBookList(true);
     const { mutate: updateBookMutation, isLoading: updateBookLoading } = useUpdateBook();
+    const { minutes, reset } = useContext(GlobalContext);
+    const queryClient = useQueryClient();
+    const router = useRouter();
     const [showDots, setShowDots] = React.useState(false);
-
+    const [overriddenMinutes, setOverriddenMinutes] = React.useState<number | null>(null);
+    const [wordCount, setWordCount] = React.useState<number>(0);
     const [isEditDialogOpen, setIsEditDialogOpen] = React.useState(false);
+    const [isAddEntryDialogOpen, setIsAddEntryDialogOpen] = React.useState(false);
     const [formData, setFormData] = React.useState({
         title: '',
         author: '',
@@ -66,6 +83,10 @@ export default function BookTrackerPage() {
         setIsEditDialogOpen(true);
     };
 
+    const handleAddEntryClick = () => {
+        setIsAddEntryDialogOpen(true);
+    };
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
@@ -74,7 +95,7 @@ export default function BookTrackerPage() {
         });
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleEditSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             await updateBookMutation({
@@ -89,15 +110,79 @@ export default function BookTrackerPage() {
         }
     };
 
+    const handleAddEntrySubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            createNewTimeEntry({ bookId: parseInt(bookId), minutes: overriddenMinutes || minutes }, {
+                onSuccess: () => {
+                    toast({
+                        title: `${overriddenMinutes || minutes} minute${(overriddenMinutes || minutes) === 1 ? '' : 's'} added to tracker`,
+                        description: 'You can now see your time in the tracker',
+                    });
+                    reset();
+                    setOverriddenMinutes(null);
+                }
+            });
+        } catch (error) {
+            console.error('Error adding entry:', error);
+        }
+    };
+
+    const handleWordEntrySubmit = () => {
+        createNewWordEntry(
+            { bookId: parseInt(bookId), date: new Date().toISOString().split('T')[0], wordCount: wordCount || 0 },
+            {
+                onSuccess: () => {
+                    toast({
+                        title: `${wordCount} word${wordCount === 1 ? '' : 's'} added to tracker`,
+                        description: 'You can now see your word count in the tracker',
+                    });
+                    queryClient.invalidateQueries({ queryKey: ['bookWordEntries', bookId] });
+                    setWordCount(0);
+                }
+            }
+        );
+    };
+
     return (
         <div className={Styles.centerSidebarOpen}>
             <div className="p-6 pb-2">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mb-4">
                     <div>
-                        <h1 className="text-2xl font-semibold tracking-tight">{bookDetails?.title}</h1>
-                        <p className="text-sm text-muted-foreground">{bookDetails?.author}</p>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button
+                                    variant="ghost"
+                                    className="px-3 py-2 hover:bg-accent/50 transition-colors group"
+                                >
+                                    <span className="text-2xl font-semibold tracking-tight mr-1 group-hover:text-primary">
+                                        {bookDetails?.title}
+                                    </span>
+                                    <ChevronDown size={16} className="text-muted-foreground group-hover:text-primary" />
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="start" className="w-[200px]">
+                                {books?.map((book: Book) => (
+                                    <DropdownMenuItem
+                                        key={book.id}
+                                        onClick={() => router.push(`/tracker/${book.id}`)}
+                                        className="cursor-pointer"
+                                    >
+                                        <p className={`text-sm ${book.id === parseInt(bookId) ? 'font-medium text-primary' : 'text-muted-foreground'}`}>
+                                            {book.title}
+                                        </p>
+                                    </DropdownMenuItem>
+                                ))}
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                        <p className="text-sm text-muted-foreground pl-3">
+                            {bookDetails?.author ? `by ${bookDetails.author}` : 'No author specified'}
+                        </p>
                     </div>
                     <div className="flex gap-2">
+                        <Button variant="outline" size="sm" onClick={handleAddEntryClick}>
+                            Add Entry
+                        </Button>
                         <Button variant="outline" size="sm" onClick={handleEditClick}>
                             Edit
                         </Button>
@@ -167,12 +252,54 @@ export default function BookTrackerPage() {
 
             <FinishByCalculator currentWordCount={currentWordCount} goalWordCount={goalWordCount} />
 
+            <Dialog open={isAddEntryDialogOpen} onOpenChange={setIsAddEntryDialogOpen}>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Add Book Entry</DialogTitle>
+                    </DialogHeader>
+                    <div className="flex flex-col gap-6">
+                        <div>
+                            <div className="flex flex-row gap-2 items-center">
+                                <Label htmlFor="date" className="text-right">Time Entry</Label>
+                                <Input
+                                    id="timeEntry"
+                                    name="timeEntry"
+                                    type="number"
+                                    value={overriddenMinutes || minutes}
+                                    onChange={(e) => setOverriddenMinutes(parseInt(e.target.value))}
+                                    className="w-24"
+                                />
+                                <Button disabled={createNewTimeEntryLoading || (minutes === 0 && (overriddenMinutes === null || overriddenMinutes === 0))} variant="default" onClick={handleAddEntrySubmit}>
+                                    Add {overriddenMinutes || minutes} minute{(overriddenMinutes || minutes) === 1 ? '' : 's'}
+                                </Button>
+                            </div>
+                        </div>
+                        <div>
+                            <div className="flex flex-row gap-2 items-center">
+                                <Label htmlFor="date" className="text-right">Word Entry</Label>
+                                <Input
+                                    id="wordEntry"
+                                    name="wordEntry"
+                                    type="number"
+                                    value={wordCount}
+                                    onChange={(e) => setWordCount(parseInt(e.target.value))}
+                                    className="w-24"
+                                />
+                                <Button disabled={!wordCount} variant="default" onClick={handleWordEntrySubmit}>
+                                    Submit
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                </DialogContent>
+            </Dialog>
+
             <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Edit Book Details</DialogTitle>
                     </DialogHeader>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleEditSubmit}>
                         <div className="grid gap-4 py-4">
                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="title" className="text-right">Title</Label>
