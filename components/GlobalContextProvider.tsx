@@ -13,6 +13,7 @@ interface IGlobalContextProps {
     isRunning: boolean;
     start: () => void;
     pause: () => void;
+    reset: () => void;
 }
 
 export const GlobalContext = createContext<IGlobalContextProps>({
@@ -25,6 +26,7 @@ export const GlobalContext = createContext<IGlobalContextProps>({
     isRunning: false,
     start: () => { },
     pause: () => { },
+    reset: () => { },
 });
 
 export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
@@ -37,6 +39,7 @@ export const GlobalContextProvider = ({ children }: { children: React.ReactNode 
         isRunning,
         start,
         pause,
+        reset,
     } = useStopwatch();
 
     return (
@@ -51,6 +54,7 @@ export const GlobalContextProvider = ({ children }: { children: React.ReactNode 
                 isRunning,
                 start,
                 pause,
+                reset,
             }}
         >
             {children}

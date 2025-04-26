@@ -1,5 +1,5 @@
 'use client'
-import { Home, Settings, ChartLine, Bot, BookOpen, ExternalLink, Clock } from "lucide-react"
+import { Home, Settings, ChartLine, Bot, BookOpen, ExternalLink, Clock, RotateCcw } from "lucide-react"
 import {
     Sidebar,
     SidebarContent,
@@ -51,6 +51,7 @@ export function AppSidebar() {
         isRunning,
         start,
         pause,
+        reset,
     } = useContext(GlobalContext);
 
     return (
@@ -102,6 +103,9 @@ export function AppSidebar() {
                                 <Clock />
                                 {isRunning ? <span onClick={() => pause()}>Pause Stopwatch</span> : <span onClick={() => start()}>Start Stopwatch</span>}
                                 <span>{minutes}:{seconds < 10 ? `0${seconds}` : seconds}</span>
+                                {!isRunning && (seconds > 0 || minutes > 0) && <span onClick={() => reset()}>
+                                    <RotateCcw size={16} />
+                                </span>}
                             </div>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
