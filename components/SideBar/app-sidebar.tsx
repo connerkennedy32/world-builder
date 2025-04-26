@@ -1,5 +1,5 @@
 'use client'
-import { Home, Settings, ChartLine, Bot, BookOpen, ExternalLink } from "lucide-react"
+import { Home, Settings, ChartLine, Bot, BookOpen, ExternalLink, Clock } from "lucide-react"
 import {
     Sidebar,
     SidebarContent,
@@ -44,7 +44,14 @@ export function AppSidebar() {
     const { user } = useUser();
     const { signOut } = useClerk();
     const [isChatOpen, setIsChatOpen] = useState(false);
-    const { setRunTour } = useContext(GlobalContext);
+    const {
+        setRunTour,
+        seconds,
+        minutes,
+        isRunning,
+        start,
+        pause,
+    } = useContext(GlobalContext);
 
     return (
         <Sidebar>
@@ -87,6 +94,15 @@ export function AppSidebar() {
                                 <ExternalLink />
                                 <span>Submit Feedback</span>
                             </a>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem className="cursor-pointer">
+                        <SidebarMenuButton asChild>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <Clock />
+                                {isRunning ? <span onClick={() => pause()}>Pause Stopwatch</span> : <span onClick={() => start()}>Start Stopwatch</span>}
+                                <span>{minutes}:{seconds < 10 ? `0${seconds}` : seconds}</span>
+                            </div>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>

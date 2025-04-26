@@ -83,6 +83,7 @@ model Book {
   goalWordCount Int?
   author        String?
   wordEntries   WordEntry[]
+  timeEntries   TimeEntry[]
 }
 
 model WordEntry {
@@ -91,4 +92,12 @@ model WordEntry {
   date      DateTime
   bookId    Int
   Book      Book     @relation(fields: [bookId], references: [id])
+}
+
+model TimeEntry {
+  id      Int      @id @default(autoincrement())
+  minutes Int
+  date    DateTime @default(now())
+  bookId  Int
+  Book    Book     @relation(fields: [bookId], references: [id])
 }

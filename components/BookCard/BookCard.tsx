@@ -11,12 +11,14 @@ import Styles from './styles.module.css'
 import useGetWordCount from '@/hooks/useGetWordCount';
 import useCreateNewWordEntry from '@/hooks/useCreateNewWordEntry';
 import { motion } from 'framer-motion';
-import Button from '@mui/material/Button';
+import { Button } from '../ui/button';
 import CircularProgress from '@mui/material/CircularProgress';
-import { GlobalContext } from '../../components/GlobalContextProvider';
 import { Book, WordEntry } from '@prisma/client';
 import { useSidebar } from '../ui/sidebar';
 import { useRouter } from 'next/navigation';
+import { GlobalContext } from '../GlobalContextProvider';
+import useCreateNewTimeEntry from '@/hooks/useCreateNewTimeEntry';
+import { toast } from '@/hooks/use-toast';
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
     borderRadius: 5,
@@ -34,64 +36,6 @@ const calculatePercentage = (currentWordCount: number, goalWordCount: number | n
     return Math.floor(100 * (currentWordCount / goalWordCount));
 }
 
-const calculateWordsPerDay = (wordCountList: WordEntry[], startDate?: Date, endDate?: Date) => {
-    const mostRecentDate = new Date(wordCountList[0].date);
-    const oldestDate = new Date(wordCountList[wordCountList.length - 1].date);
-    let startDateCalc;
-    let endDateCalc;
-    if (startDate) {
-        if (startDate.getTime() < oldestDate.getTime() || startDate.getTime() > mostRecentDate.getTime()) {
-            return 0;
-        } else {
-            startDateCalc = startDate;
-        }
-    } else {
-        startDateCalc = oldestDate;
-    }
-
-    if (endDate) {
-        if (endDate.getTime() < oldestDate.getTime() || endDate.getTime() > mostRecentDate.getTime()) {
-            return 0;
-        } else {
-            endDateCalc = endDate;
-        }
-    } else {
-        endDateCalc = mostRecentDate;
-    }
-
-
-
-    let startWordCount = wordCountList.find(wordEntry => wordEntry.date === startDateCalc)?.wordCount;
-    if (!startWordCount) {
-        for (let i = 0; i < wordCountList.length; i++) {
-            if (wordCountList[i].date > startDateCalc) { }
-        }
-        // Calculate the word count for the start date
-        // Find the nearest previous word count
-        const previousWordCount = wordCountList.find(wordEntry => wordEntry.date < startDateCalc)?.wordCount;
-        // Find the next word cound after the start date
-        const nextWordCount = wordCountList.find(wordEntry => wordEntry.date > startDateCalc)?.wordCount;
-    }
-
-    const endWordCount = wordCountList.find(wordEntry => wordEntry.date === endDateCalc)?.wordCount;
-    if (!endWordCount) {
-        // Calculate the word count for the end date
-    }
-
-
-    const mostRecentWordCount = wordCountList[0].wordCount;
-
-    const oldestWordCount = wordCountList[wordCountList.length - 1].wordCount;
-
-    const oldestDateObj = new Date(oldestDate);
-    const mostRecentDateObj = new Date(mostRecentDate);
-    const diffTime = Math.abs(mostRecentDateObj.getTime() - oldestDateObj.getTime());
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    const wordsPerDay = Math.floor((mostRecentWordCount - oldestWordCount) / diffDays);
-    return wordsPerDay;
-}
-
 
 export default function BookCard({ book }: { book: Book }) {
     const { id, title, goalWordCount, author } = book;
@@ -99,29 +43,37 @@ export default function BookCard({ book }: { book: Book }) {
     const { data: wordCountList = [], isLoading } = useGetWordCount(id);
     const [currentWordCount, setCurrentWordCount] = useState<number>(0);
     const [isVisible, setIsVisible] = useState<boolean>(false);
-    const [date, setDate] = useState<string>('');
+    const [date, setDate] = useState<string>(new Date().toISOString().split('T')[0]);
     const [wordCount, setWordCount] = useState<number | null>(currentWordCount);
     const [showCheckmark, setShowCheckmark] = useState<boolean>(false);
     const { mutate: createNewWordEntry, isLoading: isCreatingWordEntry } = useCreateNewWordEntry();
+    const { mutate: createNewTimeEntry } = useCreateNewTimeEntry();
     const router = useRouter();
 
+    const {
+        minutes,
+        isRunning,
+    } = useContext(GlobalContext);
+
     const handleCardClick = () => {
-        // Return the words / day metric over a given period
-        console.log(calculateWordsPerDay(wordCountList))
         router.push(`/tracker/${id}`);
+    }
+
+    const handleAddTimeToBook = () => {
+        createNewTimeEntry({ bookId: id, minutes: minutes }, {
+            onSuccess: () => {
+                toast({
+                    title: 'Time added to tracker',
+                    description: 'You can now see your time in the tracker',
+                });
+            }
+        });
     }
 
     const handleEditClick = (event: any) => {
         event.stopPropagation();
         setIsVisible(!isVisible);
     };
-
-    interface WordCount {
-        id: number;
-        wordCount: number;
-        date: string;
-    }
-
 
     useEffect(() => {
         if (!isLoading && wordCountList.length > 0) {
@@ -193,14 +145,17 @@ export default function BookCard({ book }: { book: Book }) {
                                 }}
                             />
                             <Button
-                                variant="contained"
-                                color="primary"
                                 disabled={wordCount === null || date === '' || isCreatingWordEntry}
                                 onClick={handleSubmit}
                             >
                                 {isCreatingWordEntry ? <CircularProgress size={24} color="inherit" /> :
                                     showCheckmark ? <CheckCircleIcon /> : 'Submit'}
                             </Button>
+                        </div>
+                        <div style={{ margin: '1em' }}>
+                            {!isRunning && minutes > 0 && <Button onClick={handleAddTimeToBook}>
+                                {`Add ${minutes} minute${minutes > 1 ? 's' : ''} to tracker`}
+                            </Button>}
                         </div>
                     </motion.div>
                 </Card>
