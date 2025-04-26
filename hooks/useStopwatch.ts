@@ -36,6 +36,14 @@ export const useStopwatch = (storageKey: string = 'stopwatch') => {
     const seconds = totalSeconds % 60;
     const minutes = totalMinutes % 60;
 
+    useEffect(() => {
+        if (minutes > 0 || seconds > 0) {
+            document.title = `World Builder - ${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+        } else {
+            document.title = `World Builder`;
+        }
+    }, [minutes, seconds]);
+
     // Save to localStorage whenever state changes, but only after hydration
     useEffect(() => {
         if (typeof window !== 'undefined' && hydrated) {
