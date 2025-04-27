@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import "./globals.css";
 import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
 import { GlobalContextProvider } from "@/components/GlobalContextProvider";
+import { StopwatchContextProvider } from "@/components/StopwatchContextProvider";
 import { ClerkProvider } from '@clerk/nextjs'
 import { SideBarWrapper } from "@/components/SideBar/SideBarWrapper"
 import { Toaster } from "@/components/ui/toaster"
@@ -35,12 +36,14 @@ export default function RootLayout({
         )}>
           <QueryProvider>
             <GlobalContextProvider>
-              <SideBarWrapper>
-                <div id="tutorial-start">
-                  {children}
-                </div>
-              </SideBarWrapper>
-              <Toaster />
+              <StopwatchContextProvider>
+                <SideBarWrapper>
+                  <div id="tutorial-start">
+                    {children}
+                  </div>
+                </SideBarWrapper>
+                <Toaster />
+              </StopwatchContextProvider>
             </GlobalContextProvider>
           </QueryProvider>
         </body>

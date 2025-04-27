@@ -22,7 +22,7 @@ import useGetBookList from '@/hooks/useGetBookList';
 import { Book } from '@prisma/client';
 import { toast } from '@/hooks/use-toast';
 import useCreateNewTimeEntry from '@/hooks/useCreateNewTimeEntry';
-import { GlobalContext } from '@/components/GlobalContextProvider';
+import { StopwatchContext } from '@/components/StopwatchContextProvider';
 import useCreateNewWordEntry from '@/hooks/useCreateNewWordEntry';
 import { useQueryClient } from 'react-query';
 export default function BookTrackerPage() {
@@ -33,7 +33,7 @@ export default function BookTrackerPage() {
     const { mutate: createNewWordEntry, isLoading: createNewWordEntryLoading } = useCreateNewWordEntry();
     const { data: books, isLoading: booksLoading, isError: booksError } = useGetBookList(true);
     const { mutate: updateBookMutation, isLoading: updateBookLoading } = useUpdateBook();
-    const { minutes, reset } = useContext(GlobalContext);
+    const { minutes, reset } = useContext(StopwatchContext);
     const queryClient = useQueryClient();
     const router = useRouter();
     const [showDots, setShowDots] = React.useState(false);

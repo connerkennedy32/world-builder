@@ -19,6 +19,7 @@ import AIChat from "../AIChat/Chat"
 import { useContext, useState } from "react"
 import { Tutorial } from "../Tutorial/Tutorial"
 import { GlobalContext } from "../GlobalContextProvider"
+import { StopwatchContext } from "../StopwatchContextProvider"
 
 const items = [
     {
@@ -45,14 +46,15 @@ export function AppSidebar() {
     const { signOut } = useClerk();
     const [isChatOpen, setIsChatOpen] = useState(false);
     const {
-        setRunTour,
         seconds,
         minutes,
         isRunning,
         start,
         pause,
         reset,
-    } = useContext(GlobalContext);
+    } = useContext(StopwatchContext);
+
+    const { setRunTour } = useContext(GlobalContext);
 
     return (
         <Sidebar>

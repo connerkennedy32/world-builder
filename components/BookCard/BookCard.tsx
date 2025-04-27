@@ -16,7 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Book, WordEntry } from '@prisma/client';
 import { useSidebar } from '../ui/sidebar';
 import { useRouter } from 'next/navigation';
-import { GlobalContext } from '../GlobalContextProvider';
+import { StopwatchContext } from '../StopwatchContextProvider';
 import useCreateNewTimeEntry from '@/hooks/useCreateNewTimeEntry';
 import { toast } from '@/hooks/use-toast';
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -53,7 +53,7 @@ export default function BookCard({ book }: { book: Book }) {
     const {
         minutes,
         isRunning,
-    } = useContext(GlobalContext);
+    } = useContext(StopwatchContext);
 
     const handleCardClick = () => {
         router.push(`/tracker/${id}`);

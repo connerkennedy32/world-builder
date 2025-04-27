@@ -3,8 +3,8 @@ import { GlobalContext } from "@/components/GlobalContextProvider";
 import { useContext } from "react";
 import Styles from "./styles.module.css";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@clerk/nextjs";
 import { useSidebar } from "@/components/ui/sidebar";
+
 export default function Home() {
   const { runTour, setRunTour } = useContext(GlobalContext);
   const { state: sidebarState, toggleSidebar, open } = useSidebar();
