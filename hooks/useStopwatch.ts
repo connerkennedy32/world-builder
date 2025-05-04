@@ -34,7 +34,7 @@ export const useStopwatch = (storageKey: string = 'stopwatch') => {
     const totalSeconds = Math.floor(elapsedTime / 1000);
     const totalMinutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    const minutes = totalMinutes % 60;
+    const minutes = totalMinutes;
 
     useEffect(() => {
         if (minutes > 0 || seconds > 0) {
