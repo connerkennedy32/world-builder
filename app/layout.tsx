@@ -5,7 +5,6 @@ import "./globals.css";
 import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
 import { GlobalContextProvider } from "@/components/GlobalContextProvider";
 import { StopwatchContextProvider } from "@/components/StopwatchContextProvider";
-import { ClerkProvider } from '@clerk/nextjs'
 import { SideBarWrapper } from "@/components/SideBar/SideBarWrapper"
 import { Toaster } from "@/components/ui/toaster"
 
@@ -25,8 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
+    <html lang="en">
         <head>
           <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         </head>
@@ -48,6 +46,5 @@ export default function RootLayout({
           </QueryProvider>
         </body>
       </html>
-    </ClerkProvider>
   );
 }

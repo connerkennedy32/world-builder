@@ -1,12 +1,7 @@
-import { currentUser } from '@clerk/nextjs/server'
-import { prisma } from '../../backend/db'
+import { cookies } from 'next/headers'
 
 export const getCurrentUserId = async () => {
-    const user = await currentUser()
-    const userId = await prisma.user.findUnique({
-        where: {
-            clerkId: user?.id,
-        },
-    })
-    return userId?.id;
+    const cookieStore = cookies()
+    const userId = cookieStore.get('userId')?.value
+    return userId ? Number(userId) : undefined
 }

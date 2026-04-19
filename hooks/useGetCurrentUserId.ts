@@ -1,18 +1,12 @@
-import { useUser } from '@clerk/nextjs';
-import { useQuery } from 'react-query';
-
-const getCurrentUserId = async (clerkId: string) => {
-    const response = await fetch(`/api/users?clerkId=${clerkId}`);
-    return response.json();
-};
+import { useState, useEffect } from 'react'
 
 export const useGetCurrentUserId = () => {
-    const { user } = useUser();
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ['user', user?.id],
-        queryFn: () => getCurrentUserId(user?.id || ''),
-    })
+    const [userId, setUserId] = useState<number | null>(null)
 
-    return data?.userId;
-};
+    useEffect(() => {
+        const stored = localStorage.getItem('userId')
+        if (stored) setUserId(Number(stored))
+    }, [])
 
+    return userId
+}

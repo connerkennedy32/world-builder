@@ -1,10 +1,19 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-// const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/api/webhook(.*)'])
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/api(.*)', '/manifest.webmanifest'])
+export default function middleware(request: NextRequest) {
+    const { pathname } = request.nextUrl
+    const userId = request.cookies.get('userId')?.value
 
-export default clerkMiddleware((auth, request) => {
-    if (!isPublicRoute(request)) {
-        auth().protect()
+    const isPublic = pathname.startsWith('/sign-in') || pathname.startsWith('/api')
+
+    if (!userId && !isPublic) {
+        return NextResponse.redirect(new URL('/sign-in', request.url))
     }
-})
+
+    return NextResponse.next()
+}
+
+export const config = {
+    matcher: ['/((?!_next/static|_next/image|favicon.ico|manifest.webmanifest).*)'],
+}

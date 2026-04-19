@@ -13,7 +13,6 @@ import { FileNavigator } from "./FileNavigator"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { User2 } from "lucide-react"
 import { ChevronUp } from "lucide-react"
-import { useUser, useClerk } from '@clerk/nextjs'
 import { useRouter } from "next/navigation"
 import AIChat from "../AIChat/Chat"
 import { useContext, useState } from "react"
@@ -42,8 +41,6 @@ const items = [
 export function AppSidebar() {
     const { data: itemList } = useGetItemList();
     const router = useRouter();
-    const { user } = useUser();
-    const { signOut } = useClerk();
     const [isChatOpen, setIsChatOpen] = useState(false);
     const {
         seconds,
@@ -117,7 +114,7 @@ export function AppSidebar() {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton>
-                                    <User2 /> {user?.emailAddresses[0]?.emailAddress}
+                                    <User2 /> connerkennedy32@gmail.com
                                     <ChevronUp className="ml-auto" />
                                 </SidebarMenuButton>
                             </DropdownMenuTrigger>
@@ -128,9 +125,7 @@ export function AppSidebar() {
                                 <DropdownMenuItem>
                                     <span>Account</span>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem onClick={() => signOut(() => {
-                                    window.location.href = '/';
-                                })}>
+                                <DropdownMenuItem>
                                     <span>Sign out</span>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
