@@ -7,18 +7,23 @@ interface IGlobalContextProps {
     setSelectedItemId: (selectedItemId: string) => void;
     runTour: boolean;
     setRunTour: (runTour: boolean) => void;
+    aiPanelOpen: boolean;
+    setAiPanelOpen: (open: boolean) => void;
 }
 
 export const GlobalContext = createContext<IGlobalContextProps>({
     selectedItemId: '',
     setSelectedItemId: () => { },
     runTour: true,
-    setRunTour: () => { }
+    setRunTour: () => { },
+    aiPanelOpen: false,
+    setAiPanelOpen: () => { },
 });
 
 export const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [selectedItemId, setSelectedItemId] = useState('');
     const [runTour, setRunTour] = useState(false);
+    const [aiPanelOpen, setAiPanelOpen] = useState(false);
 
     return (
         <GlobalContext.Provider
@@ -26,7 +31,9 @@ export const GlobalContextProvider = ({ children }: { children: React.ReactNode 
                 selectedItemId,
                 setSelectedItemId,
                 runTour,
-                setRunTour
+                setRunTour,
+                aiPanelOpen,
+                setAiPanelOpen,
             }}
         >
             {children}

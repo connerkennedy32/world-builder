@@ -12,6 +12,9 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^1.0.0",
+    "@ai-sdk/openai": "^1.0.0",
+    "ai": "^4.0.0",
     "@clerk/nextjs": "^5.4.1",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",

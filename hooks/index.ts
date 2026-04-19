@@ -9,6 +9,7 @@ import useGetWordCount from './useGetWordCount';
 import useSavePageOrder from './useSavePageOrder';
 import useUpdateFolder from './useUpdateFolder';
 import useUpdatePage from './useUpdatePage';
+import useWorldContext from './useWorldContext';
 export {
     useCreateFolder,
     useCreateNewWordEntry,
@@ -21,4 +22,5 @@ export {
     useSavePageOrder,
     useUpdateFolder,
     useUpdatePage,
+    useWorldContext,
 };

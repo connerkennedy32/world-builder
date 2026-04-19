@@ -20,18 +20,43 @@
 
 .containerDrawerOpen {
     transition: width 0.3s ease;
-    width: calc(100vw - 256px);
+    width: 100%;
     display: flex;
     justify-content: center;
     padding-top: 1rem;
+    position: relative;
 }
 
 .containerDrawerClosed {
     transition: width 0.3s ease;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     padding-top: 1rem;
+    position: relative;
+}
+
+.aiButton {
+    position: fixed;
+    top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+    color: #6b7280;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    z-index: 10;
+}
+
+.aiButton:hover {
+    background: #f3f4f6;
+    color: #7c3aed;
+    border-color: #7c3aed;
 }
 
 .content {

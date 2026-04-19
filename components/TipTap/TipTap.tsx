@@ -15,11 +15,12 @@ import { useUpdatePage } from '@/hooks';
 import { GlobalContext } from '../GlobalContextProvider';
 import { useSidebar } from '../ui/sidebar'
 import { CustomMentionExtension } from './extensions/MentionExtenstion';
+import { Sparkles } from 'lucide-react';
 
 export default function TipTap({ page_content, page_id }: { page_content: JSON | null, page_id: string }) {
     const { state: sidebarState } = useSidebar();
     const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-    const { selectedItemId } = useContext(GlobalContext);
+    const { selectedItemId, setAiPanelOpen, aiPanelOpen } = useContext(GlobalContext);
     const { mutate: savePageContent, isSuccess: isPageSaveSuccess } = useUpdatePage();
 
     useEffect(() => {
@@ -117,6 +118,14 @@ export default function TipTap({ page_content, page_id }: { page_content: JSON |
 
     return (
         <div id="tiptap-editor" className={sidebarState === "expanded" ? Styles.containerDrawerOpen : Styles.containerDrawerClosed}>
+            <button
+                onClick={() => setAiPanelOpen(true)}
+                className={Styles.aiButton}
+                style={{ right: aiPanelOpen ? 'calc(420px + 1rem)' : '1rem', transition: 'right 0.3s ease' }}
+                title="Story Assistant"
+            >
+                <Sparkles size={16} />
+            </button>
             <div className={`${Styles.content}`}>
                 {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
                     <button

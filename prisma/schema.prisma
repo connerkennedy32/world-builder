@@ -35,16 +35,17 @@ enum ItemType {
 }
 
 model Item {
-  id       String   @id @default(uuid()) // ID as a string type
-  itemType ItemType
-  title    String   @default("new item")
-  content  Json?
-  userId   Int
-  parentId String?
-  parent   Item?    @relation("ParentChildren", fields: [parentId], references: [id])
-  children Item[]   @relation("ParentChildren")
-  user     User     @relation(fields: [userId], references: [id])
-  index    Int
+  id             String   @id @default(uuid()) // ID as a string type
+  itemType       ItemType
+  title          String   @default("new item")
+  content        Json?
+  userId         Int
+  parentId       String?
+  isWorldContext Boolean  @default(false)
+  parent         Item?    @relation("ParentChildren", fields: [parentId], references: [id])
+  children       Item[]   @relation("ParentChildren")
+  user           User     @relation(fields: [userId], references: [id])
+  index          Int
 }
 
 model Page {

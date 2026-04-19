@@ -80,7 +80,7 @@ export function AppSidebar() {
                             </a>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
-                    <SidebarMenuItem className="cursor-pointer">
+<SidebarMenuItem className="cursor-pointer">
                         <SidebarMenuButton asChild>
                             <a onClick={() => setRunTour(true)}>
                                 <BookOpen />
