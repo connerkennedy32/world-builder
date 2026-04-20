@@ -8,7 +8,7 @@ export function MainContentWrapper({ children }: { children: React.ReactNode }) 
 
     return (
         <div
-            className="flex-1 min-w-0 transition-[margin-right] duration-300 ease-in-out"
+            className="flex-1 min-w-0 h-svh overflow-y-auto transition-[margin-right] duration-300 ease-in-out"
             style={{ marginRight: aiPanelOpen ? 420 : 0 }}
         >
             {children}

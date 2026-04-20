@@ -25,8 +25,28 @@ model User {
   pages     Page[]
   folders   Folder[]
   items     Item[]
+  chats     Chat[]
 
   @@unique([id])
+}
+
+model Chat {
+  id        String        @id @default(uuid())
+  title     String        @default("New Chat")
+  userId    Int
+  user      User          @relation(fields: [userId], references: [id])
+  messages  ChatMessage[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model ChatMessage {
+  id        String   @id @default(uuid())
+  role      String
+  content   String
+  chatId    String
+  chat      Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
 
 enum ItemType {
