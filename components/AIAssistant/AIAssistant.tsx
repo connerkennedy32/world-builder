@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useContext } from "react";
+import { useState, useRef, useEffect, useContext, useMemo } from "react";
 import {
   X,
   Send,
@@ -17,13 +17,22 @@ import Markdown from "react-markdown";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlobalContext } from "@/components/GlobalContextProvider";
 import useWorldContext from "@/hooks/useWorldContext";
+import useGetItemList from "@/hooks/useGetItemList";
+import { tiptapToText } from "@/lib/tiptap-to-text";
 import { useRouter } from "next/navigation";
 import type { ChatMessage } from "@/lib/ai/types";
+import type { JSONContent } from "@tiptap/react";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
   streaming?: boolean;
+}
+
+interface PinnedPage {
+  id: string;
+  title: string;
+  content: string;
 }
 
 type Provider = "claude" | "openai";
@@ -47,6 +56,13 @@ const MODELS: Record<Provider, { value: string; label: string }[]> = {
   ],
 };
 
+function flattenPages(items: any[]): { id: string; title: string }[] {
+  return items.flatMap((item) => [
+    ...(item.itemType === "PAGE" ? [{ id: item.id, title: item.title }] : []),
+    ...flattenPages(item.children || []),
+  ]);
+}
+
 export function AIAssistant({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -59,16 +75,63 @@ export function AIAssistant({ onClose }: { onClose: () => void }) {
   const [draftText, setDraftText] = useState("");
   const [draftFileName, setDraftFileName] = useState("");
   const [draftWordCount, setDraftWordCount] = useState(0);
+  const [pinnedPages, setPinnedPages] = useState<PinnedPage[]>([]);
+  const [slashMenuIndex, setSlashMenuIndex] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   const { data: worldContext, invalidate: invalidateWorldContext } =
     useWorldContext();
+  const { data: itemList = [] } = useGetItemList();
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  const allPages = useMemo(() => flattenPages(itemList), [itemList]);
+
+  // Detect slash command: triggers when input ends with /word (no spaces after slash)
+  const slashMatch = input.match(/(^|\s)\/([\w]*)$/);
+  const showSlashMenu = !!slashMatch;
+  const slashQuery = slashMatch ? slashMatch[2].toLowerCase() : "";
+
+  const filteredPages = useMemo(() => {
+    if (!showSlashMenu) return [];
+    return allPages
+      .filter((p) => !pinnedPages.some((pp) => pp.id === p.id))
+      .filter((p) => p.title.toLowerCase().includes(slashQuery))
+      .slice(0, 6);
+  }, [showSlashMenu, slashQuery, allPages, pinnedPages]);
+
+  useEffect(() => {
+    setSlashMenuIndex(0);
+  }, [filteredPages.length]);
+
+  const selectPage = async (page: { id: string; title: string }) => {
+    const slashIndex = input.lastIndexOf("/");
+    setInput(input.slice(0, slashIndex).trimEnd());
+    setSlashMenuIndex(0);
+
+    try {
+      const res = await fetch(`/api/items/${page.id}`);
+      const data = await res.json();
+      const content = tiptapToText(data.content as JSONContent | null);
+      setPinnedPages((prev) => [
+        ...prev,
+        { id: page.id, title: page.title, content },
+      ]);
+    } catch {
+      setPinnedPages((prev) => [
+        ...prev,
+        { id: page.id, title: page.title, content: "" },
+      ]);
+    }
+  };
+
+  const removePinnedPage = (id: string) => {
+    setPinnedPages((prev) => prev.filter((p) => p.id !== id));
+  };
 
   const sendMessage = async () => {
     const text = input.trim();
@@ -101,6 +164,10 @@ export function AIAssistant({ onClose }: { onClose: () => void }) {
           history,
           provider,
           model,
+          pinnedPagesContent: pinnedPages.map(({ title, content }) => ({
+            title,
+            content,
+          })),
         }),
       });
 
@@ -477,31 +544,111 @@ export function AIAssistant({ onClose }: { onClose: () => void }) {
 
       {/* Input */}
       <div className="px-4 py-3 border-t border-gray-100 bg-white">
-        <div className="flex gap-2 items-end">
-          <Textarea
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-              }
-            }}
-            placeholder="Ask about your story…"
-            className="resize-none text-sm min-h-[44px] max-h-[120px]"
-            rows={1}
-            disabled={isLoading}
-          />
-          <Button
-            size="sm"
-            onClick={sendMessage}
-            disabled={isLoading || !input.trim()}
-            className="h-[44px] w-[44px] p-0 shrink-0"
-          >
-            <Send size={16} />
-          </Button>
+        {/* Pinned page chips */}
+        {pinnedPages.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-2">
+            {pinnedPages.map((page) => (
+              <span
+                key={page.id}
+                className="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded-full px-2 py-0.5"
+              >
+                <FileText size={10} />
+                <span className="max-w-[120px] truncate">{page.title}</span>
+                <button
+                  onClick={() => removePinnedPage(page.id)}
+                  className="text-blue-400 hover:text-blue-600 ml-0.5"
+                >
+                  <X size={10} />
+                </button>
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Slash command menu */}
+        <div className="relative">
+          <AnimatePresence>
+            {showSlashMenu && filteredPages.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 4 }}
+                transition={{ duration: 0.1 }}
+                className="absolute bottom-full left-0 right-0 mb-1 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-10"
+              >
+                <p className="px-3 py-1.5 text-[11px] text-gray-400 border-b border-gray-100">
+                  Add page to context
+                </p>
+                {filteredPages.map((page, i) => (
+                  <button
+                    key={page.id}
+                    onClick={() => selectPage(page)}
+                    className={`w-full flex items-center gap-2 px-3 py-2 text-sm text-left transition-colors ${
+                      i === slashMenuIndex
+                        ? "bg-blue-50 text-blue-700"
+                        : "text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    <FileText size={13} className="shrink-0 text-gray-400" />
+                    <span className="truncate">{page.title}</span>
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="flex gap-2 items-end">
+            <Textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (showSlashMenu && filteredPages.length > 0) {
+                  if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    setSlashMenuIndex((i) =>
+                      Math.min(i + 1, filteredPages.length - 1)
+                    );
+                    return;
+                  }
+                  if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    setSlashMenuIndex((i) => Math.max(i - 1, 0));
+                    return;
+                  }
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    selectPage(filteredPages[slashMenuIndex]);
+                    return;
+                  }
+                  if (e.key === "Escape") {
+                    e.preventDefault();
+                    setInput((prev) => prev.replace(/\/([\w]*)$/, ""));
+                    return;
+                  }
+                }
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              }}
+              placeholder="Ask about your story… or / to add a page"
+              className="resize-none text-sm min-h-[44px] max-h-[120px]"
+              rows={1}
+              disabled={isLoading}
+            />
+            <Button
+              size="sm"
+              onClick={sendMessage}
+              disabled={isLoading || !input.trim()}
+              className="h-[44px] w-[44px] p-0 shrink-0"
+            >
+              <Send size={16} />
+            </Button>
+          </div>
         </div>
-        <p className="text-xs text-gray-400 mt-1.5">Shift+Enter for newline</p>
+        <p className="text-xs text-gray-400 mt-1.5">
+          Shift+Enter for newline · / to add page context
+        </p>
       </div>
     </motion.div>
   );

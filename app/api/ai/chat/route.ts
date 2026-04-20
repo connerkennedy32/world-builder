@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const userId = await getCurrentUserId()
     if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
-    const { message, currentPageContent, history = [], provider = 'claude', model } = await req.json()
+    const { message, currentPageContent, history = [], provider = 'claude', model, pinnedPagesContent = [] } = await req.json()
 
     if (!message?.trim()) {
         return Response.json({ error: 'Message is required' }, { status: 400 })
@@ -31,6 +31,12 @@ export async function POST(req: Request) {
 
     if (worldContextText) {
         systemParts.push('', '---', '## World Context', '', worldContextText)
+    }
+
+    for (const page of pinnedPagesContent as { title: string; content: string }[]) {
+        if (page.content) {
+            systemParts.push('', '---', `## ${page.title}`, '', page.content)
+        }
     }
 
     if (currentPageContent) {
