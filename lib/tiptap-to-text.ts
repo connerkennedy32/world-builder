@@ -62,11 +62,32 @@ export function textToTiptap(text: string): JSONContent {
                         content: [{ type: 'paragraph', content: parseInline(t.slice(2)) }],
                     })
                     i++
+                } else if (!t) {
+                    // skip blank lines inside a list
+                    i++
                 } else {
                     break
                 }
             }
             content.push({ type: 'bulletList', content: items })
+        } else if (/^\d+\.\s/.test(trimmed)) {
+            const items: JSONContent[] = []
+            while (i < lines.length) {
+                const t = lines[i].trim()
+                const numbered = /^\d+\.\s(.*)/.exec(t)
+                if (numbered) {
+                    items.push({
+                        type: 'listItem',
+                        content: [{ type: 'paragraph', content: parseInline(numbered[1]) }],
+                    })
+                    i++
+                } else if (!t) {
+                    i++
+                } else {
+                    break
+                }
+            }
+            content.push({ type: 'orderedList', content: items })
         } else {
             content.push({ type: 'paragraph', content: parseInline(trimmed) })
             i++

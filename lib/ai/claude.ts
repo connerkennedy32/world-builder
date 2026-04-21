@@ -12,7 +12,7 @@ export class ClaudeProvider implements AIProvider {
             model: anthropic(model),
             system: systemPrompt,
             messages: messages.map(m => ({ role: m.role, content: m.content })),
-            maxTokens: 16000,
+            maxTokens: 64000,
         })
 
         return new ReadableStream({

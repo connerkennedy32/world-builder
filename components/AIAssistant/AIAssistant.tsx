@@ -111,6 +111,8 @@ export function AIAssistant({ onClose }: { onClose: () => void }) {
   const bottomRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
+  const { selectedItemId } = useContext(GlobalContext);
+
   const { data: worldContext, invalidate: invalidateWorldContext } =
     useWorldContext();
   const { data: itemList = [] } = useGetItemList();
@@ -229,6 +231,20 @@ export function AIAssistant({ onClose }: { onClose: () => void }) {
 
     let accumulated = "";
 
+    // Fetch current page content to give AI context about what's already written
+    let currentPageContent: string | undefined;
+    if (selectedItemId) {
+      try {
+        const pageRes = await fetch(`/api/items/${selectedItemId}`);
+        if (pageRes.ok) {
+          const pageData = await pageRes.json();
+          currentPageContent = tiptapToText(pageData.content as JSONContent | null) || undefined;
+        }
+      } catch {
+        // non-fatal — proceed without current page context
+      }
+    }
+
     try {
       const history: ChatMessage[] = newMessages.slice(0, -1).map((m) => ({
         role: m.role,
@@ -247,6 +263,7 @@ export function AIAssistant({ onClose }: { onClose: () => void }) {
             title,
             content,
           })),
+          currentPageContent,
         }),
       });
 

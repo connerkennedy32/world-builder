@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     const systemParts: string[] = [
         'You are a creative writing thought partner for a fiction writer. Your role is to help them develop their story, characters, world, and prose.',
         '',
-        'Be specific, imaginative, and tailored to their story. Give concrete suggestions, not generic advice. When asked for ideas, offer multiple options. When asked to help finish something, produce actual draft text.',
+        'Be specific and tailored to their story. Be concise — match response length to the question. Short answers for quick questions, a sentence or two for brainstorming, draft text only when explicitly asked to write something.',
     ]
 
     if (worldContextText) {

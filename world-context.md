@@ -1,615 +1,719 @@
-# World Context — SOLAR WINDS (Book 1: The Stellar Chronicles)
-Author: Conner Kennedy  
-Source: Provided story pages (excerpt)
-
-This document catalogs every named person, place, object, event, and rule referenced in the provided story pages. It is intended as exhaustive background/context for future writing and for any assistant helping the author. I preserved specific names, dates, text, and relationships exactly as written. If anything from the pages is missing, tell me which page/paragraph and I will add it.
-
----
+# World Context: Stellar Chronicles Book 2
 
 ## Story Overview
 - Genre and sub-genre
-  - Science-fantasy / near-future speculative fiction with urban fantasy elements.
-  - Post-Awakening worldbuilding (people with supernatural properties).
-  - Adventure / rescue / mystery.
+  - Post-apocalyptic science fantasy/adventure with superhero-like powers
+  - Dystopian political thriller elements; espionage and resistance operations
 - Narrative tone
-  - Adventurous, tense, occasionally wistful/nostalgic (especially in small domestic moments).
-  - Emotional stakes are high: parental loss, kidnapping, civic duty.
-  - Mix of earnest heroism (Samuel, Lawrence, Isaac) and gritty underworld (Blane, LA gangs).
+  - Serious, tense, urgent; laced with grief, trauma, and resolve; occasional wry humor in character banter
 - Central premise and core conflict
-  - After the Awakening, people manifest properties (Lunars, Stellars, rare Solars). Freedom Fields is a walled sanctuary-city under Samuel’s leadership. A wave of kidnappings (children of leaders & others) and sophisticated attacks have begun. Isaac (a courier and “Stellar” raised by Samuel) discovers his dreams can foresee or prompt events and—later—learns (via Gayle and his own unusual blood signature) that he is something beyond a Stellar: the story teases Solar-level ability.
-  - Core conflict: locating and rescuing kidnapped children (Max being Isaac’s brother) while confronting a growing, organized enemy (kidnappers, Lunars, higher-level powers under the mysterious “Abe/Abraham”) that can override/trap Lunars and otherwise manipulate the population.
+  - Six months after the fall of Abe’s Los Angeles base, his global influence resurges centered in Denmark, where he is consolidating power and testing abductees’ properties directly on himself while controlling distant captives through an unknown system. Freedom Fields scrambles to gather intelligence, resist, and protect their people. Simultaneously, Isaac (a unique Solar) searches for a mentor to unlock his unstable abilities and rescue his mother, while LARS infiltrates Europe to learn Abe’s weaknesses.
 - Major themes
-  - Family and found-family (Samuel as adoptive father; Isaac/Max bond; Lawrence/Isaac friendship).
-  - Duty and leadership (Samuel’s burdens, Public Advancement).
-  - Identity and latent power (Isaac’s evolving property and the Solar reveal).
-  - Abuse of power and corruption (Blane’s empire, kidnappers, the “refiner” technology).
-  - Sacrifice and rescue.
-  - Dreams, prophecy, and guidance (Isaac’s dreams; “mother” voice).
+  - Control vs. free will; sacrifice and guilt; leadership and responsibility; power and its limits; loyalty and leaving no one behind; the cost of resistance; truth and rumor; home and walls; fathers/sons and found family
 - Point of view / narrative perspective
-  - Close third-person primarily centered on Isaac (thoughts, perceptions, dreams) with scenes covering other characters in third-person limited as situation demands.
-- Time span covered by the story pages
-  - Present events take place in the year 2030 (explicit: “Despite it being the year 2030…”).
-  - The Awakening and its fallout are background history (roughly 30 years before 2030 referenced repeatedly).
-  - The excerpt spans a compressed arc of days to a few weeks (deliveries, the Public Advancement ceremony, immediate aftermath attack, an emergency pursuit to California/Los Angeles and back), with several nights/days and travel segments. Some dated notes in Isaac’s notebook: “March 3, 2030 – 10 Deliveries, 6:46 PM.” Isaac circled “April 1 — PUBLIC ADVANCEMENT” in his notebook (indicating upcoming event timing), but the main action centers on the immediate days following the ceremony and the kidnapping.
+  - Third-person limited, shifting focal characters: Winston, Isaac, Nicole, Samuel, Lawrence, Martin; occasional tight immersion during action
+- Time span covered by the story
+  - Year 2030; approximately six months after the “LA incident” (Abe’s LA base collapse). The narrative spans several weeks: Winston’s Denmark infiltration (immediate past), his return to Freedom Fields, preparations, Isaac/Nicole trip to Great Falls and then Bozeman, LARS Boston leg → Atlantic crossing → Denmark operations, culminating in the Bozeman trap and Samuel’s confrontation.
 
 ---
 
-## Characters (every named person; full details from text)
+## Characters
 
-Note: If the text gave no full name or only a single reference, that’s preserved. I include aliases / titles / nicknames (as written), physical descriptions if provided, roles, personality, history, relationships, current status and arc trajectory, and notable speech if distinctive.
+Note: Every named or distinctly identified character (major, minor, or mentioned-only) is included.
 
-- Isaac
-  - Full name: Isaac (no surname given)
-  - Aliases / Titles / Nicknames: sometimes called "kid" by townsfolk
-  - Physical description / age: Teenage boy; explicitly later called seventeen ("Too much for a seventeen-year-old."); athletic courier build; described as a Stellar (initially) — physically a Stellar body (weaker than Lunars).
-  - Role: Protagonist; courier; raised by Samuel; brother to Max (adoptive brother after dropped off as infant).
-  - Personality & voice: Practical, curious, competitive, guilt-prone, self-critical (about being a “Stellar”), loyal, impulsive (often runs into danger), earnest; internal voice is reflective and sometimes resentful when he feels overlooked.
-  - Backstory: Dropped off at the entrance to Freedom Fields as an infant with a name tag; raised in Samuel’s household; most efficient courier in Freedom Fields; trained in courier protocol "No Questions, No Problems." Has had recurring prophetic/directional dreams since childhood (“He’s been having dreams since he was a kid”).
-  - Goals / motivations / fears: Wants to be promoted to head courier; wants protection and approval from Samuel; wants to rescue his missing brother Max; fears being powerless/insufficient (Stellar status) and failing Max.
-  - Key relationships:
-    - Max — adoptive younger brother (family, deep protector/affection).
-    - Samuel — adoptive father / leader of Freedom Fields (ally, paternal figure).
-    - Max’s mother (deceased) — emotional tie (memories).
-    - Lawrence — close friend/best friend (complex: admiration & betrayal feelings when Lawrence left).
-    - Nicole Tridian — friend and possible romantic interest/close confidante.
-    - Gayle — employer/client (delivered package to him), minor curiosity figure.
-    - Martin, Rose, Darius, and other leaders — allies / community leaders; Isaac respects them.
-  - Current status & arc trajectory: After the rescue of Max (successful), Isaac learns his blood signature is anomalous, Gayle calls him a Solar. Internal arc: grappling with identity (Stellar -> Solar), responsibility to protect, and destiny implied by his mother’s guidance.
-  - Notable quotes / speech patterns:
-    - Routine lines: writes journal entries; personal motto earlier in the story: “Two rights and a left…” (instruction memory); speaks with direct, often sardonic youth voice.
+### Abraham (“Abe”, “master Abe”)
+- Full name: Abraham (called “Abe” or “master Abe”)
+- Physical description: Shorter than Winston (~< 26-year-old Winston), full foot shorter than Baron while seated; weathered, slightly wrinkled face; yellowed, bloodshot eyes; discolored, unhealthy complexion; rotting teeth; age indeterminate in dim light; wears a metallic crown into which pipes and wires converge from the ceiling.
+- Role: Primary antagonist; tyrant who “controls the world”
+- Personality/voice: Smooth, glassy, cold, confident, quiet; chilling authority; taunting, calculated
+- Backstory: Exerted massive control over Los Angeles with dungeons and fluid tanks; after LA’s fall, shifted major operations to Denmark. Stories (guards/prisoners) painted him as omnipotent; Winston heard his voice echo over huge captive chambers. Likely requires physical proximity to amplify/control (see lore).
+- Goals/motivations/fears:
+  - Actively searching for “someone” to make himself more powerful; kidnaps specific people globally; tests their properties on himself and discards those “not sufficient”
+  - Consolidating “Top Levels” across regions; conducting shipments/operations via castle in Denmark
+- Key relationships:
+  - Rickey (Top-Level subordinate) — executes Abe’s will; speaks via recorder to project commands/audio
+  - Top Levels network: Tyrannus (LA), Rickey (Denmark), Astrid, Danny, Clark (Bozeman operation), and others in “Eastern Kingdom”; “other Top Levels” referenced
+  - Opponents: Winston; Lawrence/LARS; Samuel; Isaac; Freedom Fields
+- Status/arc:
+  - In Denmark’s castle throne room; wearing crown fed by wires/pipes; uses a revolver personally (contradicting reports about no guns among his men). Orders killing of failed test subject; kills Ace and later Stick; taunts Baron and Winston. Power appears conduit-dependent (see lore).
+- Notable quotes:
+  - “We’re stronger here than you think, Rickey. We have troops to spare.”
+  - “Bring him to me.”
+  - “This property is not sufficient. Dispose of him.”
+  - “What a nuisance. I hate wasting bullets.”
+  - “Winston. The last thing you’ll do is beg for mercy before my throne.”
 
-- Max
-  - Full name: Max (no surname)
-  - Aliases / Titles / Nicknames: Isaac’s “brother” (not by blood).
-  - Physical description / age: Eleven years old (explicit: "Today was his eleventh birthday").
-  - Role: Isaac’s adoptive younger brother; victim/kidnapping target; emotional anchor for Isaac.
-  - Personality & voice: Inquisitive ("Max was always an explosion of questions"); affectionate; childlike curiosity; resilient; easily emotional (tears when he saw oranges).
-  - Backstory: Grew up in Samuel’s house (dropped in/raised with Isaac). Mother died (her memory linked to oranges).
-  - Goals/motivations/fears: Wants knowledge; loves Isaac; fears being left/abandoned.
-  - Key relationships:
-    - Isaac — older adoptive brother; strong bond.
-    - Samuel — father figure.
-    - Max’s mother — deceased (flashback memories).
-  - Current status & arc trajectory: Kidnapped during southern gate attack; rescued in the LA cavern/tanks by Isaac & team; reunited with Isaac and returned to Freedom Fields. He sleeps a lot after rescue and is emotionally affected.
-  - Notable quotes:
-    - Phrases like “Do you want me to—” (childlike offers to help) and a birthday note signed “From, MAX” attached to an orange: "Dear Isaac, I know you’re sad about not getting your job. Here’s an orange for you... From, MAX"
+### Rickey (Top-Level Lunar)
+- Full name: Rickey (surname unknown)
+- Physical description: Slender, wiry, 40s; deep lines across face; black and grey hair neatly styled; non-athletic build, eats “three days a week” look; moves awkwardly, “almost as if he walked in reverse”; uses a small recording device; exhibits near-invulnerability to Samuel’s telekinetic shrapnel, but can be injured by a properly timed or “foresight”-assisted physical strike (Samuel’s cut to cheek/eye swelling later).
+- Role: Top-Level lieutenant/antagonist in Denmark; later part of Bozeman operation against Isaac/Samuel
+- Personality/voice: Taunting; theatrical; uses reversed speech into recorder that outputs intelligible English at unnatural speed; issues strict “rules”
+- Properties:
+  - On-touch neuromuscular scrambling (scrambles brain-to-muscle signals causing inverted/uncontrolled movement); applies via tap-to-neck or arm; typically pairs with knife for finishing strikes
+  - Speaks reverse-phrases (e.g., “Sdrow tsal yna.” → “Any last words?”; “Enim era owt eseht enevretni tnod.” → “Don’t intervene. These two are mine.”; “Nrut ym.” → “My turn.”)
+  - Apparent high durability or field negation vs. telekinetic shrapnel (but can be knocked, cut by physical strike) — exact mechanism unclear
+- Backstory: Abe’s Denmark Top-Level; kills Baron; helps orchestrate Bozeman trap alongside Astrid, Danny, Clark; likely coordinates Top Levels network (“the other Top Levels” mentioned)
+- Goals: Capture (or process) Isaac per Abe’s directive; neutralize high-value threats (Samuel)
+- Relationships: Reports to Abe; commands Astrid, Danny, Clark in Bozeman; taunts Winston; battles Samuel
+- Status: Active; survives Samuel’s assault; stabs Samuel via knife after immobilization
+- Speech patterns: Reverse-spoken phrases recorded and then played instantly; also uses a second device that seems to issue non-vocal triggers (“The end.”)
 
-- Samuel
-  - Full name: Samuel (often called Sam)
-  - Aliases / Titles / Nicknames: Mayor / “fearless leader of Freedom Fields”; often referred to as a Lunar.
-  - Physical description: Massive, toweringly large. Long grey hair tied in a bun; long grey beard; massive, callused hands. Appears older but powerful, "shaped more like a boulder than a man." Worn black leather boots often; forest green silk cape with massive tree outline (city symbol).
-  - Role: Leader/mayor of Freedom Fields; adoptive father to Isaac and Max; central defending Lunar (telekinetic power).
-  - Personality & voice: Stoic, duty-driven, paternal, sometimes haunted / sleepless; moralistic ("Do what’s right at any cost" medallion); decisive but weighed by responsibility; commands respect.
-  - Backstory: Rose and Samuel have history (“they trained together” with Blane earlier); he led the city through crises post-Awakening; once fought to death the Lunar Pirate gang thirty years earlier (scar stories).
-  - Goals/motivations/fears: Protect Freedom Fields; prevent invasions/abductions; keep inhabitants safe; fears being incapacitated or leaving the city vulnerable (worries about his own mortality and preparedness).
-  - Key relationships:
-    - Isaac & Max — adoptive sons.
-    - Rose — close comrade and tactical leader (sometimes disagrees).
-    - Darius, Martin, Gayle, Jack, Teresa, Mark Spitz — colleagues on the council.
-    - Jack — gatekeeper (ally).
-    - Lawrence — member of Team One (ally).
-    - Rose (romantic past/history implied).
-  - Current status & arc trajectory: He leads the rescue mission to LA, fights Warlock and Tyrannus; briefly loses control during Shockwave/war attack; saves many lives. Post-arc: responsible for debrief and continuing defense. Shows vulnerability after the attack but remains the central leader.
-  - Notable quotes / speech patterns:
-    - “Try to get some sleep, Team One is getting back tomorrow. It’ll be a busy day.”
-    - Keeps a medallion: engraved "Do what’s right at any cost."
+### Tyrannus (Top-Level Lunar, Los Angeles)
+- Description: “Monster” of LA; strongest Lunar Winston’s seen; massive brute; Samuel fought him; Isaac finished him with a single punch (“punched Tyrannus through a boulder”)
+- Role: Former primary enforcer in LA; benchmark for danger
+- Status: Dead (killed by Isaac)
 
-- Gayle
-  - Full name: Gayle (no last name)
-  - Aliases / Titles / Nicknames: Reclusive inventor / lab master; called a “madman” by Isaac in impressions.
-  - Physical description / age: Very wrinkled; “must have been close to seventy years old”; small man standing up to Isaac’s shoulders; large magnified round glasses; disfigured hand / bent gnarled fingers from tinkering; grease under fingernails; yellowed fingernails; often in patched, multi-textured cape (cape covered in patches of many colors, dragging on ground).
-  - Role: Inventor/tinkerer in North Sector; member of city leaders (invited to ceremonies), developer of the Refiner’s Definer project (Refiner’s Definer is his project).
-  - Personality & voice: Eccentric, focused on machines, anxious about security (extreme caution: six knocks code & pay under doormat), reluctant social presence but recognized for genius; grumbles and mutters.
-  - Backstory: Long-time civic member; works nights in lab (clanging, hissing, steam). Received important package from Samuel; working on a project (Refiner’s Definer). He was at the Public Advancement ceremony (cape).
-  - Goals/motivations/fears: Wants to create security/measurement tech for the city (Refiner’s Definer); fears infiltration and traitors; cautious about letting people into lab; protective of projects.
-  - Key relationships:
-    - Samuel — ally; given materials and orders.
-    - Stewart Blocker — his new apprentice.
-    - Isaac — used as courier (delivered package; Isaac is curious about his work); pays him two quarters under doormat; Isaac delivered an envelope to Samuel for Gayle.
-    - Martin & other leaders — colleagues.
-  - Current status & arc trajectory: Revelatory: Gayle’s machine (Refiner’s Definer) later tests Isaac’s blood and produces the “Solar” discovery; he remains the city’s inventor. His lab was used to display the machine to the leadership group.
-  - Notable quotes:
-    - Payment method: “Your payment is under the doormat. Please leave me to my work.”
-    - On the machine: extensive technical speech about blood PH, oxygen, and correlations to properties (see World Rules).
+### Astrid (Top-Level Lunar)
+- Physical: Doll-like makeup; heavily soiled lips/eyes; cackling laugh; survives shrapnel via liquefaction defense; later impaled through shoulder by Samuel’s pipe; ultimately crushed by a falling ceiling slab
+- Property: Liquefaction/solidification and shaping of nearby materials (tile/metal/ceiling) into objects (bats, etc.), reforming them; can liquefy tile to trap feet or create weapons; melts glass attacks; can drop/re-solidify ceiling segments
+- Role: Bozeman operation; attempts to break Isaac’s legs; fights Samuel
+- Status: Injured by pipe through shoulder; then crushed by ceiling segment (“A larger section suddenly fell, landing directly on Astrid”) — presumed neutralized
 
-- Max's mother (unnamed)
-  - Full name: Not provided.
-  - Details: Died; memory tied to oranges; Max cried when he had oranges (they were a special treat she shared). Samuel took Isaac and Max in (Isaac was dropped off; Max was raised there with Isaac).
-  - Role: Emotional memory anchor (not present alive).
+### Danny (Top-Level Lunar)
+- Physical: Bald; tight clothes exposing ribs/knobby knees; intense, burning gaze
+- Property: Generates/controls thick cords/ropes; can cast persistent webs/balls; can rapidly lash and bind targets; cords resist cutting unless met with dense/sharp telekinetic shrapnel; can target torsos, necks; long-range projection
+- Role: Bozeman operation; binds Samuel repeatedly; restrains Isaac; coordinates with Rickey
+- Status: Active; retreats to casting after Clark collapses; survives Samuel’s retaliation in Bozeman scene
 
-- Martin (the blacksmith)
-  - Full name: Martin (no last name)
-  - Aliases / Titles / Nicknames: Martin the blacksmith; “pyromaniac” (personality trait).
-  - Physical description: Lunar (can hold flame in palm, eyes that "seemed to burn like the fire in his palm"); at times critically injured in fight but survives; loves theatrics; can jump like a Lunar cat (acrobatic); wears a black suit with a blood-red cape embroidered with flame and smoke designs at the ceremony.
-  - Role: Blacksmith; inventor of the northern and southern gate mechanisms; major contributor to city defense; acts as combatant during gate attack.
-  - Personality & voice: Showman, thrill-seeker; proud; playful but dedicated; significant technical skills; partner to Samuel in defense.
-  - Backstory: Engineered gates; longtime associate of Samuel; recovered from severe injuries at some point.
-  - Goals/motivations/fears: Protect the city; innovate gate tech.
-  - Key relationships:
-    - Samuel (longstanding comrade).
-    - Gayle (rival in engineering but appreciative).
-  - Current status & arc trajectory: Severely injured by Warlock during gate attack; later in hospital with a limp but alive.
+### Clark (Top-Level Lunar)
+- Physical: Ancient man in wheelchair; sunken cheeks, weathered face; hands to temples when using power
+- Property: Psychic exhaustion/immobilization — induces extreme fatigue, breathlessness, joint ache, heaviness; short-lived if interrupted; collapses after being neutralized
+- Role: Bozeman immobilization of Isaac/Samuel
+- Status: After Isaac touches him (Solar negation), Clark’s hands drop; later he shifts hands to chest, coughs, and slumps with blood seeping into shirt — likely dead or incapacitated
 
-- Max’s adoptive family / household
-  - Samuel — father head of household (described above).
-  - Isaac — older adoptive brother.
-  - Max — younger brother.
-  - House description: Small three-bedroom house; Samuel is the fearless leader but lives modestly; photographs of Samuel, Max, and Isaac on the walls.
+### Winston (Team One; Jack’s son)
+- Age: 26
+- Physical: Long brown hair, slightly covering eyes; thick beard streaked with grey; masked infiltrator attire
+- Property: Echolocation (“click tongue,” soundwaves form mental image) — degraded after capture/beating; works best in small rooms; blurry while moving or in large spaces
+- Role: Prologue protagonist; leads infiltration team of four Lunars into Denmark castle; key source of intel; survivor and witness to Abe’s throne room; catalyst for LARS mission
+- Personality: Mission-focused; rule-based (“second rule in espionage – leave before you’re forced to leave”; “don’t let curiosity…”); guilt-ridden over Team One incident; insists on not leaving teammates
+- Backstory:
+  - Formerly with Team One; left behind a year and a half earlier during a mission (Lawrence’s decision); later captured/sedated months; imprisoned in LA cavern; moved to Denmark; escaped after LA fell; spent months in Denmark gathering intel
+  - Echo property damaged “Ever since his capture and subsequent beating”
+- Relationships:
+  - Father: Jack (Gatekeeper of Freedom Fields)
+  - Team: Ace (18, dead), Stick (21, dead), Baron (29, dead)
+  - Lawrence (former teammate/leader): forgiveness arc; bonds healed during hospital scene
+  - Abe (antagonist): saw him; target of vengeance
+- Goals: Gather intel; alert Samuel; contribute to taking down Abe; refuses to return to Denmark (fears latent control through him/his father)
+- Status: Returned to Freedom Fields via northern gate, badly wounded/infected; debriefed Samuel/Lawrence; recuperating; not redeploying
+- Notable quotes:
+  - “We never leave one of our own behind.”
 
-- Nicole Tridian (often called Nicole)
-  - Full name: Nicole Tridian (full name appears later in text)
-  - Aliases / Titles / Nicknames: Courier; later Head Courier (text: Mark’s final announcement at Public Advancement calls "Miss Nicole Tridian!" which context implies a major advancement)
-  - Physical description: A teenage girl with red hair often braided; described as gorgeous; freckle-faced at times; efficient courier.
-  - Role: Peer & friend of Isaac; courier; high performer and Public Advancement candidate; becomes Head Courier (scene implies she is announced; Isaac is both proud and envious).
-  - Personality & voice: Witty, supportive (gives Isaac encouragement), skilled and personable; longtime friend and companion to Isaac.
-  - Backstory: Childhood peer with Isaac and Lawrence; couriers together; well-regarded by citizens.
-  - Goals/motivations/fears: Serve Freedom Fields; be excellent at courier work; support friends.
-  - Key relationships:
-    - Isaac — close friend, rapport, possible romantic tension.
-    - Lawrence — long-term childhood friend of the trio.
-  - Current status & arc trajectory: Advances to a leadership position (Head Courier) by the end of the ceremony; participates in rescue mission, reassures Isaac.
+### Ace
+- Age: 18
+- Physical: Young male; similar size/stature to Stick; black eye; bruised
+- Property: Audio perception manipulation — can change how others perceive sound (throw voice, scramble spatial cues)
+- Role: Infiltration distraction on terrace; aids Baron/Winston fight; captured; killed by Abe’s revolver shot
+- Status: Dead (shot by Abe)
+- Voice: Casual, adept; mission-capable
 
-- Lawrence
-  - Full name: Lawrence (no last name given)
-  - Aliases / Titles / Nicknames: “Youngest assistant battle trainer yet!”; “Young adoring fans” around him; often called “Golden boy of Team One”; leader-like.
-  - Physical description: Very handsome, blond hair, "Greek god" features; brash and charismatic; similar age to Isaac (teens, approx 17).
-  - Role: Member of Team One (explorer/retrieval team that ventures outside the walls); charismatic leader figure for LARS (in LA later); becomes an assistant battle trainer at combat school; leads an expedition to California; organizes/partners with Los Angeles Resistance Squad (LARS).
-  - Personality & voice: Charming, charismatic, confident, theatrical; natural leader and storyteller; adventurer.
-  - Backstory: Team One veteran; saved people in field before; recommended/exonerated for many dangerous missions; wrote Isaac a letter (Lawrence’s letter describing his findings).
-  - Goals/motivations/fears: Wants to explore the world beyond Freedom Fields, fix larger distortions (kidnappings), and make a difference beyond the city; ambition and wanderlust. Conflict with Isaac about leaving the city.
-  - Key relationships:
-    - Isaac — best friend from childhood, complicated trust feelings due to leaving city.
-    - Team One — respected member (he commands trust in field).
-    - LARS (Los Angeles Resistance Squad) — becomes linked; in LA he becomes an influential figure.
-  - Current status & arc trajectory: Leaves for California in secret to follow kidnappings; joins/assists LARS in LA; helps orchestrate rescue at the Willow/Marrow Way warehouse; later returns (or remains to continue work) — scene end implies he stays longer in LA though promises to reconnect.
-  - Notable quotes:
-    - Dramatic storytelling: “If there is any advice I could give you if you ever face an impossible task, it’s to never lose faith.”
+### Stick
+- Age: 21
+- Physical: Smaller; glasses worn over mask (later cracked); similar size/stature to Ace
+- Property: Acidic hands — slow-emitting but very powerful acid; can chew through chains; later used from chandelier chain
+- Role: Initially stair sentry; leaps onto chandelier; acid-chews chain to drop chandelier, creating darkness for Winston to escape
+- Status: Dead (multiple gunshots from Abe; falls with “crunch”)
+- Notable: Wears glasses; glasses retrieved by Winston as memento
 
-- Team One (group)
-  - Definition: The high-performing mission team that goes outside Freedom Fields monthly to retrieve resources (Lawrence is a member). Team One includes Lawrence, possibly Eddie and Smith (mentioned as casualties in one fight), and other unnamed members.
-  - Key events: Team One returned at the beginning (homecoming). On a mission to California, they suffered an attack ("attack on Team One on their mission to California" leaving Jack’s son behind). Lawrence used skills to survive and claimed strange things on missions (kidnappings). Team One reported Billings lost and provided initial information about kidnappings.
+### Baron (Lunar Pirate Gang member)
+- Age: 29
+- Physical: Huge; ugly face — eyes too close together; crooked mouth; square head; uneven mop of black hair; bulging forearms; “shirtless” during fight; shirt burns away
+- Property: Thermal ignition/pyrokinesis of upper body — hands turn red; entire torso above hips ignites; flares brightly; resists fire to degree; vulnerable to cooling (water-spewing guard)
+- Role: Heavy hitter in infiltration; brash; roars about Lunar Pirate wrath; nearly reaches Abe; killed by Rickey’s knife after neuromuscular scramble
+- Personality: Proud; vengeful; quick to fight; surprisingly aligned at moments
+- Status: Dead (stabbed in chest by Rickey)
 
-- Warlock
-  - Full name: Warlock (used as a proper name).
-  - Aliases / Titles: Appears to be the leader or senior figure of the gate attack group (northern gate attack).
-  - Physical description & property: Familiar to Samuel; manipulates earth/rocks (earth-based property: “rocks began flowing to him like snakes… arms formed out of rock glove-like protection”); he performs devastating earth attacks; physically commanding and cunning.
-  - Role: Attacker at Freedom Fields southern gate; one of the attackers in the initial assault (with clones and Shockwave).
-  - Personality: Menacing, husky voice, apparently once a comrade to Samuel (backstory indicates a former friend whose daughter went missing; Samuel chastised him).
-  - Key events: Part of attack that paralyzed many via blue energy (Shockwave) and kidnapped Max; he fights Samuel on the wall causing huge damage. Later captured but freed or escapes (unclear).
-  - Current status: Fought Samuel; told “We are not innocent” exchange.
+### Samuel (Mayor of Freedom Fields)
+- Age: Older; long gray hair; long gray beard; gargantuan body; plate-sized hands; creaking wood floors under weight
+- Property: Powerful telekinesis — summons, shapes, and controls objects (e.g., sharpens metal pipes mid-flight, orbits shards as barrier); can hover/fly; can slice bindings with shrapnel; formidable in close quarters; possibly limited by psychic interference (Clark)
+- Role: Moral center and leader; overburdened mayor; father to Max, adoptive father to Isaac; strategist; drives city management; wall defender organizer; rescuer in Bozeman; stabbed in the heart by Rickey’s knife after immobilization
+- Personality: Caring, overworked; self-doubting; honest; vows: “Do what’s right at any cost” (medallion from late wife); humble; playful with Max
+- Backstory:
+  - Long-time Freedom Fields leader; fought Lunar Pirate Gang 25 years ago (dent in northern gate)
+  - Lost wife to common illness; habit of rubbing missing medallion dislodged in LA battle
+  - Friend to Warlock (who fell under Abe’s trance and attacked FF)
+- Relationships:
+  - Max (son): deeply bonded
+  - Isaac (adopted son): proud, supportive; encourages property awakening; rescuer/fighter
+  - Rose, Martin, Darius: leadership circle
+  - Warlock: old friend under trance; guilt and forgiveness dynamic
+- Insights:
+  - Hypothesis: Abe’s control relies on physical proximity and the crown/tubing system; when Abe left LA, control failed
+- Status: Critically injured/stabbed in Bozeman (knife to heart) at the end of Chapter 17
+- Notable quotes:
+  - “I think we finally have something to go on.” (re: Abe’s proximity limitation)
 
-- Shockwave
-  - Full name: Shockwave (used as a proper name)
-  - Aliases: The blue-orb Lunar (or the one who shoots blue orb).
-  - Physical/Property: Can emit a blue orb/energy that paralyzes/locks people’s bodies/controls electricity and senses; affected city electricity (South Sector blackout).
-  - Role: Attacker in the southern gate raid and in group that kidnapped Max; key tech used to disable Samuel temporarily and to remove wall defenders’ abilities.
-  - Key phrases: “A cruel punishment that only Shockwave can inflict; not a bad ally to have…” (said by someone at the gate attack).
-  - Current status: Able to cause city shutdown; later says, “The mission is complete. We have the boy.”
+### Isaac (Solar)
+- Age: 19 (celebrates shared October “drop-off” birthday with Nicole)
+- Physical: Messy black hair; growing taller; looking more Lunar over months; suffers injuries (forearm bullet graze in Great Falls, beaten; later cords; Bozeman severe bindings)
+- Property: Solar (first identified by Refiner’s Definer; not fully controlled)
+  - Capabilities shown:
+    - Massive strength bursts (one-punch Tyrannus kill in LA)
+    - Situational surges under duress/adrenaline (freeing from tile/cables; speed bursts; negating Clark’s psychic immobilization upon touch)
+    - Negation/cancellation of other properties upon contact (Felix’s hint “what you’ve done to me” and LA/Tyrannus case)
+    - Exceptional durability (survives severe fights; but still injured by bullets/bats)
+  - Unreliable activation; “flares” unpredictably; often only when not actively trying
+- Role: Co-protagonist; searches for Solar mentor; rescuer of Max in Book 1; attempts to find mother; instigator of Great Falls and Bozeman missions
+- Personality: Determined; self-critical; craves independence/power; chafes at Rose’s training; loyal to friends; occasionally rash (Bozeman rush)
+- Backstory:
+  - Drop-off in Freedom Fields; had dreams guided by his mother (later revealed as her property); identified as Solar by Gayle’s machine (~6 months prior); trained at battle school; saved Max and toppled LA cavern
+- Relationships:
+  - Samuel (adoptive father); Max (adoptive brother)
+  - Nicole (close friend; hinted deeper feelings)
+  - Lawrence (mentor/friend; respects his strategic mind)
+  - Teresa (indirect; mother’s tie to Teresa via Felix)
+  - Felix (seeks mentorship; confrontation)
+- Status: Captured and bound in Bozeman; freed by Samuel; then re-bound by Danny; witnesses Samuel stabbed; Solar power “snaps” within at the end
 
-- Darius Flint
-  - Full name: Darius Flint
-  - Aliases / Titles: Leader of the wall defenders.
-  - Physical description: A very large man; imposing presence; stubbly beard that grows back quickly; muscular (basketball shorts and t-shirt scene).
-  - Role: Oversees wall defense; speaker at Public Advancement (introduced wall defenders and advancers).
-  - Personality: Stern, pragmatic, confident in guard coverage.
-  - Backstory: Instrumental in organizing guards and wall defense.
-  - Key relationships: Works closely with Samuel; interacts publicly with citizens.
-  - Current status: Leads northern gate search with Samuel; present in debrief meetings.
-  - Notable quotes:
-    - “Two new wall defenders will be needed this year. Joshua Trepid and Maggie Lowlock.”
+### Nicole
+- Age: 19 (shared October “drop-off” birthday with Isaac)
+- Physical: Curly/long red hair; uses hair as appendage; slender; stands to Isaac’s chin; gloves/jacket in winter
+- Property: Hair manipulation (can grasp, disarm, unlock cuffs via hair; combat capable)
+- Role: Head Courier of Freedom Fields; Isaac’s confidante and travel partner; pragmatic; wounded in Great Falls (bullet graze in side); accompanies Isaac to Great Falls and Baldy; kidnapped in Bozeman trap (dragged off prior to Samuel’s arrival)
+- Personality: Grounded; assertive; cares deeply for Isaac; strategic sense; witty sarcasm
+- Backstory: Became Head Courier ~6 months earlier; history of chopping wood at 13 when Lunar strength manifested; learned hair control soon after
+- Relationships:
+  - Isaac (close bond; possible romance tension)
+  - Max (mentors him as courier; pairs him with Olive)
+  - Lawrence (friendly banter; respects him)
+- Status: Captured by Rickey’s team in Bozeman (removed out the back; whereabouts unknown as of end Ch. 17)
 
-- Rose (Rose Evergreen)
-  - Full name: Rose (later in text identified as Rose Evergreen)
-  - Aliases / Titles: Head of combat school in East Sector; assistant battle trainer; combat instructor; “the shining light of hope” (others’ reverent tone).
-  - Physical description: Gorgeous woman; black, wavy hair, often in a ponytail; combat school outfit: tactical boots, jeans, flannel; wore an elaborately designed white cape at the ceremony; later injured (stab wound).
-  - Role: Tactical and combat leader; mentor/trainer to students (including Lawrence).
-  - Personality & voice: Stern, practical, strong-willed, mistrustful of risk; pragmatic and sharp. She debates Samuel about troop increases and resource allocation.
-  - Backstory: Trained Lawrence; skilled in rapid training; her property/special ability is implied (some form of combat enhancement).
-  - Goals/motivations/fears: Protect Freedom Fields; be efficient with scarce resources; refuses to be reckless.
-  - Key relationships:
-    - Samuel — colleague/partner; sometimes in disagreement.
-    - Lawrence — trainer/mentor.
-    - Team One & combat school affiliates.
-  - Current status: Injured in LA raid; survives; critical combat leader during raids.
-  - Notable lines:
-    - Skeptical of Samuel’s dreams but agrees to more trainees when pressured; later is injured and given urgent care.
+### Lawrence (former Team One; leader of LARS)
+- Physical: Thick blond hair; trademark smile; wry humor; later shirtless in castle battle; wounded (dislocated shoulder; rubber bullet embedded)
+- Property: Foresight (precognitive combat sense; anticipates moves; can choose optimal counter with cost of exhaustion); highly skilled combatant; can steady under fire
+- Role: Leads LARS; pushes urgent recon mission to Denmark; Boston con artist routine; negotiates Mr. Shade passage; leads prison break at castle; rescues Isaac’s mother
+- Personality: Charismatic; risk-taking; strategic; guilt over Winston incident; impatient with bureaucracy; manipulative charm (reporter act)
+- Backstory:
+  - Former leader of Team One; left Winston behind to save team; helps reform LA; sends Xenia and London ahead to Florida (unseen in this volume)
+- Relationships:
+  - Jasper, Paul (LARS teammates)
+  - Samuel, Rose, Martin (Freedom Fields leadership)
+  - Isaac, Nicole, Max (close allies)
+  - Mr. Shade/Trevor (adversarial-ally)
+  - Jens/Anders (Danish allies)
+- Status: In Denmark with Jasper & Anders; successfully escapes castle with prisoners incl. Isaac’s mom; on the run; to ditch truck before leading to base
 
-- Jack
-  - Full name: Jack
-  - Aliases / Titles: Gatekeeper (man in suit at southern gate).
-  - Physical description: Older man, white thinning hair, bald spot; proper, wore a black suit, white gloves at gate (but white-glove look turned out to be electric coats of electricity). Able to channel electricity, or rather his gloves became “coats of electricity” that crackled — indicating he is a Lunar with voltage control (or he can manipulate voltage).
-  - Role: Gatekeeper responsible for opening southern gate with changing voltage patterns; trusted with specific electrical keying.
-  - Backstory: His son was left for dead in a prior Team One mission to California (the text references Jack’s son was left bleeding out and may have been presumed dead).
-  - Key relationships: Trusted by Samuel historically; suspicious and paranoid after attack.
-  - Current status: Called to be interrogated regarding possible links to infiltration; appears shaken by current events.
+### Jasper (LARS)
+- Physical: Large; towers over Gayle; notable scar across forearm (from fight with Samuel six months earlier); gets seasick; wears t-shirt in cold easily (resistant to elements)
+- Property: Bioelectric discharge — shoots electricity/shockwaves; requires proximity; drains with repeated use; can short opponents; must avoid water (dangerous)
+- Role: LARS heavy; fights guards; short-circuits; wields bat at castle
+- Personality: Dry humor; practical; hates Trevor’s theatrics; loyal
+- Status: Survived Denmark rescue; with Lawrence and Anders in escape truck
 
-- Mark Spitz
-  - Full name: Mark Spitz
-  - Aliases / Titles: Current head courier (retiring during the chapter) who is selecting successor; introspects at Public Advancement.
-  - Physical description: Older man; introverted; long blue cape with white pigeons stitched in (ceremony).
-  - Role: Head courier retiring; public speaker at Public Advancement.
-  - Personality: Stoic, measured, paternal in address to the crowd.
-  - Key relationships: Couriers of Freedom Fields (leads the corps); Isaac is his most trusted courier by reputation though not selected.
-  - Current status: Announces managing couriers and head courier successor (ceremony). He speaks of disappointment and triumph.
+### Paul (LARS)
+- Physical: Noticeably older; reddish-brown hair; ultra fair skin; skeptical about car safety
+- Property: Not explicitly stated; joked that he “has a property that makes it easier for people near him to remember things” (may have been a Lawrence improvisation); Gayle’s machine categorized him as Lunar (stood to the left with Jasper)
+- Role: LARS teammate; skeptical; support ops; seasick mitigated by Trevor’s apple juice
+- Status: In Europe with LARS (pre-denouement not detailed beyond Boston/ship leg)
 
-- Stewart Blocker
-  - Full name: Stewart Blocker
-  - Aliases / Titles: Gayle’s new apprentice (advancer chosen by Gayle at the Public Advancement ceremony)
-  - Physical description: Boy with rounded glasses; same height as Gayle; awkward, red-faced when awarded sash; shy.
-  - Role: Gayle’s newly announced apprentice; appears to have a technical property (works with the Refiner’s Definer).
-  - Personality: Nervous but competent; skilled with the “metallic ball” device he handles (disassembles/inspects Gayle’s machine).
-  - Current status: Present at presentation of Gayle’s machine.
+### Xenia, London (LARS members; mentioned)
+- Status: Sent ahead to Florida by Lawrence to deal with political upheaval there (not on-page)
 
-- Teresa
-  - Full name: Teresa (no last name)
-  - Aliases / Titles: In charge of historical records in Freedom Fields.
-  - Physical description: Wears a decorated cape with book designs; whispers sometimes speak softly.
-  - Role: Records keeper; awards a scribe in ceremony.
-  - Personality: Soft-spoken, precise.
-  - Current status: Attends ceremony.
-
-- Brix Common
-  - Full name: Brix Common
-  - Aliases / Titles: New scribe (advancer) selected by Teresa.
-  - Physical description: "A boy the size of an oak door" — very large boy, heartily embraces Teresa.
-  - Role: New scribe who will work with historical records.
-  - Current status: Receives sash at ceremony.
-
-- Joshua Trepid and Maggie Lowlock
-  - Full names: Joshua Trepid; Maggie Lowlock
-  - Aliases / Titles: Newly selected wall defenders announced by Darius at ceremony.
-  - Ages: Teenagers (in seats among advancers).
-  - Role: New wall defenders.
-  - Current status: Celebrate advancement; Maggie’s family present.
-
-- Miley Mathis, Mathew Weatherby, Trey Johnson
-  - Full names: as listed.
-  - Aliases / Titles: Selected as managing couriers (announced by Mark Spitz).
-  - Role: New managing couriers appointed at Public Advancement (Mark’s announcement).
-  - Notable: Isaac is upset that Nicole was not chosen for one of these (text implies tension).
-
-- Lawrence’s fight characters (minor mentions)
-  - Eddie — Team One member killed/defeated by a Lunar in Lawrence’s story.
-  - Smith — Team One member (“Smith wasn’t actually knocked out. He was fighting next to me” in narrative).
-  - These are minor mentions in Lawrence’s story.
-
-- Daryl
-  - Full name: Daryl (no last name)
-  - Aliases / Titles: Owner of the warehouse whose rooftop is used by Team One and friends for gatherings; provides location for rooftop hangouts.
-  - Physical description: Short, tubby, shiny bald head.
-  - Role: Landowner allowing rooftop gatherings; scolds kids for staying late.
-  - Current status: Involved in shelter/location discussion.
-
-- Gayle’s Package (object; not a person)
-  - Description: A round object wrapped in old newspaper with a fifteen-year-old headline visible: “DC HAS FALLEN! MARTIAL LAW HAS BEEN ENACTED!” Gayle mutters “… almost complete… one last piece.” He earlier requested an envelope to be delivered to Samuel left under doormat with two quarters under doormat as payment.
-  - Significance: A mysterious component of Gayle’s work (he said “almost complete … one last piece”), later may relate to the Refiner’s Definer or other contraptions.
-
-- Stewart moved to Gayle’s apparatus details (see objects & artfacts section).
-
-- Jack’s son (unnamed)
-  - Mentioned as having been left for dead during an earlier mission (Team One California mission attack).
-  - Significance: Source of Jack’s paranoia and hesitation.
-
-- Rick
-  - Full name: Rick (brief crowd-say) — man who sarcastically called the gate approach "The queen of England".
-  - Role: Crowd member at southern gate function; used in gossip/rumor scenes.
-
-- Team One teen fans & teenage girls
-  - Cecilia — one of Lawrence’s audience (girl in his arms).
-  - Other unnamed teenage girls who swoon for Lawrence.
-
-- John / (no other major John)
-
-- The attacker at Isaac's house who kidnapped Max (the “rat-faced man”)
-  - Full name / alias: Later called Bonzo (explicit in cavern confrontation).
-  - Physical description: Rat-like features; lips scabbed and dry; eyes with no pupils (grey circle); smell like rot; wiry fingers with long fingernails; slick black hair.
-  - Role: One of the kidnappers who enters Samuel’s house and abducts Max (captures Max and escapes in SUV).
-  - Behavior: Smug, cunning; claims he’s after “worldly treasures” but actually seizes people (stated he wanted Max).
-  - Current status: Later encountered among LA captors in cavern; tries to kill Isaac; executed / tossed? (In LA, during Tyrannus’ rampage a man named Bonzo is killed by Tyrannus — likely same rat-faced man).
-  - Notable quote: “You brought me exactly what I was looking for… For that, I thank you greatly.” (said at the vault)
-
-- Vault (object in Samuel's house)
-  - Description: A massive basement vault door in Samuel’s house (Martin built) with a password mechanism keyed to voice; considered very secure; large golden door.
-  - Password used: "Paradigm" (Isaac says it, and vault opens).
-  - Significance: Where Max was secured during emergency protocols; Isaac entered via password and then intruder forced them out.
-
-- Richard Snow
-  - Full name: Richard Snow
-  - Aliases / Titles: Leader of the refuge in Connecticut (a Lunar with lightning property in older stories).
-  - Physical description: Haggard; nose crooked; used to have yellow eyes; in captive state his eyes are pale / colorless; later his true property is revealed to be lightning (yellow eyes) but he lost them (power gone / eyes drained).
-  - Role: Captured when he was possibly used by kidnappers; brought into Blane's palace; provides info linking kidnappers to Los Angeles and California.
-  - Backstory: Previously sheltered people (refuge in Connecticut). He was supposedly away for three years; he reports a bald man arrived who can make copies of himself (“He could make himself in two places — almost like a clone”).
-  - Current status: Captured in Blane’s palace, nearly unconscious; later used by Samuel and team as lead to LA; later participates with LARS and helps in LA operations; later used to unleash a powerful light/laser-type attack from his eyes (in LA cavern, he emits beams).
-  - Notable quotes: “I need to return. My people are – are without their leader.”
-
+### Mr. Shade (Trevor) and the Sinister Sisters
+- Mr. Shade (alias of Trevor)
+  - Physical: Short, middle-aged; bald; vivid violet/blue/green eyes (color shifts); white sweatshirt; former Los Angeles stuffing distributor
+  - Role: Drug lord operating in Boston (“stuffing” production/shipping); clandestine shipper to Europe (higher profits); under watch by Abe’s mole(s)
+  - Personality: Sardonic, mercenary; theatrically duplicitous; cares for wealth and power; pragmatic; will help under secrecy
+  - Backstory: Formerly under Blane in Las Vegas/LA; cover blown; moved to Boston; runs multi-tiered covert warehouse; uses sewer-tunnel ingress for workers; has “fetchmen” like the cloaked guide; claims to be watched by an advisor under Abe’s trance
+  - Status: Arranges secret stowaway for LARS; sends note: “Down with the man in the throne.”
+- Sinister Sisters: Greta, Nova, Aurora
+  - Greta: Massive, deep-voiced, sunburnt skin, hair in tight bun; slow speech; claims “Abe is not good man. I hate him!”; immense strength
+  - Nova: Red hair; admonishes Greta
+  - Aurora: Wears gloves; property paralyzes by touch; curt, dismissive; claims not to remember LARS (post-trance amnesia)
+  - Role: Shade’s enforcers; escort LARS; disavow Abe; don’t recall LA crimes
 - Blane
-  - Full name: Blane (no last name)
-  - Aliases / Titles: “Largest drug lord in the western United States”; owner of Las Vegas palace / casino; appears as a major outside-the-walls power.
-  - Physical description: Massive man, wearing thick chain necklace; throne bolted to the ground; has two Bengal tigers at his feet; expensive look; has a son (Strap).
-  - Role: Crime lord controlling a Las Vegas palace; reluctant ally/enemy who saved a Lunar (Trevor) and can offer contacts in Los Angeles; complex past with Samuel (ex-friend - lore).
-  - Personality: Arrogant, menacing, pragmatic; offers help with contingencies (wants Samuel to “kill them” as price).
-  - Key relationships:
-    - Strap — his son (Strap was found on the road and returned).
-    - Trevor — his informant (Trevor is described as “his eyes and ears in LA”).
-    - Samuel — long history/friendship gone sour.
-  - Current status: Offers help with LA contacts but demands violent price (kill all those involved) — Samuel refuses; he begrudgingly helps by offering contact.
-  - Notable quote: “My conditions are simple. I need you to kill them; Kill everyone involved with Strap’s kidnapping and then we’re even.”
+  - Las Vegas drug lord; Trevor’s former boss; antagonistic; not present in this book
+- Refract
+  - Mirror-based property user in LA; now the new mayor of Los Angeles; unnerving to Isaac
 
-- Strap (full spelling appears as “Strap” / also “Strap” earlier)
-  - Full name: Strap (named as “Strap” in multiple sections; possibly nicknamed)
-  - Aliases / Titles: Blane’s son (the young boy found in a damaged state on the highway).
-  - Physical description: Boy approx 10–11, bandaged from ankles to forehead, has the property of a "reflector" — "a mirror" who can steal/reflect properties when locking eyes or touching.
-  - Role: Kidnap victim (son of Blane); escaped a capture; his property is coveted (he reflects others’ properties back).
-  - Personality: Proud, angry, volatile; tends to lash out and cause chaos; childlike vulnerability underneath.
-  - Backstory: Kidnapped from Blane’s palace by Lunars working for kidnappers; he escaped; later meets Samuel and company and is transported to Blane's palace (he is saved and returns to Blane).
-  - Current status: Recovered by Samuel’s group; his reflection property proved instrumental in Washington events; he endured violent event; gives Isaac a hint (address).
-  - Notable property: Reflector — can “reflect” a property back, but it seems to have conditions (only strong anger/proximity levels yield full effect; not consistent). When he applied his property to Samuel it caused objects to fly and leave Samuel temporarily out of control. Strap can be dangerous; his presence destabilized the group; he’s valuable to captors and Blane.
-  - Notable quote: “I’m a mirror. Whoever he locks eyes with, or touches, or talks to, I’m not sure how his property works, but if he has a certain interaction with someone, he can take their property and reflect it back with his own little twist.”
+### Jens (Danish resistance leader)
+- Physical: Older man; slight limp; hands clasped behind back; white stubble in patches; crooked grin; can draw pistol quickly
+- Role: Leads local anti-Abe group; tests newcomers’ trances by unloaded-gun trigger test; coordinates castle surveillance/raid; drives rescue truck through gate
+- Personality: Cool, methodical; bleak humor; trusts carefully
+- Status: Alive; rescues prisoners incl. Isaac’s mother with truck smash; drives escape
 
-- Trevor
-  - Full name: Trevor (no last name)
-  - Aliases / Titles: Blane’s eyes and ears in LA; “plug” in LA community; a Stellar who serves Blane.
-  - Physical description: Bald-headed man with frequently shifting eye colors (violet, sky blue, green, pink described); small, weasely; neat; clean home interior; keeper of local intel; Tariff of a spy / informant. Maintains a network of surveillance papers and sketches.
-  - Role: Information broker / informant in Los Angeles who both sells info to Blane and provides intel to Samuel’s rescue team (Trevor provides the Marrow Way address). He is morally ambiguous and opportunistic.
-  - Personality: Slick, self-serving, pragmatic, opportunist; “I do what Blane asks” attitude.
-  - Key relationships:
-    - Blane — loyal (for pay & protection).
-    - LARS and Freedom Fields team — he negotiates and sometimes helps; gave the group the “Northern Bay” lead and the Marrow Way address.
-    - Trevor’s shifting eye colors may indicate a property (perception that he’s Stellar but he manipulates perceptions).
-  - Current status: Provides crucial map/address intel; later acts as a double-edged presence (betrays or aids); leaves the Freedom Fields group in the end, promising help if they’ll “come back and finish the job.”
-  - Notable gadgets: A “pack” of stuffing (drug) he offers to revive injured Lunars (he outlines a procedure to place a powder near nostrils).
-  - Notable quotes: Flippant, opportunistic speech, e.g. “I have something of value for your wounded... I have something of value for your wounded. It might actually save their lives.” — refers to “stuffing” (a drug).
+### Anders (Danish boy)
+- Physical: Dusty blond hair sticking from black beanie; blue eyes; young
+- Role: Spotter/ally; limited English; uses pamphlet knowledge to find underwater dungeon entrance via “third dimple” of castle on southern side; points gun to stall guards; “Swim. Hole.”
+- Personality: Brave, resourceful
+- Status: Escapes in truck with LARS/prisoners
 
-- Blane’s guards / Duane
-  - Duane — guard with katana who first stops Samuel’s party at palace entrance; recognizes Strand/Strap’s command (“Let them in, Duane”).
-  - Many unnamed guards at Blane’s palace; different shirt colors denote standing.
-  - Role: Palace security.
+### Jerry (prisoner in castle dungeon)
+- Physical: Normal-looking; schoolteacher/farmer vibe; panicked; threatened Lawrence initially
+- Role: Becomes ally after freed; carries Isaac’s mother; owes life to Lawrence; vows to protect her
+- Status: Escapes in truck
 
-- The Los Angeles Resistance Squad (LARS: members listed)
-  - Name: LARS (Los Angeles Resistance Squad)
-  - Members (named):
-    - Jasper — large, soldier-like; electrical property (can hurl electric bolts), stoic and angry; older than Isaac but not old; wounded but a major combatant.
-    - Xenia — graceful female fighter (acrobatic), blonde hair, feline eyes, claws; her role includes "reversing brainwashing" for the monthly recapture of villainous sisters earlier.
-    - London — light-blue eyed, older than Lawrence; lost mother; used property to escape; strong hands; takes leadership in LA.
-    - Paul — mid-forties, red-brown hair, father who lost son Nathan; his property is explosive/whistle-activated bombs (he uses a whistle then explosive pipe in the LA raid).
-    - Ron — wall defender-sent to LA, controls mechanical contraptions (motors) — can manipulate windows & mechanical systems; help in war efforts.
-    - Richard — ex-Refuge leader; pallid eye state; has a property that later releases beams of light (devastating) when triggered; emotionally loaded; seeks his daughter.
-    - London, Jasper, Xenia, Paul, Ron and Richard make up the primary LA team.
-  - Role: Local LA resistance working to find kidnapped locals and to aid Freedom Fields outcasts; they fight kidnappers and search for the fortress.
-  - Background: Each member has personal stakes — friends/family kidnapped.
-  - Current status: Coordinated Laura & Lawrence to find the warehouse leads; fight as allies in the Final raid (Warehouse / Mirror trap / Trophy room).
+### Isaac’s Mother (unnamed woman; dream-sender)
+- Physical: Pale white face; strikingly blue eyes; weak; light body (Lawrence remarks); once appeared in dreams in white gown with blond hair and blue eyes; in real found in dungeon, starving and coughing
+- Property: Dream projection/influence — can send vivid, directive dreams/visions (directed Isaac in earlier book; now attempts to send one more dream re: Isaac’s danger)
+- Role: Central MacGuffin for Isaac; catalyst for Bozeman trip; rescued by Lawrence/Jasper/Anders/Jerry
+- Status: Rescued; in truck; urgent: “We can still save Isaac!”
 
-- Louis and his father (the “savages”)
-  - Full names: Louis (boy) and his father (unnamed savage leader)
-  - Aliases: the father/fighter is a savage (referred to as “the leader”), Louis is the baby/son who was rescued earlier by Samuel’s team.
-  - Physical description: Father — red eyes, one hand mangled, body covered in deep cuts and bulging lumps due to hereditary neurological condition; Louis — a boy with crutches, later dematerializes crutches to a wooden chair (indicating a property).
-  - Role: He and his family are the “savages” living outside LA; Louis’ father is protective, holds community of savages; Samuel & team briefly captured & sedated by them; Louis later reveals knowledge of kidnappings and suggests leads.
-  - Backstory: Louis and father were traveling for specialist treatments for father’s degenerative property; Louis was kidnapped in a trap but father rescued him and they ended up living with the tribe.
-  - Current status: Louis aids Isaac & the team with a map; they provide a lead (Marrow Way) and later supply the group with guidance.
+### Jack (Gatekeeper of Freedom Fields)
+- Physical: British; sharp black tuxedo; baggy, heavy eyes (tears for Winston); tremoring hands when opening gate; shoots lightning from hands; unlocks 30-foot gates via specific voltage
+- Role: Gatekeeper; father of Winston; emotional reunion at northern gate
+- Personality: Formal; controlled; austere; loving father
+- Status: Active
 
-- Louis’s father (leader of the savages)
-  - Role: Savage patriarch who rescues Louis; the savages are protective and dangerous but ultimately help the group; later provides a “map” after some bartering.
-  - Characteristics: Big, hairy, animalistic; compassionate towards Louis but brutal to enemies.
+### Rose
+- Physical: Tactical boots, jeans, red flannel sleeves rolled; ponytail
+- Role: Battle school commander; interrogator with Martin; Isaac’s brutal trainer; trains to “higher standard” for Solar
+- Personality: Stern, efficient; occasionally empathetic under gruffness; “good cop” foil is Martin (but here Rose is “bad cop”)
+- Status: Active at Freedom Fields
 
-- The Sinister / Slimy / Sinister Sisters (Aurora, Nova, Greta)
-  - Aurora
-    - Full name: Aurora (no surname)
-    - Physical: one of three Lunars who attacked Trevor's house; “sly grin” and controlled; hands behind back; average height; possesses a power that drained Lunars temporarily when applied to them in that fight but later succumbs.
-    - Role: Member of trio attacking Trevor’s home; one of the “Sinister Sisters”; later defeated/switched.
-  - Nova
-    - Full name: Nova (no surname)
-    - Physical: red-haired; muscular brute in the team; large; took heavy damage in fight with Isaac’s group.
-    - Role: Brute of the sister group; very powerful physically.
-  - Greta
-    - Full name: Greta (no surname)
-    - Physical: another sister, strong and large; large arms; later knocked out.
-  - Summary: Three Lunars attacking Trevor’s house (Sinister/Slimy Sisters); they are later subdued by the allied Lunars (Xenia, Jasper, etc.) and used as captured enemies.
-  - Notable scene: the trio is called the “Slimy Sisters” and “Sinister Sisters” by different voices; Xenia and Jasper attack them later.
+### Martin
+- Physical: Neat black suit; fiery eyes; gnarled fingers? (unrelated—Gayle’s)
+- Role: Interrogator/analyst; runs vault interviews; pairs with twins (Lincoln, Lucas); coordinates with Darius
+- Personality: Wry, methodical; weary; supportive of Samuel; “good cop”
+- Status: Active in Sheriff office vault ops
 
-- The Mirror villain: Refract (the mirror-man)
-  - Full name / alias: Refract (presented as the mirror nest/owner — referred to as “Refract” in dialog).
-  - Physical/property: Perched above a warehouse on mirror nest; his property ties to mirrors and perception — he can lock people’s eyes open/freeze them through mirror gaze. Refract can freeze people based on their perception of their own power (if they believe they are powerful he can hold them longer).
-  - Role: Master of the mirror-warehouse trap (Willow Road), who captures Isaac and freezes freedom fighters; Refract is imprisoned in his mirrored lair (he cannot easily lift his gaze from mirrors; he must nest in them).
-  - Current status: He traps most of the attackers. Isaac is initially frozen by Refract; Trevor had colluded with him. Refract is a central antagonist in the warehouse scene.
-  - Notable quote: “My power is directly linked to my victim’s perception of their own property. If they think they’re strong, I can have them frozen like this for hours as long as I’m looking in the mirror…”
+### Lincoln and Lucas (the twins; “Martin’s #1 Man” shirts)
+- Physical: Indistinguishable; shirts: “Martin’s #1 Man” and “Martin’s REAL #1 Man”
+- Role: Errand/fetch operatives for Martin interviews; playful; easily distracted (soccer match detour); hasty runners with poor follow-through
+- Personality: Goofy, theatrical (Lincoln bows to Madison); competitive
+- Status: Active
 
-- The clone/“belch” Lunar (unnamed)
-  - Physical/property: Man producing clones via belch; he “belched” a copy out of his mouth that inflated and men forming clones; his clones are combat-capable; one had deeper wrinkles and was more crisp — the originals and differences were noted.
-  - Role: One of Warlock’s accompanying attackers; tough adversary in battle with Samuel.
-  - Current status: Creates clones that aid Warlock in attack; Samuel had to smash the clone origin; clones can disappear when the original is killed (as per a scene where knocking out one caused another to disappear).
+### Madison Fizzleton (misannounced “Fizzlebush”)
+- Physical: Middle-aged; thin blonde hair; heavy dark under-eye bags; frightened; tearful
+- Property: Kiss-induced paralysis — kissing someone paralyzes them for a few seconds
+- Role: Interviewee; claims never lost consciousness during trance; kept a daily journal for three years; heard Abe’s organized, ethical-seeming voice; commanded to kill; stabbed a man in stomach instead of heart; heard Abe laughing afterwards
+- Personality: Apprehensive; traumatized; guilt-ridden; defiant when pressed
+- Status: Resident of Freedom Fields (arrived “a couple days earlier”)
 
-- Warlock’s bald/cloning man (bald man with clones)
-  - Descriptions overlap with above (bald clone-man). He is capable of producing clones that “inflate” and act; his belch produced clones. He is used in the initial assault and in the LA raid.
+### Keith (sewage systems manager)
+- Physical: Stocky; receding black hair; stubble; wide, thick hands; Stellar
+- Property: Gayle’s machine: Stellar with a “physical property” (unknown/unrealized)
+- Role: Interviewee; under trance (spotty memory; urges; blackout days; heard “horrible voices”); no close ties identified (challenges control model leverage); requests Olive’s help to recall faces for artist since he lost last family photo
+- Personality: Reserved; matter-of-fact; grieving (wife/son died post-Awakening in car accident)
+- Status: In Freedom Fields; Martin to try connecting him to Olive
 
-- Bonzo
-  - Full name / alias: Bonzo (explicit later as the rat-faced man)
-  - Role: Kidnapper who captured Max at Samuel’s house is described later as the same “rat-faced” man; Bonzo was later killed by Tyrannus during the trophy-room events.
-  - Current status: Dead (thrown by Tyrannus).
+### Teresa (Head of Record Keeping)
+- Physical: Short, round frame; mouse-like voice; glasses low on nose; holds pencil tightly (knuckles white)
+- Role: Librarian; preserves oral histories; gatekeeper to records; reluctant to discuss wall origins; personal trauma linked to wall’s rise
+- Backstory:
+  - Gave birth to a boy a week before the wall rose; he died in her arms (suspected property incompatibility); husband left next morning and never returned; wall rose “in the middle of winter”; was trapped for a month
+- Personality: Protective of archives; wounded by grief; snaps under pressure, then softens with Nicole
+- Beliefs:
+  - No proof that a person (or a Solar) constructed the wall; suggests “rumors” via “the bar” for further leads
+- Status: Active in Freedom Fields library
 
-- Tyrannus
-  - Full name / alias: Tyrannus
-  - Aliases / Titles: a top-level Lunar (giant); possibly a Solar-level or very high Lunar (very large steel-skinned man).
-  - Physical description: Massive, steel-covered skin, bare feet; commands fear and violent physical power; later his skin changes and he loses some of his steel composition when hit; described as “one of the few who stories were told about” — mythic-sounding.
-  - Role: Top-level enforcer/guardian in the cavern (the trophy room); he controls the guards and is a primary protector of Abe’s holding facility; later attacked and house was destroyed in the fight; he’s a major boss-level adversary.
-  - Key events: He was incapacitated when Isaac unexpectedly strikes him (Isaac’s punch transforms Tyrannus’s steel skin to flesh momentarily and knocks him into the cavern wall). Later Tyrannus was pinned by a rock dropping and outraged by loss; afterwards, he was hit again and possibly temporarily out of action.
-  - Current status: Defeated/knocked into wall after Isaac’s punch and Richard’s light beams — left uncertain but incapacitated when team escapes.
-  - Notable line: “You’ve always wondered, how does it feel to be nothing? ...”
+### Brix Common
+- Physical: Massive; head nearly hits doorframe; advanced at Public Advancement Ceremony
+- Role: Courtesy escort to Mrs. Johnson; library helper
+- Status: Active
 
-- Abe / Abraham
-  - Full name / alias: Abe / Abraham (referred to interchangeably; major unseen antagonist)
-  - Role: Overarching antagonist with reach and control: the voice heard during many scenes and the implied mastermind behind kidnappings and trafficking (Abe’s forces were behind the kidnappings). Controls/commands top-level Lunars (Tyrannus included).
-  - Evidence / quotes: “We will not be fooled… Abraham will have complete control.” — Abe’s voice taunts and threatens Freedom Fields. He learned Isaac’s identity and threatened Freedom Fields when the team rescued the captive kids: “Abraham will have complete control.”
-  - Current status: Remains unseen physically in excerpt but exerts power via agents (Tyrannus, kidnappers). Top-tier antagonist and ominous mastermind.
+### Mrs. Johnson
+- Physical: Extremely old; uses walking chair; weekly library visitor; poor hearing
+- Role: Oral historian contributor
+- Status: Resident in Freedom Fields
 
-- Charles
-  - Full name: Charles (kid in the tanks/trophy room)
-  - Aliases / Titles: a captive boy in aquatic tanks; can “rust” metal by touch (locks rusted when he touched padlock).
-  - Physical description: Boy roughly Isaac’s age, marred by months in tanks; breathes in sticky solution; wakes disoriented.
-  - Role: Another captive whose property can age/rust metal and whose release helps provide invisibility/other effects for escape when conscious.
-  - Current status: Freed from his tank by Isaac and Olive; he is weak but becomes crucial in the final trophy-room escape (his property can make them invisible for short time but is intermittent).
-  - Notable: Referred to later as “Charles, at your service.”
+### Darius Flint
+- Physical: Thick beard; intense, disciplined bearing
+- Role: Commander of wall defenders; processes Lunars at southern gate; coordinates Gayle’s machine usage; leaps from wall; sends couriers; monitors cars
+- Personality: No-nonsense; supportive of Samuel; respects Lawrence; pragmatic with newcomer triage
+- Status: Active
 
-- Olive
-  - Full name: Olive (no surname)
-  - Age/description: Girl (approx 12) held in cages; hair blonde, thin, frail; property lets her “recognize people” described as “can recognize people I’ve never met” (property of recognizing described).
-  - Role: Cage captive whose property identifies people described to her and who becomes Isaac’s ally in the trophy-room escape; insists they wait for shifts to change to escape; later returned to Richard in tears; helps free Charles.
-  - Important detail: Olive claims her father was “taken” and may be linked to captors.
+### Liza
+- Physical: Small, slender woman; can unsettle men with a glance
+- Property: Nausea-inducing gaze; “looking into Liza’s eyes momentarily could turn any grown man’s stomach upside down”
+- Role: Wall defender; gatehouse presence; intimidates Max (staring contest threat)
+- Status: Active
 
-- The “savages”
-  - Term: “savages” is used for a group of mutated people outside Los Angeles with red eyes, weird bulges under skin, degenerative disease; they are not mindless (some are functional). They are protective of their leader (Louis’s father).
-  - Important traits: Hereditary degeneration in brains; the father’s brain treats his property like virus; people who manifest properties may be physically incompatible (example Louis’s father).
-  - Role: Initially captures Samuel & co., then releases them when a sick child signals to release (compassion).
-  - Key characters: Louis (child), Louis’s father (leader).
+### Gayle (engineer)
+- Physical: Small, old man; bushy eyebrows; yellowed fingernails; gnarled fingers; scowls, profane; “senile old man” per Darius; calls Lawrence “geezer”
+- Role: Designer and operator of Refiner’s Definer; processes newcomers; organizes tent/gate platform; uses cryptic screen icons (e.g., mountain, his face, pineapple) to mask results
+- Personality: Cantankerous; strict on procedure (“Line”); suspecting impersonation; misreads Lawrence’s age/face
+- Tech:
+  - Refiner’s Definer: blood-sampling device categorizing Stellar/Lunar/Solar, rough property type and strength; outputs iconography not obvious to subject; he understands the code
+- Status: Active, pivotal at gates
 
-- Paul
-  - Full name: Paul (no last name)
-  - Aliases / Titles: Member of LARS; father whose son Nathan was taken; has explosive/whistle-activated property (able to make explosives / a sound-triggered operation).
-  - Role: LARS member who uses a whistle + small explosive to clear guards in the warehouse raid.
-  - Backstory: Son Nathan kidnapped; Paul was in a trance for six months and later snapped back. He has been searching for his son.
-  - Current status: Fights with team; provides one of the key explosive diversions to open exit for retreat.
+### Refract (mentioned)
+- Role: LA mirror-based power user; now new mayor of Los Angeles; known to Isaac; unnerving
+- Status: Alive in LA (off-page)
 
-- Jasper
-  - Full name: Jasper (no surname)
-  - Aliases: LARS member
-  - Physical description / property: Electric property; can generate electricity from hands; large-soldier build; used electric strikes in LA fights.
-  - Role: Fighter for LARS, supports Lawrence and others.
+### Blane (mentioned)
+- Role: Las Vegas drug lord; past antagonist; ran Trevor/Trevor’s business; violent
+- Status: Off-page
 
-- Xenia
-  - Full name: Xenia (no surname)
-  - Aliases: LARS fighter (female); acrobatic warrior who helps free captured Lunars (splashes water on them to wake them from paralysis from the mirror property).
-  - Role: Fights Sinister Sisters (defeats them); later assists with freeing prisoners.
+### Warlock
+- Physical: Short, thick grey beard; aged drastically in six months; yellowed teeth, bloodshot eyes; chafed expression
+- Role: Samuel’s former partner on outside missions; fell under Abe’s trance; attacked Freedom Fields, lured Samuel out; nearly killed Martin; abetted Max’s kidnapping
+- Personality: Guilt-ridden; insomnia; fearful of sleep (loss of control); resolute; speaks softly
+- Trance memory: Felt trapped/powerless; sensed passage of time; no sensory recall
+- Status: Living on city’s fringe; isolated; forgiven by Samuel
 
-- London (member of LARS)
-  - Full name: London (no surname)
-  - Aliases / Titles: LARS fighter; blonde hair.
-  - Role: Fighter in LA; helps rescue operations.
-  - Current status: Saved many; fights in the final cavern battle.
+### Richard Snow (mentioned)
+- Property: Lightning eyes? (contextual aside from Isaac)
+- Role: Father of Olive; helped in warehouse in LA; Freedom Fields resident
+- Status: Alive (off-page here)
 
-- Richard (again)
-  - Further note: In the trophy-room climax, Richard unexpectedly releases devastating eye-beams (light energy) that damage the cavern’s roof pipes and cause chain reactions; he yells at the roof “COME OUT HERE AND FIGHT LIKE A MAN!” suggesting the unseen Abe’s voice may be someone above.
+### Olive
+- Property: Recognition of people never met — if given descriptions, can later recognize target as if known
+- Role: Courier; helps Max with deliveries; critical in LA search for Max
+- Status: Active; requested for Keith’s memory project
 
-- Marie Winters
-  - Full name: Marie Winters
-  - Physical description: Heavy-set woman, warm motherly voice, decaying teeth, brown hair with gray, tied in a bun; takes in Isaac when he almost dies; has a son Matthew in a wheelchair.
-  - Role: LA local who rescues and tends Isaac after the escape from shadow-hounds; a caring, grieving mother.
-  - Backstory: Husband Jeff was a Lunar who was killed by powerful Lunars in LA; she and her son took refuge in city; her husband was a doctor and a Lunar prior to his death. She runs a small home and medical supply rooms; she treats Isaac and gives him lodging, clothes, and healing brew.
-  - Current status: Killed later (found with “TRAITOR” painted on sheet) — she and Matthew are murdered (this is a crucial and tragic plot point).
-  - Notable quotes: “Anyone who fights against Shadow is a friend of mine.”
+### Max
+- Age: 11
+- Role: Samuel’s son; Isaac’s adoptive brother; ex-kidnap victim; now courier; matures quickly; jokes with Samuel
+- Personality: Witty; persistent; independent; proud; idolizes Samuel; supportive (“You have to do it”)
+- Status: Active
 
-- Matthew
-  - Full name: Matthew
-  - Physical description: Boy in a wheelchair; brown bushy hair and freckles; cerebral palsy mentioned for a different child; one of Marie’s dependents; later the small suitcase with his clothes is found — he was packing to leave.
-  - Role: Son of Marie; bright; asks Isaac questions; helps Marie care for others.
-  - Current status: Dead with Marie (in discovery scene).
+### Jerry’s Bar & Grille — Bartender (unnamed)
+- Physical: Yellow teeth; chapped lips
+- Property: Frosts glasses by touch? (demonstrated frosted glass)
+- Role: Host of Freedom Fields’ bar; enforces “Lunars only” for special drink; humorous; “If you can pay you can stay”
+- Status: Active
 
-- Nathan
-  - Full name: Nathan (Paul’s son)
-  - Role: Kidnap victim; central to Paul’s motivations.
+### Butch
+- Physical: Teen, tall; whiff of blond chin hair; over-straight posture; bravado; from Great Falls; has two cronies
+- Role: Catalyst lead — recounts Solar in Great Falls (Felix); persuades Isaac/Nicole; apologizes
+- Backstory: Ran family produce booth during Lunar Pirate raid; Solar saved him; tried to find Solar’s shack on Baldy; family relocated to Freedom Fields due to crime/crop theft
+- Status: Resident in Freedom Fields; potential applicant for farming plots
 
-- The “trophy-room” ancillary characters (guards, clones, nameless)
-  - Many unnamed guards fill the cavern; a set of repeating clones/guards who assemble (the clones are described as similar-looking guard types). Some named guards: Ernie, Frank, Bonzo.
-  - Ernie, Frank
-    - Ernie — younger grumpy guard. He is killed (smashed into wall).
-    - Frank — a guard who later notices escape attempts; his remorse and eventual death are noted (thrown into wall by Tyrannus or otherwise).
-  - Bonzo — later explicitly called by Tyrannus and killed by him; likely same as the rat-faced man who took Max.
-  - Lizard-man guard — reptilian-looking guard with claws and slit-like eyes (encounters Isaac in the LA fight).
-  - Fire-breathing guard — he sprays fire at Isaac during the final cavern fight; a victim freed helps subdue him.
+### Eric Nautilus (Mayor of Great Falls)
+- Physical: Short; white curly hair; blind (wears eyepatches); prefers total darkness; quiet/distant voice
+- Property: Unspecified but “inconvenient to hold normal conversations” (eyes covered to make comfortable)
+- Role: Seeks Lunar manpower from FF; attempts to detain Isaac/Nicole for ransom leverage against Samuel; claims motorbike gang needed; suggests redirecting incoming Lunars to Great Falls
+- Personality: Calculating; coercive; pragmatic; paternalistic over city’s safety
+- Status: Active; sends Havox to intercept kids on Baldy; initiates capture plan
 
-- The Angelic Woman / Isaac’s mother (voice/manifestation)
-  - Full name: Not given (Isaac’s mother — she reveals herself)
-  - Aliases / Titles: The angelic voice in Isaac’s dream (later identifies as his mother).
-  - Appearance (dream): Beautiful, angelic, blond, white gown, light radiance, voice “beautiful and angelic.”
-  - Role: Communicates through Isaac’s dreams, provides guidance and select vision, tells Isaac he is blooming and that he is not alone. In the climax dream she claims: “I am your mother.” She claims to have been sending the dreams guiding Isaac and other allies (Trevor etc.) to the telephone booth and other critical elements.
-  - Relationship: Isaac’s biological mother (left him as an infant at Freedom Fields entrance) and appears to have property enabling remote guidance or seeding visions. She warns of Abe and says she cannot be physically present.
-  - Current status: Alive somewhere beyond immediate reach; her property and presence in dreams were key to rescuing Max and guiding the group.
+### Havox
+- Physical: Camo jacket; sunglasses; tobacco-chewing; plaid jacket later; jeans; bushy brown beard flecked with grey; rides massive motorcycle with black tassels & fire decals
+- Role: Great Falls enforcer; escorts to mayor; later fights Isaac/Nicole at Town Hall; pistol user; organizes motorcycle posse; later comes to Felix’s cabin; likely killed by Felix off-page (Felix’s wrists bloody; wolves killed)
+- Property: Unclear; strong Lunar? Proficient in combat and firearms; non-Top-Level
+- Status: Presumed dead near Felix’s property (inference from blood and Felix’s rage)
 
-- Abe / Abraham (again)
-  - Ominous antagonist voice controlling many events (see above). He threatens entire city and may be responsible for a national/organized kidnap operation.
+### Felix (the Baldy Mountain Solar; Teresa’s partner by implication)
+- Physical: Dark skin; veins bulge; bloodshot eyes with large bags; thin shirt, jeans, faded black boots; stoic; can handle molten objects bare-handed; wolves companions (“brother/sister” dynamic implied)
+- Property: Geokinesis/stone manipulation — raises/moves massive rocks; creates defensive/offensive stone masses; bullet resistance (armor-piercing rounds lodge ~½ inch); immune/resistant to tasers; controls earth tunnel/escape; possibly created Freedom Fields’ wall; stone press can pin/relieve pressure on victims at will
+- Role: Hermit Solar; refuses to mentor Isaac; accuses them of causing wolves’ deaths; evokes “Teresa” in anguish; hints at catastrophic cost of Solar path; evicts Isaac/Nicole post-intrusion clash
+- Backstory:
+  - Former resident of the city now called Freedom Fields (“It wasn’t called that when I lived there”)
+  - Relationship with Teresa heavily implied (calls out “Teresa” in grief); wall origins linked
+  - Wolves as close companions; killed by intruders (Minerva/partner)
+- Personality: Guarded; embittered; grief- and rage-stricken; not evil; complex morality
+- Status: Alive; storms out to clear head after confrontation; Isaac leaves note of thanks/apology
 
-- The mirror nest’s “payment” & Trevor’s parcel
-  - Trevor retrieved a parcel (a small package) from Refract’s nest and left with it as part of a deal — indicates Trevor is double-dealing and Refract demands payment. Trevor winks at Isaac and says “In 30 seconds, run,” which buys Isaac a narrow escape window.
+### Minerva and male intruder (unnamed; Great Falls black-ops)
+- Physical: Both in black ski masks; she wields taser; he wields revolver
+- Role: Infiltrate Felix’s cabin to kidnap Isaac/Nicole while Havox distracts; she tasers Nicole; he points gun at Isaac; both confronted by Felix; he fires armor-piercing rounds into Felix’s chest; both flee, limping, after Felix resists
+- Status: Fled; unknown
 
-- Additional minor/briefly-named characters
-  - Eddie, Smith (Team One fight casualties or fight participants).
-  - Miley Mathis, Mathew Weatherby, Trey Johnson — managing couriers selected.
-  - Brix Common — record scribe advancer.
-  - Mrs. Berryman — “prune-faced woman” in the ceremony who enforces rules on advancers/students.
-  - Daryl — warehouse owner; hosts the rooftop meetings; used to scold young people staying late.
-  - Gayle’s gnarled-hand payment two quarters: detail of city scarcity and currency shift since the Awakening (paper cash obsolete).
-  - Rick — gossiping man in the crowd rumored about Team One attack/Jack’s son.
-  - Teresa — records keeper; speaks softly.
-  - Joshua Trepid, Maggie Lowlock — new wall defenders.
-  - Eddie and Smith — names in Lawrence’s battle story; casualties/involved.
-  - Bonzo — rat-faced man (kidnapper) and subsequent casualty in the trophy room (confirmed by Tyrannus killing man called Bonzo).
-  - Mary, other unnamed townspeople present in crowds or at the ceremony.
+### The “water-spewing guard” (castle)
+- Property: Spews water from mouth to douse Baron’s flames; not named
+- Role: Combatant; doused Baron; gets knocked by “Lunar Pirate Special”
+- Status: Defeated by Baron’s uppercut
+
+### The “chain Lunar” (castle)
+- Property: Dual chains that can adjust midair; binds Baron’s chest/arms; snags Winston’s leg
+- Role: Restraining fighter; distracted by Ace’s audio trick; loses control of chain
+- Status: Defeated in melee
+
+### The “digital-sounding voice” (radio-linked)
+- Identity: Unnamed Top-Level remote or aide; communicates with Abe by radio-like relay; translates unintelligible (foreign) voice; references “Top Levels” and “Eastern Kingdom”
+- Role: Liaison; provides Abe battlefield reports
+- Properties: Long-distance comms despite destroyed radio towers post-Awakening (Abe’s network)
+
+### Mrs. Berryman
+- Role: Teacher; spread incorrect lore about northern gate dent (“it’s always been there”)
+- Status: In Freedom Fields
+
+### The cloaked “fetchman” (Boston)
+- Physical: Cloaked; raspy voice; partial face obscured; keen scent behavior (“sniffs” at intersections)
+- Role: Guide to Mr. Shade’s hidden door; paid intermediary; brings note to LARS
+- Personality: Wounded cynic; loyal to Mr. Shade; story of family killed after leaving city
+- Status: Active
 
 ---
 
 ## Relationships Map
-This lists all significant named relationships and dynamics with status notes.
 
-- Isaac ↔ Samuel — [adoptive father / son; mentor & leader – paternal bond; Samuel is protector and sometimes paternal strictness; deep trust but Isaac seeks validation]
-- Isaac ↔ Max — [brothers (not by blood); protector / loved one; Isaac is Max’s guardian]
-- Isaac ↔ Lawrence — [best friends / brotherly bond / tension: Lawrence left city leading to Isaac feeling betrayed; later cooperate and reconcile]
-- Isaac ↔ Nicole Tridian — [friends and peers; supportive; possible romantic undertone]
-- Isaac ↔ Gayle — [courier-client; Isaac delivered package; curious about Gayle's work; Gayle paid in two quarters under doormat]
-- Isaac ↔ Martin — [mentorish; Martin counsels Isaac on “flames” lesson; friends/mentor]
-- Isaac ↔ Rose — [respects Rose; she is a figure of combat leadership he reveres; later Rose injured and he is anguished]
-- Samuel ↔ Rose — [partners/colleagues who disagree on city policy/training; deep mutual respect; sometimes friction]
-- Samuel ↔ Martin — [longstanding allies in wall defense; Martin loves theatrics; Sam admonishes Martin occasionally]
-- Samuel ↔ Darius — [command relationship; Darius leads wall defenders under Sam; occasional friction]
-- Samuel ↔ Jack — [trusted gatekeeper; Jack’s son’s presumed death caused tension; Sam relies on Jack’s unique voltage ability to open the gate].
-- Samuel ↔ Blane — [old friends turned rivals; complicated relationship; worked together historically; Blane later becomes a hostile power but still does transactional help]
-- Blane ↔ Strap — [father ↔ son]
-- Blane ↔ Trevor — [Blane’s informant: Trevor is Blane’s “eyes and ears” in LA; the plug]
-- Blane ↔ Richard — [Blane received a captive Richard (from LA raid) — Blane holds or interrogates people tied to kidnappings]
-- Trevor ↔ Freedom Fields party — [ambiguous: Trevor helps but is opportunistic; he gave the Marrow Way address to Samuel's team]
-- Trevor ↔ Refract — [has some transactional relationship (picks up “payment”); suspected to be in on the mirror trap]
-- Warlock ↔ Shockwave ↔ Bald man (cloner) — [cohort attackers; Warlock appears senior; Shockwave is a partner; cloned man produces duplicates — teamwork during attack]
-- Lawrence ↔ Team One — [Lawrence is a leading, popular hand in Team One; fans in crowds at ceremonies]
-- Daryl ↔ Isaac & friends — [Daryl lets rooftop gatherings happen; scolds kids at curfew]
-- Jack ↔ Gate defenders — [Jack is the gate operator; wears white gloves when opening; unique voltage properties]
-- Richard ↔ Refuge / Connecticut — [Richard was leader of the refuge in Connecticut; his daughter and people missing; he was captured and maybe brainwashed; he later regains power and aids LARS]
-- LARS members ↔ each other — (Paul, Jasper, Xenia, London, Ron, Richard) — [comrades-in-arms with shared objectives and personal vendettas]
-- Louis ↔ Louis’s father (savage leader) — [son-father; father protective of son and community; father will become savage due to hereditary degenerative property; Louis’s knowledge helps Freedom Fields team]
-- Isaac ↔ “Mother” (angelic voice) — [mysterious, previously unknown mother who appears in dreams and declares herself his mother; spiritual/prophetic relationship; she has been guiding Isaac remotely]
-- Abe (Abraham) ↔ Tyrannus ↔ other top-level Lunars — [Abe is the distant mastermind who commands (or is able to influence) Tyrannus and top-level Lunars]
-- Tyrannus ↔ Abe — [Abe controls Tyrannus to some degree; Tyrannus defers to Abe’s voice; Tyrannus threatens his own subordinates and kills Bonzo when lied to]
-- Bonzo ↔ kidnapping team — [Bonzo is operative who kidnaps Max; later referred to by Tyrannus as a liar and then killed]
+- Abe ↔ Rickey — Master ↔ Top-Level lieutenant; Rickey executes Abe’s will; coordinates Top-Levels
+- Abe ↔ Tyrannus — Master ↔ Top-Level enforcer (LA)
+- Abe ↔ Astrid/Danny/Clark — Master ↔ Top-Level operatives (Bozeman trap team)
+- Abe ↔ Prisoners/guards — Absolute control (trance network), but limited re: forcing kills; uses crown-tube system; avoids direct contact except tests
 
-Key conflicts & loyalties:
-- Loyalty to Freedom Fields: Samuel, Rose, Darius, Martin, Mark, many villagers.
-- Kidnapper faction(s): Warlock, Shockwave, Bonzo, Tyrannus (apparent Abe instrument), unlawful gangs (Dog Syndicate, Lunar Pirates mentioned as possible suspects).
-- LARS (Los Angeles Resistance Squad): avengers/seekers opposed to kidnappers (complex alliances with Freedom Fields).
-- Treachery concerns: suspicion falls on Jack (gatekeeper), questioned but no proof; overall uncertainty about internal traitors.
+- Winston ↔ Jack — Son ↔ Father; emotional reunion at northern gate
+- Winston ↔ Lawrence — Former teammates (Team One); guilt/rescue history; now reconciled
+- Winston ↔ Ace/Stick/Baron — Team lead ↔ team members; all die in Denmark mission
+- Winston ↔ Abe — Primary adversary; vows vengeance
 
-Secrets flagged:
-- Isaac is secretly (or newly revealed) not a simple Stellar but a Solar-level individual per Gayle’s test; he (and few others) are not yet fully informed about implications.
-- Isaac’s biological mother is alive and has been sending visions to guide him and others.
-- The child-trophy facility uses tanks and cages, transplants victims, and is linked to Abe.
+- Isaac ↔ Samuel — Adopted son ↔ Adoptive father; deep bond; mutual faith; Samuel rescues Isaac in Bozeman; stabbed
+- Isaac ↔ Max — Adopted brothers; past rescue; affectionate
+- Isaac ↔ Nicole — Close friends; travel partners; romantic undertones; she’s captured
+- Isaac ↔ Lawrence — Mentor alliance; trusts his strategies; confides about Solar path
+- Isaac ↔ Felix — Seeker ↔ Reluctant mentor figure; friction escalates; implied Solar-solar dynamic
+- Isaac ↔ Mother — Son ↔ Mother; guided by dreams; rescued by Lawrence; urgent need to warn Isaac (Denmark prison scene)
+- Isaac ↔ Rickey/Top-Levels — Target ↔ Captors/killers; prolonged conflict
+
+- Samuel ↔ Rose/Martin/Darius — Mayor ↔ leadership/ops core; mutual respect; division of labor
+- Samuel ↔ Warlock — Old friends; Warlock seeks forgiveness; Samuel extends it
+- Samuel ↔ Jack — Fellow city leader; trust
+
+- Lawrence ↔ Jasper/Paul (LARS) — Leader ↔ teammates
+- Lawrence ↔ Mr. Shade (Trevor) — Supplicant ↔ smuggler; adversarial-ally; shared LA history; covert coordination
+- Lawrence ↔ Jens/Anders — External allies in Denmark
+- Lawrence ↔ Refract — Uneasy respect; LA governance shift
+
+- Teresa ↔ Felix — Strongly implied former partners; grief about infant; wall origin connection
+- Teresa ↔ Isaac/Nicole — Gatekeeper of records; shares traumatic past; directs to “the bar” for rumors
+
+- Butch ↔ Isaac/Nicole/Lawrence — Lead source ↔ seekers; trust built
+- Great Falls (Eric Nautilus) ↔ Isaac/Nicole — Mayor tries to detain/exchange for aid; escalates to violence
+- Havox ↔ Felix — Antagonists; Havox likely killed by Felix
+
+- Madison Fizzleton ↔ Abe’s voice — Victim ↔ Controller; heard incessant voice; resisted killing order partially
+
+- Lucas & Lincoln ↔ Martin — Fetchers ↔ handler; comic relief; occasional failure
+
+Conflicts, loyalties, secrets, power dynamics:
+- Abe’s trance leverages personal connections; cannot easily force kills; likely requires proximity/crown system
+- Top Levels act semi-independently; Rickey enforces “rules”; secrecy within henchmen ranks
+- Freedom Fields triages incoming (Gayle’s machine); internal resource strain; ethics of aiding neighbors
+- Great Falls attempts to coerce FF via hostage diplomacy; under Lunar Pirate threats
+- Mr. Shade balances profit/risk; maintains secrecy against Abe’s moles; employs ex-Abe operatives (Sinister Sisters)
+- Felix’s isolation hides painful past; rejects city entreaties; wall origin secret ties to Teresa
 
 ---
 
-## Settings & Locations (every named place and notable place)
+## Settings & Locations
 
-- Freedom Fields (the city)
-  - Type: Walled city / safe haven; the central setting for the story.
-  - Physical description & atmosphere:
-    - Encircled by a thirty-foot solid rock wall (imposing natural stone) with imprinted hidden ladders accessible by secret buttons.
-    - Cobblestone streets, small houses (Samuel’s modest 3-bedroom), a town square with southern gate as stage backdrop, central tower with a curfew bell, varied sectors (North Sector, East Sector, South).
-    - Electricity is scarce; colored windows, unique chimneys in North Sector; general atmosphere: preserved, civic, communal, but modest; fireworks and ceremony culture (Public Advancement) indicate civic ritual.
-  - Significance to the plot:
-    - Seat of safety, culture, leadership (Samuel's leadership).
-    - Site of Public Advancement where promotions/leadership decisions (courier head) and political tensions become visible.
-    - The wall and gate are central to defense and the initial attack.
-  - Who lives / works / frequents there:
-    - Leaders: Samuel, Gayle, Rose, Darius, Mark Spitz, Martin, Teresa, Jack.
-    - Citizens: couriers, families (Isaac, Max), apprentices (Stewart), students.
-  - Notable lore/ties:
-    - Built by unknown hands (“no one is sure who put up the wall” — rumors credit God or powerful Solar).
-    - The Awakening occurred and changed socio-economic structure; Freedom Fields attempts to manage property-bearers.
+### Freedom Fields (walled city in central Montana)
+- Type: Walled city; refuge; self-governed
+- Physical/atmosphere: 30-foot rock wall (appeared “in the middle of winter” after the Awakening); sectors (South Sector, East Sector, North Sector); central crossroads; central tower with curfew bell; mayor’s house nearby; busy squares; population growing rapidly (post-LA influx)
+- Significance: HQ for protagonists; base of operations against Abe; intake/processing hub (Gayle’s machine)
+- Occupants: Samuel (mayor), Rose (battle school), Martin (interrogations), Darius (wall defenders), Gayle (engineer), Jack (gatekeeper), Nicole (Head Courier), Max (courier), Liza, Brix, Teresa (record keeping), Richard Snow/Olive
+- History/Lore:
+  - The Wall: rumor of Solar origin (Felix implied builder); dent at northern gate from Lunar Pirate attack (Samuel’s fight); originally had ladders as entries; later southern/northern gate mechanisms; Eagle’s Nest platform; post-Awakening isolation for one month; sectors repopulating (North Sector now houses influx Stellars)
+- Notable places:
+  - Southern Gate: main intake; Eagle’s Nest platform; Jack’s electric unlock; hosts (“gate opens… you will be met by a host”)
+  - Northern Gate: lesser-used; Winston returns here
+  - Sheriff’s Office: run-down; underground vault; interrogation site; impenetrable vault doors
+  - Battle School: Rose’s training; Lunar circuits; Isaac’s regimen
+  - Library/Record Keeping office: Teresa’s domain; plaque: “Record Keeping – Preserving History One Story at a Time”
+  - Jerry’s Bar & Grille: only functioning restaurant/bar; fish-themed decor; bartender frost ability
+  - Bakery: active at 4 AM
+  - Mayor’s House: central
 
-- North Sector (Freedom Fields)
-  - Type: District / sector; partly abandoned area.
-  - Description: Abandoned, cold, lit-up odd labs such as Gayle’s (one building sticks out with stained-glass-like colored windows, multiple chimneys, steam and a thick blue substance oozing).
-  - Significance: Location of
+### Denmark — Abe’s Castle (Harbor fortress; coastal castle)
+- Type: Ancient castle/fortress; Abe’s current throne base
+- Physical: Massive, multi-floor with ballroom (2nd floor), throne room (3rd floor), 4th-floor terrace with rectangular “windows”; chandelier; mass of pipes/wires from ceiling converge into metallic crown on Abe’s head; outer curtain wall with massive wooden gate, two guard towers with lights; surrounding moat; dungeon with secret water escape (beneath third dimple on southern side); staircases; open-air watchtowers; dimly lit candles (electricity scarce in 2030)
+- Significance: Center of Abe’s European operations; site of prisoner testing; Top-Level operations; shipments
+- Occupants: Abe; Rickey; guards (many under trance); prisoners; roof guards with rubber-bullet rifles; Top Levels transit through here indirectly
+- Patterns/Lore:
+  - Shipments: previously Mondays; a Wednesday shipment indicated changes; unmarked crates full of random personal effects (watches, photos, jewelry, blanket) — unclear purpose
+  - Entrance behaviors: North entrance lightly described; South gate with drawbridge into moat; guard posts leave to work shipments; gate closes via dual ropes (top and bottom)
+  - Dungeon: underwater access tunnel used for escape; prisoners in rusted cells; guard with “mind-implant” property (later disabled by Jasper)
+- Notable events: Prologue infiltration; Abe shooting Ace/Stick; Baron death; Winston’s escape; later prisoner rescue by LARS/Jens (truck smash)
+
+### Los Angeles (LA) cavern fortress (past)
+- Type: Underground dungeon and facility
+- Physical: Massive chamber; fluid-filled tanks; tubes run to roof; Abe’s voice echoed; cages; “telephone booth” location relevant to Isaac’s prior dream
+- Significance: Prior seat of Abe’s control; Max imprisoned; Isaac’s mother likely connected here pre-capture to Denmark
+- Status: Collapsed/free after LA mission; Refract is new mayor; society reshaping
+
+### Great Falls, Montana
+- Type: City near Freedom Fields
+- Physical: Entrances blocked by school bus barricades; heavy rifles; control booth; motorcycle defenders; long six-lane streets; Town Hall with marble floors and pillars; mayor’s dark office; snowstorms; Baldy Mountain to the east
+- Significance: Site of rumored Solar (Felix); attempted coercion of FF resources; detain/ambush Isaac/Nicole
+- Occupants: Mayor Eric Nautilus; Havox; motorcycle gang; Butch’s family (now in FF)
+- Lore: “Lunar Pirates, Beware!” sign at city welcome; thickets of trees planted for defense; periodic pirate raids; farms on outskirts; heavier use of firearms than FF
+
+### Baldy Mountain (western ridge trailhead; Great Falls)
+- Type: Mountain; trail network; Solar’s cabin location
+- Physical: Trailhead sign “Baldy Mountain Peak trailhead”; heavy snowstorm; wolves present; steep, storm-battered slopes; shack on western ridge of Baldy (Felix’s cabin)
+- Significance: Felix’s home; Isaac/Nicole’s ordeal; wolf attack; intruder confrontation; Solar revelations
+- Occupants: Felix and two wolves (later dead)
+
+### Bozeman, Montana
+- Type: Abandoned city (pre-Awakening crash site)
+- Physical: Rusty, wheel-stripped cars; shattered glass; boarded storefronts; destroyed movie theater; liquor store; grocery; eerie silence; door trap environment
+- Significance: Isaac’s dream destination; mother lured him; actually a Top-Level trap; Nicole captured; Samuel’s fight with Rickey/Danny/Astrid/Clark
+- Occupants (in scene): Rickey, Astrid, Danny, Clark; burly grunts; Isaac; Samuel; Nicole briefly
+- Traps: Liquefying tile/metal (Astrid); immobilizing cords (Danny); psychic exhaustion (Clark)
+
+### Boston, Massachusetts — Fish markets and hidden warehouse
+- Type: Coastal markets; hidden drug shipping facility
+- Physical: Harbor lined with run-down fishing boats; table vendor rivalries (Donald, Jerry McClatchie); Mr. Shade’s massive 3-story warehouse over water; ship in indoor dock; catwalk ring; only one white door on upper floor; sewers half-mile away
+- Significance: LARS attempts to book passage to Denmark; learn of larger Atlantic shipping risks; clandestine network; Trevor staging area
+- Occupants: Donald (foul-breathed, wandering eye; maroon/pink cap; missing fingers); Jerry McClatchie (scar on forehead; t-shirt in cold); Mr. Shade/Trevor; Sinister Sisters; fetchmen; workers ignorant of full operation
+
+### The “Eastern Kingdom”
+- Type: Region referenced by radio voice during Abe/Rickey report
+- Lore: Active troop operations; brought back “someone” from village outskirts; global expansion/extraction point
+
+### Florida (mentioned)
+- Type: US region with “political upheaval”; LARS members Xenia and London sent ahead
+
+### New York City/Chicago/Boston/Maine/Copenhagen/Germany/France (ports/air)
+- Lore:
+  - NYC/Chicago/Boston: rumored/rotating base for private plane of a woman who can fly to Germany (rare)
+  - Maine: Disembarkation point for ship from Copenhagen (~1.5 weeks)
+  - Denmark: fatherland/coastal castles
+  - Germany/France: larger ports; more common destinations for trans-Atlantic shipping
+  - Asia/Africa: Abe’s teams extract victims here per Trevor’s sailor intel
+
+---
+
+## Timeline of Events
+
+- Pre-Book (established history)
+  - The Awakening (~30 years prior): Emergence of powers; societal collapse; radio towers torn down; last US cars manufactured.
+  - Walls rise around future Freedom Fields “in the middle of winter.” Teresa’s infant dies; husband leaves (never returns). Rumor that a Solar built walls (later implied Felix).
+  - ~25 years ago: Lunar Pirate Gang attack dents Freedom Fields’ northern gate (Samuel involved).
+  - ~1.5 years ago: Team One incident — Winston left behind by Lawrence to save team; Winston captured, sedated months, then tank-imprisoned in LA; later moved to Denmark.
+  - LA era: Abe’s cavern operation with tanks; Isaac’s mother projects dreams to Isaac; Isaac rescues Max; Isaac kills Tyrannus; LA base collapses; Refract becomes LA mayor; Warlock freed from trance.
+
+- Six months prior to Book 2
+  - Isaac’s Solar identification by Gayle’s Refiner’s Definer; Nicole becomes Head Courier; Lawrence heads LA reform, sends Xenia/London to Florida; FF influx begins; Warlock returns with guilt.
+
+- Book 2
+  - Prologue: Winston’s Denmark infiltration (night; fog; masks; 4-Lunar team). Abe tested an Asian Lunar’s property and deems “not sufficient”; Abe kills Ace; Rickey kills Baron; Stick drops chandelier, dies; Winston escapes via rooftops and moat, vowing vengeance.
+  - Chapter 1: Isaac’s grueling battle school under Rose; Nicole brings dinner; discuss Solar; Max becomes courier with Olive; no new Solars; Isaac frustrated; mentions Blane; laughs off Rose’s wrath.
+  - Chapter 2: Samuel’s mayoral workload; Darius requests Lunar placement sign-offs; medallion habit; Max arrives; Liza at door; domestic father-son moment; “Tell Darius to take a bath” note.
+  - Chapter 3: Lawrence, Jasper, Paul arrive at FF southern gate; see processing tents; Gayle processes; Lawrence’s antics; confrontation with Jack (gatekeeper); Darius fast-tracks them; Isaac’s Solar reveal; plan seeds.
+  - Chapter 4: Samuel walks with Warlock in North Sector; insomnia/shared guilt; curfew struggles; Warlock’s trance memory only of trapped feeling; Samuel promises to stop Abe.
+  - Chapter 4 (cont’d): Isaac/Nicole visit Teresa; learn wall trauma; no record of Solar; directed to “the bar” for rumors; Max summons them to northern gate where Jack opens; Winston staggered arrival (“My son! He lives!”).
+  - Chapter 5: Winston debrief: Abe regrouped in Denmark; he won’t go back; LARS to leave urgently; Isaac volunteers as courier; Samuel agrees with reluctance; Winston warns about Rickey; hears of Tyrannus death by Isaac; travel options (ship/plane lady).
+  - Chapter 6: Jerry’s Bar — Lawrence/Isaac/Nicole toast; Nicole volunteers to replace Isaac as courier; Butch’s bar incident; Great Falls Solar (Felix) story; Isaac decides to seek Solar; Nicole insists on accompanying.
+  - Chapter 7: Isaac/Nicole clandestine departure (4 AM; wall ladder); Samuel intercepts atop wall; gives blessing and map; heartfelt hug.
+  - Chapter 8: Lincoln/Lucas interview chain; Madison Fizzleton’s account; Keith’s interview (requests Olive help); twins’ chaos.
+  - Chapter 9: Boston fish market; Lawrence’s “Boston International” ruse; Donald vs. Jerry; fetchman leads LARS to Mr. Shade; Trevor revealed; Sinister Sisters present; Trevor feigns refusal; secret note secures passage in 2 days.
+  - Chapter 10: Isaac/Nicole at Great Falls barricade; Eric Nautilus wants Lunar aid; attempted detainment; gunfight/escape; SUV chase; head to Baldy; trailhead in snowstorm.
+  - Chapter 11: LARS at sea with Trevor; Trevor outlines Abe global targeting; next docking near Denmark (30 miles away); crate smuggling; second warehouse unknown.
+  - Chapter 12: Isaac/Nicole awaken in Felix’s cabin (rescued from wolves); Felix refuses mentorship; wolves present; Havox knocks; intruders ambush; Felix resists bullets/taser; Isaac/Nicole freed; Felix blames them for wolves’ deaths; Isaac’s Solar surge vs. Felix; stone press; Felix references “Teresa” and wall origins; ejects them; Isaac leaves note.
+  - Chapter 13: Samuel synthesizes Abe’s proximity/crown/tube control hypothesis during wall walk; Rose/Martin share interview insights (kills rare; voice patterns; unseen Abe).
+  - Chapter 14: LARS arrives Denmark; Trevor’s advisor likely an Abe mole; LARS crated to secondary warehouse; intercepted by teen guards (non-English); complication sets stage.
+  - Chapter 15: Isaac’s dream (LA pier → FF southern gate → Bozeman); wakes; asserts mother in Bozeman; snow subsides; Havox arrives to Felix’s; intruders likely killed; Isaac/Nicole steal motorcycle to depart; Isaac leaves note.
+  - Chapter 16: LARS meet Jens/Anders; prove non-tranced via unloaded gun trigger test; castle surveillance; mid-operation gate; Jasper shocks guard; crate spills personal effects; fight; rooftop rubber bullets; Anders’ “Swim. Hole.”; dungeon infiltration; guard zapped; prison break; Isaac’s mother recognized; mass breakout; Jens smashes gate with truck; escape.
+  - Chapter 17: Isaac/Nicole arrive Bozeman; walk into trap; Nicole seized; Isaac immobilized; Clark applies psychic exhaustion; Astrid liquefies tile; Danny cords; Rickey commands; Samuel arrives; fights Top Levels; Clark collapses; Astrid speared then crushed; Danny binds; Rickey reverses Samuel’s motor control and stabs Samuel in the heart; Isaac’s inner “something snapped.”
+
+---
+
+## Plot Threads & Story Arcs
+
+- Main Plot: Abe’s resurgence and Denmark operations
+  - Winston’s infiltration reveals Abe testing abductees, new “Top Levels,” and castle infrastructure (crown with wires).
+  - LARS trans-Atlantic mission: secure clandestine entry into Denmark; ally with Jens; rescue prisoners incl. Isaac’s mom; learn gate mechanics; shipments of personal effects; Top Levels coordination; operate in “danger zone.”
+  - Open questions:
+    - What are the unmarked crates of personal effects for?
+    - How many Top Levels? Where are they deployed (“Eastern Kingdom,” Bozeman, Denmark)?
+    - How dependent is Abe on crown/proximity? Can severing feed lines disrupt control?
+
+- Isaac’s Solar Arc
+  - Battle school fails to awaken property; seeks mentor → Great Falls lead → Felix → rejection and conflict; warnings about pain necessary to awaken; Bozeman trap; Samuel’s near-death catalyzes “something snapped.”
+  - Goals:
+    - Master Solar abilities; rescue mother; protect Nicole; free captives.
+  - Open questions:
+    - What exactly triggers Solar activation?
+    - Can Isaac negate Top-Level powers systematically?
+    - What did Felix mean by “what you’ve done to me” (Solar negation effect on Solars?) and “You will have to endure more pain than you can imagine”?
+
+- Samuel’s Leadership & Burden
+  - Overburdened as mayor; guilt over time away from Max; vows to step down within a year (handshake promise)
+  - Key insight: Abe’s control proximate/crown-dependent
+  - Bozeman rescue attempt; stabbed — cliffhanger on survival
+
+- Great Falls/Neighbor Politics
+  - Eric Nautilus tries to leverage hostages for Lunar support; Havox enforcement; motorcycle gang culture; ethical dilemma for Freedom Fields; potential long-term diplomatic thread
+
+- Mr. Shade/Trevor’s Machinations
+  - Pretends to reject LARS; covertly assists; moles under Abe’s trance embedded; Sinister Sisters rehabilitated; “Down with the man in the throne.”
+
+- Teresa/Felix/Wall Origin
+  - Teresa’s wall trauma; implied Felix and Teresa connection; Felix: “It wasn’t called that when I lived there”; “Teresa” lament; strong hint Felix created the walls out of grief
+
+- Rose/Martin Interviews:
+  - Madison Fizzleton — continuous consciousness; paralyzing kiss; resisted kill; heard Abe laughing; implies Abe’s control can be ethical/manipulative before coercive
+  - Keith — trance with no obvious leverage (no close ties), undermines “leverage” model; wants Olive’s help
+
+- Foreshadowing/Planted details
+  - Abe’s crown/wires (core vulnerability)
+  - Repeated hints Top Levels have specific counters to Samuel (immobilization; reverse-control; cords; liquefaction)
+  - Isaac’s recurring dreams changing in tone (silent mother directing to Bozeman)
+  - Lawrence’s foresight draining; unique counter to mental infiltration (tower mind-planter)
+  - Rope mechanisms on castle gate (later used in break/escape)
+  - Wolves as moral choice testing Felix and Isaac/Nicole
+
+---
+
+## World Rules & Lore
+
+- Power Classes
+  - Stellars: Typical population; may have weak properties; not physically enhanced by default; most newcomers
+  - Lunars: Stronger bodies and senses; possess unique “properties” (varied: elemental, psych, physical, sensory); rarer (in a crowded room “one Lunar present, rarely two” per Winston)
+  - Solars: Extremely rare (Isaac; Felix implied); greater-than-Lunar capabilities; property behavior distinct (Isaac’s negation bursts); Refiner’s Definer can detect Solar blood “characteristics”
+
+- The Awakening
+  - ~30 years prior; rise of properties; collapse of radio towers and infrastructure; last cars manufactured soon after
+
+- Abe’s Control/Trance System
+  - Typically requires a kidnapped loved one to control one target (“Abe can only control one person per kidnapped victim,” per Trevor)
+  - Victims often: prior headache/blurred vision; personality shifts (quick to anger; urges to steal/break)
+  - Many under trance lose consciousness (time gaps); some never lose consciousness (Madison, possibly others)
+  - Control limitations:
+    - Hard to force killing; some outliers (e.g., Tyrannus)
+    - Does not reclaim people once freed from trance (e.g., Sinister Sisters)
+    - Likely proximity/crown-dependent (crown fed by tubes from tanks/roof; when Abe leaves, connections break)
+  - Communications:
+    - Radio-like relay despite tower destruction; digital-sounding voice translator; global operations in “Eastern Kingdom,” Asia, Africa
+  - Guns:
+    - Abe’s men reportedly “never carry guns” (intel), but exceptions appear: rooftop guards with rubber bullets; Abe himself uses revolver; possibly non-lethal policy for trance stability
+
+- Technology
+  - Refiner’s Definer (Gayle): Blood sample + icon-based results; tells Stellar/Lunar/Solar and strength category; cannot specify exact property but hints type; used at gates; secrets kept from subjects
+  - Vehicles: Scarce; old; heating broken; motorcycles loud (banned in FF); boats repurposed for shipping; hidden warehouses; few private planes remain (rumor of a woman pilot to Germany)
+
+- Socio-Political Structures
+  - Freedom Fields: Mayor, battle school, wall defenders, couriers, record keepers, interrogations; heavy intake; sector planning (agriculture, forge, textiles work assignments); host system for newcomers
+  - LARS: Los Angeles Resistance Squad; Lawrence-led team (Jasper, Paul; Xenia, London remote); recon/intel & surgical strikes
+  - Lunar Pirate Gang: Violent roving gang; shaved heads, leather jackets; attacked Great Falls market; historically dented FF’s gate
+  - Great Falls: Mayor Eric Nautilus; gate barricades; militia/motorcycle culture; firearm usage; tree-thicket perimeter; frequent pirate raids; strained resources
+  - Mr. Shade’s underworld: Stuffing production/distribution; secret docks; sewer ingress; fetchmen network; enforcers (Sinister Sisters)
+
+---
+
+## Objects & Artifacts
+
+- Abe’s Metallic Crown: Fed by ceiling wires/pipes converging over throne; likely control conduit; “crown upon his head”; critical vulnerability if severed (implied by Samuel’s proximity insight)
+- Fluid-Filled Tanks: Used in LA to hold captives; tubes running to roof; survivors freed post-LA; same gelatinous medium prepared in Bozeman metal tank for Isaac
+- Refiner’s Definer (Gayle’s machine): Blood prick; outputs icons; categorizes subjects; cryptic reading system
+- Samuel’s Medallion: Gift from late wife; engraved “Do what’s right at any cost”; lost during LA battle; Samuel still rubs at habit spot
+- Chandelier (Denmark Throne Room): Dropped by Stick via acid; creates darkness for escape
+- Winston’s Castle Tour Pamphlet: Crumpled, tri-fold tourist map; shows staircases, ballroom, throne room; later Anders’ pamphlet notes dungeon escape (“third dimple”)
+- Mr. Shade’s Note: “Down with the man in the throne.” Sets secret rendezvous at 3 AM with Sinister Sisters for stowaway
+- Baseball Bats: Common improvised weapons (castle guard’s bat; Astrid’s conjured tile/metal bat; Nicole’s Town Hall bat)
+- Isaac’s Taser: Seized from Great Falls guard; used on wolves and combatants; ineffective on Felix
+- Rope/Gate Mechanisms (Castle): Dual ropes (top, bottom) control gate; cutting top rope not enough—bottom rope remains; moats/walkway architecture
+- Lightning Gate Lock (Freedom Fields): Gates unlock at “a certain voltage of electricity” — Jack supplies lightning
+- Lawrence’s Bat (Watchtower): Thrown to disable mind-planter guard; used as weapon by Jasper later
+
+---
+
+## World Rules & Mechanics of Notable Properties
+
+- Winston — Echolocation: Tongue clicks produce mental images; best in small rooms; blurry while moving or in large spaces; degraded after beating
+- Ace — Auditory Perception Manipulation: Alters others’ perceived origin of sounds; throws voice; scrambles battlefield audio cues
+- Stick — Acidic Hands: Slow-output, high-potency acid; dissolves chains; can drop heavy fixtures (chandelier)
+- Baron — Pyro-Thermal: Hands turn red; upper torso ignites; flares; vulnerable to cooling (water)
+- Rickey — Reverse-Motion/Neuromuscular Scramble + Durability: Touch-based scrambling; reverse-speech triggers via recorder; resists telekinetic shrapnel; can be physically cut/knocked
+- Astrid — Material Liquefaction/Solidification: Melts/reshapes local tile/metal/glass; forms weapons; traps; collapses ceiling into solid pieces
+- Danny — Cord Generation/Control: Manifests/controls thick cords; mass-binding; persistent constructs
+- Clark — Psychic Exhaustion: Induces crushing fatigue via mental focus; sustained only while concentrating
+- Samuel — Telekinesis/Flight: Orbits shrapnel; shapes metal in flight; hovers; cuts bindings; vulnerable to motor scramble (Rickey) + immobilization (Clark/Danny)
+- Nicole — Hair Manipulation: Arm-length precision (disarm, unlock handcuffs, restrain)
+- Jasper — Bioelectric Discharge: Shock/blast; successive use drains; hazardous near water
+- Lawrence — Foresight: Short-term precognition guiding combat moves; drains with extended use; can counter mind assaults by planning
+- Liza — Nausea Gaze: Induces severe nausea by glance
+- Olive — Pre-Recognition: After description, recognizes person later as if previously known
+- Felix — Geokinesis/Stone Mastery & Durability: Earth movement, pressure; bullet resistance; taser immunity; possibly built massive walls; wolves connection
+
+---
+
+## Recurring Motifs & Symbols
+
+- Walls and Gates: Safety vs. imprisonment; origin mystery; dents marking battles
+- Crowns and Tubes: Abe’s artificial control conduit; image of parasitic power
+- Chains/Cords/Nets: Restraint vs. freedom (Danny’s cords; castle chains; Stick’s acid freeing)
+- Darkness
