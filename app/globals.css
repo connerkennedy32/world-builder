@@ -102,6 +102,7 @@
     background-color: rgb(205, 205, 205);
   }
 
+
   .my-custom-class:hover {
     background-color: rgb(255, 126, 126);
   }

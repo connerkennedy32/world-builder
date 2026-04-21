@@ -1,6 +1,6 @@
 'use client'
 import { Tree } from 'react-arborist';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Styles from './styles.module.css'
 import { GlobalContext } from '@/components/GlobalContextProvider';
@@ -11,17 +11,29 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 
+const ROW_HEIGHT = 26;
+
+function countVisibleNodes(items: readonly TreeItem[]): number {
+    return items.reduce((sum, item) => {
+        const isOpen = typeof window !== 'undefined' && !!window.localStorage.getItem(item.id);
+        return sum + 1 + (isOpen ? countVisibleNodes(item.children ?? []) : 0);
+    }, 0);
+}
+
 export const FileTree = ({ data, controller }: { data: readonly TreeItem[], controller: any }) => {
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
+    const treeHeight = Math.max(countVisibleNodes(data) * ROW_HEIGHT, ROW_HEIGHT);
+
     return (
-        <div className="border rounded-md pl-2">  {/* @ts-ignore */}
-            <Tree width={230} height={400} openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>
-                {(props) => <Node {...props} controller={controller} />}
+        <div className={`w-full ${Styles.treeWrapper}`}>  {/* @ts-ignore */}
+            <Tree width="100%" height={treeHeight} rowHeight={ROW_HEIGHT} openByDefault={false} data={data} {...controller} disableDrop={(node) => { return node.parentNode.data.itemType === "PAGE" }} selection='test'>
+                {(props) => <Node {...props} controller={controller} onToggle={forceUpdate} />}
             </Tree>
         </div>
     )
 }
 
-function Node({ node, style, dragHandle, controller }: { node: any; style: any; dragHandle?: any; controller: any }) {
+function Node({ node, style, dragHandle, controller, onToggle }: { node: any; style: any; dragHandle?: any; controller: any; onToggle: () => void }) {
     const [isRenaming, setIsRenaming] = useState(false);
     const [newTitle, setNewTitle] = useState(node.data.title);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -34,6 +46,7 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
             window.localStorage.setItem(node.id, 'true');
             node.open();
         }
+        onToggle();
     }
 
     useEffect(() => {
@@ -49,7 +62,7 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
     const isFolderEmpty = node.data.itemType === "FOLDER" && node.children.length === 0
     const isItemSelected = node.data.id === selectedItemId;
 
-    const folderIcon = node.isOpen ? <FolderOpen size={20} /> : <Folder size={20} />
+    const folderIcon = node.isOpen ? <FolderOpen size={16} /> : <Folder size={16} />
 
     const handleItemClick = () => {
         if (isPage) {
@@ -62,19 +75,23 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
 
     return (
         <div
-            className={`${isPage ? 'cursor-pointer' : ''} ${isFolderEmpty ? Styles.folderEmpty : ''} ${isItemSelected ? Styles.selected : ''}`}
+            className={`${isPage ? 'cursor-pointer' : 'cursor-default'} ${isFolderEmpty ? Styles.folderEmpty : ''} ${isItemSelected ? Styles.selected : ''}`}
             style={style} ref={dragHandle}
         >
             <SidebarMenuItem
                 key={node.data.title}
-                style={{ display: 'flex', alignItems: 'center' }}
+                className="flex items-center gap-1.5 rounded-md text-sm"
                 onClick={handleItemClick}
             >
-                {isPage ? <FileText size={20} /> : folderIcon}
+                <span className="text-sidebar-foreground/60 shrink-0">
+                    {isPage ? <FileText size={16} /> : folderIcon}
+                </span>
                 {isRenaming ? <input
+                    autoFocus
                     value={newTitle}
                     onChange={(e) => setNewTitle(e.target.value)}
                     placeholder="Enter new name"
+                    className="flex-1 bg-transparent border-b border-sidebar-border outline-none text-sm px-0.5"
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                             controller.onRename({ id: node.data.id, name: newTitle, node: node });
@@ -86,7 +103,7 @@ function Node({ node, style, dragHandle, controller }: { node: any; style: any; 
                     }}
                     onMouseDown={(e) => e.stopPropagation()}
                     onClick={(e) => e.stopPropagation()}
-                /> : <span>{node.data.title}</span>}
+                /> : <span className="truncate">{node.data.title}</span>}
             </SidebarMenuItem>
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>

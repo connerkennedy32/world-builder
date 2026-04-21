@@ -14,7 +14,6 @@
   "dependencies": {
     "@ai-sdk/anthropic": "^1.0.0",
     "@ai-sdk/openai": "^1.0.0",
-    "ai": "^4.0.0",
     "@clerk/nextjs": "^5.4.1",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
@@ -26,6 +25,7 @@
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-popover": "^1.1.6",
     "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-scroll-area": "^1.2.10",
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
     "@radix-ui/react-toast": "^1.2.6",
@@ -39,6 +39,7 @@
     "@tiptap/pm": "^2.2.6",
     "@tiptap/react": "^2.2.6",
     "@tiptap/starter-kit": "^2.2.6",
+    "ai": "^4.0.0",
     "array-move": "^4.0.0",
     "axios": "^1.7.3",
     "caniuse-lite": "^1.0.30001702",

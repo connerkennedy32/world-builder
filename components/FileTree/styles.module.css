@@ -1,7 +1,10 @@
 .folderEmpty {
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
-.selected {
-    background-color: #e0e0e0;
+.selected > li {
+    background-color: hsl(var(--sidebar-accent));
+    color: hsl(var(--sidebar-accent-foreground));
+    border-radius: 0.375rem;
 }
+

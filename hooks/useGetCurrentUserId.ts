@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export const useGetCurrentUserId = () => {
-    const [userId, setUserId] = useState<number | null>(null)
-
-    useEffect(() => {
+    const [userId] = useState<number | null>(() => {
+        if (typeof window === 'undefined') return null
         const stored = localStorage.getItem('userId')
-        if (stored) setUserId(Number(stored))
-    }, [])
+        return stored ? Number(stored) : null
+    })
 
     return userId
 }
